@@ -8,7 +8,7 @@ function BlockchainMatrix() {
   };
 
   return (
-    <div className="text-center mx-auto" style={{ maxWidth: '800px' }}>
+    <div className="text-center mx-auto" style={{ maxWidth: '900px' }}>
       <h1 className="mb-5 mt-10 text-center text-4xl" style={{ color: 'var(--title)' }}>
         Blockchain Regulation Matrix
       </h1>
@@ -39,6 +39,7 @@ function BlockchainMatrix() {
       <button
         className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline${!isExpanded ? ' mb-5' : ''}`}
         onClick={toggleExpanded}
+        style={{ color: "var(--button-background)", backgroundColor: "var(--button-text)" }}
       >
         {isExpanded ? 'Hide Blockchain Matrix' : 'Show Blockchain Matrix'}
       </button>
@@ -107,7 +108,7 @@ function BlockchainMatrix() {
           <h3 className="mt-5 mb-10 text-center text-2xl" style={{ color: 'var(--subtitle)' }}>
             The content below applies only to centralized projects
           </h3>
-          <div className="text-left mb-5" >
+          <div className="text-left mb-5 pl-10" >
             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
             Electricity
             </div>
@@ -148,7 +149,7 @@ function BlockchainMatrix() {
                 </div>
             </ul>
             </div>
-            <div className="text-left mb-5">
+            <div className="text-left mb-5 pl-10">
             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                 Settlement Layer
             </div>
@@ -189,7 +190,7 @@ function BlockchainMatrix() {
                 </div>
             </ul>
             </div>
-            <div className="text-left mb-5">
+            <div className="text-left mb-5 pl-10">
                 <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                     Node / Validator
                 </div>
@@ -227,7 +228,7 @@ function BlockchainMatrix() {
                     </div>
                 </ul>
             </div>
-            <div className="text-left mb-5">
+            <div className="text-left mb-5 pl-10">
                 <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                     Consensus Layer
                 </div>
@@ -360,7 +361,7 @@ function BlockchainMatrix() {
                         </ul>
                     </li>
                 </ul>
-                <div className="text-left mb-5">
+                <div className="text-left mb-5 pl-10" >
 
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 Transaction Layer
@@ -407,7 +408,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 On-chain Data Storage
                             </div>
@@ -452,7 +453,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                                 <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                     Asset Layer
                                 </div>
@@ -595,7 +596,7 @@ function BlockchainMatrix() {
                                     </li>
                                 </ul>
 
-                                <div className="text-left mb-5">
+                                <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 Exchange Layer
                             </div>
@@ -641,7 +642,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 Application Layer
                             </div>
@@ -687,7 +688,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                             Internet Browser Layer
                             </div>
@@ -731,7 +732,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                             Developer Layer
                             </div>
@@ -784,7 +785,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 DeFi Architecture Security
                             </div>
@@ -829,7 +830,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 DeFi Architecture Standards / Auditor
                             </div>
@@ -872,7 +873,7 @@ function BlockchainMatrix() {
                                 </li>
                             </ul>
                             </div>
-                            <div className="text-left mb-5">
+                            <div className="text-left mb-5 pl-10">
                             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                                 Fiat Onboarding / Offboarding Access Layer
                             </div>
@@ -921,7 +922,7 @@ function BlockchainMatrix() {
           <h3 className="mt-5 mb-10 text-center text-2xl" style={{ color: 'var(--subtitle)' }}>
             The content below applies only to decentralized projects
           </h3>
-          <div className="text-left mb-5" >
+          <div className="text-left mb-5 pl-10" >
             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
             Electricity
             </div>
@@ -962,7 +963,7 @@ function BlockchainMatrix() {
                 </div>
             </ul>
             </div>
-            <div className="text-left mb-5">
+            <div className="text-left mb-5 pl-10">
             <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                 Settlement Layer
             </div>
@@ -1003,7 +1004,7 @@ function BlockchainMatrix() {
                 </div>
             </ul>
             </div>
-            <div className="text-left mb-5">
+            <div className="text-left mb-5 pl-10">
                 <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
                     Node / Validator
                 </div>
@@ -1041,7 +1042,139 @@ function BlockchainMatrix() {
                     </div>
                 </ul>
             </div>
-
+            <div className="text-left mb-5 pl-10">
+                <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
+                    Consensus Layer
+                </div>
+                <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                    <li>
+                    Computation Intensive Based
+                    <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                        <li>
+                        Government Concerns
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Amount of electricity being used comparatively to similar technology that uses less</li>
+                            <li>Fault tolerant consensus</li>
+                            <li>Decryption Standards</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Consumer Risks
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>High energy consumption leading to environmental concerns</li>
+                            <li>Potential centralization of mining power</li>
+                            <li>Vulnerability to 51% attacks</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Cons to over-regulation
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Stifling innovation and development of energy-efficient consensus mechanisms</li>
+                            <li>Driving blockchain projects to operate in jurisdictions with more favorable regulations</li>
+                            <li>Disincentivizing network participation due to excessive compliance requirements</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Cons to lack of regulation
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Lack of standardization leading to security vulnerabilities</li>
+                            <li>Potential for concentration of power among mining entities</li>
+                            <li>Difficulty in addressing fraudulent or malicious activities</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Proof of Stake (PoS) consensus algorithms that require significantly less energy</li>
+                            <li>Byzantine Fault Tolerance (BFT) protocols ensuring fault tolerance</li>
+                            <li>Advanced encryption techniques for secure transactions and data privacy</li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </li>
+                    <li>
+                        Capabilities Based
+                        <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                            <li>
+                            Government Concerns
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Upgrading consumer security standards</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Consumer Risks
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Insufficient protection of user data and privacy</li>
+                                <li>Potential exposure to smart contract vulnerabilities</li>
+                                <li>Lack of recourse in case of unauthorized transactions</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Cons to over-regulation
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Hampering innovation by imposing rigid security standards</li>
+                                <li>Reducing accessibility and inclusivity by raising entry barriers</li>
+                                <li>Limiting the potential of decentralized applications (dApps) due to excessive control</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Cons to lack of regulation
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Proliferation of insecure smart contracts leading to financial losses</li>
+                                <li>Erosion of consumer trust and confidence in blockchain applications</li>
+                                <li>Difficulty in addressing cross-border disputes and fraudulent activities</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                                        </ul>
+                            </li>
+                        </ul>
+                        </li>
+                        <li>
+                        Voting Based
+                        <ul className="list-disc pl-12 mb-5" style={{ color: "var(--subtitle)" }}>
+                            <li>
+                            Government Concerns
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Ensuring fair and transparent voting processes</li>
+                                <li>Preventing voter fraud and manipulation</li>
+                                <li>Addressing potential collusion or vote-buying</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Consumer Risks
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Lack of anonymity in voting leading to privacy concerns</li>
+                                <li>Vulnerability to Sybil attacks or stake concentration</li>
+                                <li>Complexity of verifying the legitimacy of votes</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Cons to over-regulation
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Overly strict regulations hindering the flexibility and innovation of voting mechanisms</li>
+                                <li>Potential centralization of voting power due to stringent requirements</li>
+                                <li>Difficulty in adapting to rapidly changing technological advancements</li>
+                            </ul>
+                            </li>
+                            <li>
+                                Cons to lack of regulation
+                                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                    <li>Vulnerability to malicious attacks on the voting process</li>
+                                    <li>Lack of accountability and transparency in voting results</li>
+                                    <li>Challenges in addressing disputes and irregularities</li>
+                                </ul>
+                            </li>
+                            <li>Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?
+                                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                </div>
 
 
 

@@ -3,11 +3,11 @@
 /* Define color schemes for different themes */
 :root{
     /* Default theme */
-    --nav1: #0c6d2c; 
-    --nav2: #188a36;
+    --nav1: #15b625; 
+    --nav2: #1aa733;
     --nav3: #159435;
-    --nav4: #1aa733;
-    --nav5: #15b625; 
+    --nav5: #0c6d2c; 
+    --nav4: #188a36;
     --header-color: #9AD0C2;
     --description-color: #2D9596;
     --content-color: #265073;
@@ -80,20 +80,22 @@
   }
 
   [data-theme='calm'] {
-    --nav1: #3bd175;
-    --nav2: #6ece6b;
-    --nav3: #45b175;
-    --nav4: #1aa733;
-    --nav5: #0e911b; 
+    --nav1: #7595be;
+    --nav2: #69a3ac;
+    --nav3: #00b4d8;
+    --nav4: #0096c7;
+    --nav5: #023e8a; 
     --header-color: #453f35;
     --description-color: #6b6357;
     --content-color: #8d8479;
     --background-color: linear-gradient(259deg, #EEF5FF, #9EB8D9, #7C93C3);
     --navbar-color: #c7bcb0;
     --footer-color: #b0a399;
-    --title: #19bb34;
-    --subtitle: #159435;
-    --text: #0c6d2c;
+    --title: #0077b6;
+    --subtitle: #0096c7;
+    --text: #067288;
+    --button-background: #caf0f8;
+    --button-text: #3579d3;
   }
 
   /* Halloween theme */

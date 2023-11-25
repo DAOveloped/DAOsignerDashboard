@@ -21,6 +21,7 @@ export default function Navbar() {
             <button
               className="px-3 py-1 mr-4 bg-gray-200 rounded-md"
               onClick={toggleThemes}
+              style={{ color: "var(--button-background)", backgroundColor: "var(--button-text)" }}
             >
               Select Theme
             </button>
@@ -29,9 +30,9 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 hover:bg-gray-200"
                   style={{ backgroundColor: '#ECF4D6', color: '#265073' }}
-                  onClick={() => selectTheme('home')}
+                  onClick={() => selectTheme('original')}
                 >
-                  Home
+                  Original
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 hover:bg-gray-200"

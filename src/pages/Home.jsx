@@ -1,10 +1,10 @@
 export default function Home() {
   return (
     <div className="p-5 flex items-center">
-      <div className="w-1/3 text-center">
+      <div className="w-1/3 text-center pl-10">
         <img src="logo.png" alt="Logo" />
       </div>
-      <div className="w-2/3 text-left" style={{ maxWidth: '800px' }}>
+      <div className="w-2/3 text-left pl-10" style={{ maxWidth: '800px' }}>
         <p className="text-left" style={{ color: 'var(--header-color)', fontSize: '3rem' }}>
           Crypto Policy DAO
         </p>
