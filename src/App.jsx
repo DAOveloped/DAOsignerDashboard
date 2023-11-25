@@ -1,17 +1,17 @@
 import './App.css'
-import Contribute from './pages/Contribute'
 import Home from './pages/Home'
 import Contact from './pages/Contact'
-import Navbar from './components/Navbar'
 import { createHashRouter, Route, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 import { NavLink } from "react-router-dom"
+import BlockchainMatrix from './pages/BlockchainMatrix'
+import Navbar from './components/NavBar'
 
 function App() {
   const router = createHashRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<Contribute />} />
+        <Route path="about" element={<BlockchainMatrix />} />
         <Route path="contact" element={<Contact />} />
       </Route>
     )
