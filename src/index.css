@@ -1,3 +1,11 @@
+/* Default styles in :root */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  /* Other common styles... */
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -33,6 +41,7 @@ body {
   display: flex;
   width: 100vw;
   min-height: 100vh;
+  background-color: var(--background-color);
 }
 
 #root {

@@ -1,0 +1,138 @@
+
+
+/* Define color schemes for different themes */
+:root {
+    /* Default theme */
+    --header-color: #9AD0C2;
+    --description-color: #2D9596;
+    --content-color: #265073;
+    --background-color: #ECF4D6;
+    --navbar-color: #eaeaea;
+    --footer-color: #f4f4f4;
+  }
+  
+  /* Coffee theme */
+  [data-theme='coffee'] {
+    --header-color: #543b35;
+    --description-color: #7a5f56;
+    --content-color: #a18a80;
+  --background-color: linear-gradient(260deg, #f2e6dc, #a37c72, #a18a80);
+    --navbar-color: #d7b7a4;
+    --footer-color: #c7a892;
+  }
+  
+  /* Lemonade theme */
+  [data-theme='lemonade'] {
+    --header-color: #ffd700;
+    --description-color: #f5f5dc;
+    --content-color: #fff8dc;
+    --background-color: linear-gradient(264deg, #ffef96, #f5f5dc, #fff8dc);
+    --navbar-color: #ffec8b;
+    --footer-color: #f0e68c;
+  }
+  
+  /* Summer theme */
+  [data-theme='summer'] {
+    --header-color: #70a1ff;
+    --description-color: #82ccdd;
+    --content-color: #a4e2c6;
+    --background-color: linear-gradient(264deg, #effad3, #70a1ff, #a4e2c6);
+    --navbar-color: #d3f3ee;
+    --footer-color: #caffbf;
+  }
+  
+  /* Winter theme */
+  [data-theme='winter'] {
+    --header-color: #afc9ff;
+    --description-color: #cbdff5;
+    --content-color: #e0ecff;
+    --background-color: linear-gradient(260deg, #f0f5ff, #afc9ff, #e0ecff);
+    --navbar-color: #e2ebff;
+    --footer-color: #d2dbff;
+  }
+  
+  /* Mocha theme */
+  [data-theme='mocha'] {
+    --header-color: #453f35;
+    --description-color: #6b6357;
+    --content-color: #8d8479;
+    --background-color: linear-gradient(259deg, #e4ddd0, #887c68, #8d8479);
+    --navbar-color: #c7bcb0;
+    --footer-color: #b0a399;
+  }
+
+  [data-theme='calm'] {
+    --header-color: #453f35;
+    --description-color: #6b6357;
+    --content-color: #8d8479;
+    --background-color: linear-gradient(259deg, #EEF5FF, #9EB8D9, #7C93C3);
+    --navbar-color: #c7bcb0;
+    --footer-color: #b0a399;
+  }
+
+  /* Halloween theme */
+[data-theme='halloween'] {
+    --header-color: #FF6B6B;
+    --description-color: #FFB166;
+    --content-color: #333333;
+    --background-color: linear-gradient(260deg, #000000, #3D0842);
+    --navbar-color: #4E598C;
+    --footer-color: #FFD166;
+  }
+  
+  /* Ocean City theme */
+  [data-theme='ocean-city'] {
+    --header-color: #90D1F9;
+    --description-color: #E0E0E2;
+    --content-color: #DBF9FF;
+    --background-color: linear-gradient(260deg, #023E8A, #0077B6);
+    --navbar-color: #00B4D8;
+    --footer-color: #90D1F9;
+  }
+  
+  /* Moonlit theme */
+  [data-theme='moonlit'] {
+    --header-color: #FFD700;
+    --description-color: #99FFFF;
+    --content-color: #C0C0C0;
+    --background-color: linear-gradient(260deg, #000033, #191970);
+    --navbar-color: #4169E1;
+    --footer-color: #FFD700;
+  }
+  
+  /* Street Light theme */
+  [data-theme='street-light'] {
+    --header-color: #FFD700;
+    --description-color: #FFFFFF;
+    --content-color: #A9A9A9;
+    --background-color: linear-gradient(260deg, #333333, #000000);
+    --navbar-color: #696969;
+    --footer-color: #FFD700;
+  }
+  
+  /* Neon Night theme */
+  [data-theme='neon-night'] {
+    --header-color: #00FF00;
+    --description-color: #FFFF00;
+    --content-color: #FFFFFF;
+    --background-color: linear-gradient(260deg, #000000, #0D0D0D);
+    --navbar-color: #191970;
+    --footer-color: #00FF00;
+  }
+  
+    /* Styling theme color palette */
+    [data-theme='styling'] {
+        --header-color: #1C2541;
+        --description-color: #6A0572;
+        --content-color: #FFB400;
+        --background-color: linear-gradient(260deg, #0A043C, #243B55); /* Dark blue and chrome gradient */
+        --navbar-color: #32004b;
+        --footer-color: #370617;
+    }
+
+  
+  
+  body {
+    background: var(--background-color);
+  }
+  
