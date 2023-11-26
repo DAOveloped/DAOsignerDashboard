@@ -143,6 +143,9 @@ export default function Navbar() {
             <NavLink className="mr-10" to="/futureTopics" activeClassName="active-link">
               <span style={{ color: 'var(--nav5)' }}>Future Topics</span>
             </NavLink>
+            <NavLink className="mr-10" to="/matrix" activeClassName="active-link">
+              <span style={{ color: 'var(--nav5)' }}>Matrix</span>
+            </NavLink>
           </div>
         </nav>
       </header>

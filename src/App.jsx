@@ -5,6 +5,7 @@ import { createHashRouter, Route, createRoutesFromElements, RouterProvider } fro
 import { NavLink } from "react-router-dom"
 import BlockchainMatrix from './pages/BlockchainMatrix'
 import Navbar from './components/NavBar'
+import Matrix from './pages/Matrix'
 
 function App() {
   const router = createHashRouter(
@@ -13,6 +14,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="about" element={<BlockchainMatrix />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="matrix" element={<Matrix />} />
       </Route>
     )
   );
