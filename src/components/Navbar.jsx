@@ -132,10 +132,10 @@ export default function Navbar() {
               <span style={{ color: 'var(--nav1)' }}>Home</span>
             </NavLink>
             <NavLink className="mr-10" to="/about" activeClassName="active-link">
-              <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation Matrix</span>
+              <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation</span>
             </NavLink>
             <NavLink className="mr-10" to="/contact" activeClassName="active-link">
-              <span style={{ color: 'var(--nav3)' }}>Reducing Bureaucratic Friction</span>
+              <span style={{ color: 'var(--nav3)' }}>Bureaucratic Friction</span>
             </NavLink>
             <NavLink className="mr-10" to="/contribute" activeClassName="active-link">
               <span style={{ color: 'var(--nav4)' }}>Join and Contribute</span>
@@ -145,6 +145,9 @@ export default function Navbar() {
             </NavLink>
             <NavLink className="mr-10" to="/matrix" activeClassName="active-link">
               <span style={{ color: 'var(--nav5)' }}>Matrix</span>
+            </NavLink>
+            <NavLink className="mr-10" to="/hover" activeClassName="active-link">
+              <span style={{ color: 'var(--nav5)' }}>Hover</span>
             </NavLink>
           </div>
         </nav>
