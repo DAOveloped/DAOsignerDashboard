@@ -202,7 +202,7 @@ const App = () => {
   ];
 
   const info = [
-    { title: 'Card 18', description: 'Dsdfasdf' },
+    { title: 'Info about the ', description: 'This section is about those that directly produce the electricity that powers the blockchain.' },
     { title: 'Card 19', description: 'Description for card 19' },
     { title: 'Card 20', description: 'Description for card 20' },
     { title: 'Card 21', description: 'Description for card 21' },
@@ -230,6 +230,33 @@ const App = () => {
 
   return (
     <div>
+            <h1 className="mb-5 mt-10 text-center text-4xl" style={{ color: 'var(--title)' }}>
+        Blockchain Regulation Matrix
+      </h1>
+      <p className="mb-5 text-2xl" style={{ color: 'var(--subtitle)' }}>
+        An overview of Blockchain Regulation Concentrations
+      </p>
+        <div className="mb-10 text-center mx-auto" style={{ color: 'var(--text)', maxWidth: '900px' }}>
+            <p>
+                The Blockchain Regulation Matrix (BRM) aims to construct a comprehensive framework outlining blockchain&apos;s regulation aspects.
+                It delves into centralized and decentralized protocols, emphasizing compliance without compromising blockchain ethos.
+                This matrix categorizes technology stacks and invites contributions to assess each layer&apos;s government concerns, consumer risks, regulatory pros, and cons.
+            </p>
+            <br></br>
+            <p>
+                This initiative aims to spotlight areas of concern, particularly focusing
+                on aspects related to the Howie test&apos;s significance in determining whether a token qualifies
+                as a security or commodity. However, paramount to all objectives is the identification
+                of spaces within blockchain technology that adhere to its ethos while ensuring regulatory compliance.
+            </p>
+            <br></br>
+            <p>
+                The BRM comprises a conglomerate of technology and resources constituting the foundational
+                structure of the blockchain and all its derivatives. Initially, the BRM dissects the blockchain
+                stack into two core categories: centralized and decentralized. Subsequently, each category
+                is subjected to a predefined set of inquiries across various layers of the blockchain stack.
+            </p>
+        </div>
           <div className='mb-10 mt-10 text-3xl' style={{ color: 'var(--title)' }}>Centralized and Decentralized</div>
           <style>{styles}</style>
           <div className="cards-container">
@@ -243,7 +270,7 @@ const App = () => {
             ))}
           </div>
           <div>
-      <h1>Displaying Hover Component Content</h1>
+          <div className='mb-10 mt-20 text-3xl' style={{ color: 'var(--title)' }}>From a different perspective</div>
       <Matrix /> 
     </div>
     </div>

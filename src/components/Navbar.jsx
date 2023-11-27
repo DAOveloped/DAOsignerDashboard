@@ -5,6 +5,7 @@ export default function Navbar() {
   const [showThemes, setShowThemes] = useState(false); // State to manage visibility of themes
 
   const toggleThemes = () => {
+
     setShowThemes(!showThemes); // Toggle the visibility of themes
   };
 
@@ -29,7 +30,7 @@ export default function Navbar() {
               <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg">
                 <button
                   className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{ backgroundColor: '#ECF4D6', color: '#265073' }}
+                  style={{ backgroundColor: '#f1faee', color: '#265073' }}
                   onClick={() => selectTheme('original')}
                 >
                   Original
@@ -44,9 +45,9 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 hover:bg-gray-200"
                   style={{ backgroundColor: '#EEF5FF', color: '#70a1ff' }}
-                  onClick={() => selectTheme('calm')}
+                  onClick={() => selectTheme('breezy')}
                 >
-                  Calm
+                  Breezy
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 hover:bg-gray-200"
@@ -61,7 +62,7 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 hover:bg-gray-200"
                   style={{
-                    backgroundColor: '#f0f5ff',
+                    backgroundColor: 'linear-gradient(260deg, #023E8A, #0077B6)',
                     color: '#e0ecff',
                   }}
                   onClick={() => selectTheme('winter')}
