@@ -126,13 +126,13 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <div>
+          <div style={{ color: 'var(--navbar-color)' }}>
 
             <NavLink className="mr-10" to="/" activeClassName="active-link">
               <span style={{ color: 'var(--nav1)' }}>Home</span>
             </NavLink>
             <NavLink className="mr-10" to="/about" activeClassName="active-link">
-              <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation</span>
+              <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation Matrix</span>
             </NavLink>
             <NavLink className="mr-10" to="/contact" activeClassName="active-link">
               <span style={{ color: 'var(--nav3)' }}>Bureaucratic Friction</span>

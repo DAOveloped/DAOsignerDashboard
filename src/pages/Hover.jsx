@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import Matrix from './Matrix';
 
 const styles = `
 .cards-container {
     display: flex;
 
-    max-width: 1200px; /* Adjust the maximum width as desired */
-    margin: 0 auto;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
   
   .column {
@@ -19,7 +20,7 @@ const styles = `
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem;
     border: 1px solid #ccc;
     margin-bottom: 1rem;
     width: 90%; /* Adjust the width as desired */
@@ -35,9 +36,7 @@ const styles = `
   .card__description {
     position: absolute;
     top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
+    width: 90%;
     max-width: 800px;
     background-color: #fff;
     padding: 1rem;
@@ -65,8 +64,20 @@ const styles = `
   
   .column:nth-child(2) .card:hover .card__description {
     top: 0;
-    left: 0;
-    right: 0;
+    left: auto;
+    right: auto;
+  }
+
+  .column:nth-child(2) {
+    border: none;
+  }
+
+  .column:nth-child(1) {
+    border: none;
+  }
+
+  .column:nth-child(3) {
+    border: none;
   }
   
   .column:nth-child(3) .card:hover .card__description {
@@ -109,7 +120,7 @@ const App = () => {
   const centralized = [
     { title: 'Electricity', description: (
  
-        <div className="text-left mb-5 pl-10" >
+        <div className="text-left">
         <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
         Electricity
         </div>
@@ -218,19 +229,23 @@ const App = () => {
   ];
 
   return (
-    <div  >
-      <h2 className='mb-5 text-3xl'>Centralized and Decentralized</h2>
-      <style>{styles}</style>
-      <div className="cards-container">
-        {categorizedCards.map((category, index) => (
-          <div key={index} className="column" style={{ width: '33%' }}>
-            <h3>{category.title}</h3>
-            {category.cards.map((card) => (
-              <Card key={card.title} title={card.title} description={card.description} />
+    <div>
+          <div className='mb-10 mt-10 text-3xl' style={{ color: 'var(--title)' }}>Centralized and Decentralized</div>
+          <style>{styles}</style>
+          <div className="cards-container">
+            {categorizedCards.map((category, index) => (
+              <div key={index} className="column" style={{ width: '33%' }}>
+                <h3>{category.title}</h3>
+                {category.cards.map((card) => (
+                  <Card key={card.title} title={card.title} description={card.description} />
+                ))}
+              </div>
             ))}
           </div>
-        ))}
-      </div>
+          <div>
+      <h1>Displaying Hover Component Content</h1>
+      <Matrix /> 
+    </div>
     </div>
   );
 };

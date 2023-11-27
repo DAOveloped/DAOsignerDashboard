@@ -12,7 +12,7 @@
     --description-color: #2D9596;
     --content-color: #265073;
     --background-color: #ECF4D6;
-    --navbar-color: #eaeaea;
+    --navbar-color: #a12929;
     --footer-color: #f4f4f4;
     --title: #1aa733;
     --subtitle: #159435;
@@ -30,7 +30,7 @@
         --description-color: #1d9c4e;
         --content-color: #0aac3a;
         --background-color: linear-gradient(264deg, #ffef96, #f5f5dc, #fff8dc);
-        --navbar-color: #ffec8b;
+        --navbar-color: #13110b;
         --footer-color: #f0e68c;
         --title: #19bb34;
         --subtitle: #159435;
@@ -150,7 +150,12 @@
   
     /* Styling theme color palette */
     [data-theme='styling'] {
-        --header-color: #1C2541;
+        --nav1: #4d8b67;
+        --nav2: #15ac10;
+        --nav3: #0a773b;
+        --nav4: #1aa733;
+        --nav5: #15b625; 
+        --header-color: #466cdd;
         --description-color: #6A0572;
         --content-color: #FFB400;
         --background-color: linear-gradient(260deg, #0A043C, #243B55); /* Dark blue and chrome gradient */
@@ -164,14 +169,7 @@
     background: var(--background-color);
   }
   
-    /* Default styles in :root */
-    :root {
-    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    font-weight: 400;
-    /* Other common styles... */
-  }
-  
+ 
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
@@ -205,8 +203,6 @@
   
   body {
     margin: 0;
-    display: flex;
-    width: 100vw;
     min-height: 100vh;
     background-color: var(--background-color);
   }
