@@ -1,18 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import '../App.css';
 
 export default function Navbar() {
-  const [showThemes, setShowThemes] = useState(false); // State to manage visibility of themes
+  const [showThemes, setShowThemes] = useState(false); 
 
   const toggleThemes = () => {
-
-    setShowThemes(!showThemes); // Toggle the visibility of themes
+    setShowThemes(!showThemes); 
   };
 
   const selectTheme = (selectedTheme) => {
     document.documentElement.setAttribute('data-theme', selectedTheme);
-    setShowThemes(false); // Close the theme options after selection
+    setShowThemes(false); 
   };
+
+
+    const handleClickOutside = (event) => {
+      const toggleButtonElement = document.querySelector('.relative');
+      if (!toggleButtonElement.contains(event.target)) {
+        setShowThemes(false);
+      }
+    };
+  
+
+    useEffect(() => {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }, []);
   
   return (
     <div className="h-full">
@@ -29,30 +43,43 @@ export default function Navbar() {
             {showThemes && (
               <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg">
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{ backgroundColor: '#f1faee', color: '#265073' }}
+                  className="block w-full py-2 text-left px-4 original-button-hover"
+                  style={{ color: '#067288' }}
                   onClick={() => selectTheme('original')}
                 >
                   Original
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{ backgroundColor: '#ffef96', color: '#0d8f4e' }}
+                  className="block w-full py-2 text-left px-4 mountain-dew-button-hover"
+                  style={{ color: '#336633' }}
+                  onClick={() => selectTheme('mountain-dew')}
+                >
+                  Mountain Dew
+                </button>
+                <button
+                  className="block w-full py-2 text-left px-4 lemonade-button-hover"
+                  style={{color: '#0c6d2c' }}
                   onClick={() => selectTheme('lemonade')}
                 >
                   Lemonade
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{ backgroundColor: '#EEF5FF', color: '#70a1ff' }}
+                  className="block w-full py-2 text-left px-4 defi-degen-button-hover"
+                  style={{ color: '#7FFF00' }}
+                  onClick={() => selectTheme('sprinkles')}
+                >
+                  Sprinkles
+                </button>
+                <button
+                  className="block w-full py-2 text-left px-4 breezy-button-hover"
+                  style={{ color: '#317988' }}
                   onClick={() => selectTheme('breezy')}
                 >
                   Breezy
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
+                  className="block w-full py-2 text-left px-4 summer-button-hover"
                   style={{
-                    backgroundColor: '#a4e2c6',
                     color: '#70a1ff',
                   }}
                   onClick={() => selectTheme('summer')}
@@ -60,74 +87,81 @@ export default function Navbar() {
                   Summer
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{
-                    backgroundColor: 'linear-gradient(260deg, #023E8A, #0077B6)',
-                    color: '#e0ecff',
-                  }}
-                  onClick={() => selectTheme('winter')}
-                >
-                  Winter
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{
-                    backgroundColor: 'linear-gradient(260deg, #023E8A, #0077B6)',
-                    color: '#DBF9FF',
-                  }}
+                  className="block w-full py-2 text-left px-4 ocean-city-button-hover"
+                  style={{ color: '#90D1F9' }}
                   onClick={() => selectTheme('ocean-city')}
                 >
                   Ocean City
                 </button>
+
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
+                  className="block w-full py-2 text-left px-4 styling-button-hover"
                   style={{
-                    backgroundColor: 'linear-gradient(259deg, #e4ddd0, #887c68, #8d8479)',
-                    color: '#8d8479',
-                  }}
-                  onClick={() => selectTheme('coffee')}
-                >
-                  Coffee
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
-                  style={{
-                    backgroundColor: 'linear-gradient(260deg, #0A043C, #243B55)',
-                    color: '#FFB400',
+                    color: '#466cdd',
                   }}
                   onClick={() => selectTheme('styling')}
                 >
                   Styling
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
+                  className="block w-full py-2 text-left px-4 coffee-button-hover"
+                  style={{
+                    color: '#7a5f56',
+                  }}
+                  onClick={() => selectTheme('coffee')}
+                >
+                  Coffee
+                </button>
+                <button
+                  className="block w-full py-2 text-left px-4 halloween-button-hover"
+                  style={{ color: '#FFB166'}}
                   onClick={() => selectTheme('halloween')}
                 >
                   Halloween
                 </button>
 
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
+                  className="block w-full py-2 text-left px-4 moonlit-button-hover"
+                  style={{ color: '#99FFFF'}}
                   onClick={() => selectTheme('moonlit')}
                 >
                   Moonlit
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
+                  className="block w-full py-2 text-left px-4 street-light-button-hover"
+                  style={{ color: '#def5b9'}}
                   onClick={() => selectTheme('street-light')}
                 >
                   Street Light
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 hover:bg-gray-200"
+                  className="block w-full py-2 text-left px-4 neon-night-button-hover"
+                  style={{ color: '#00FF00'}}
                   onClick={() => selectTheme('neon-night')}
                 >
                   Neon Night
                 </button>
+                <button
+                  className="block w-full py-2 text-left px-4 neon-night-button-hover"
+                  style={{ color: '#00FF00'}}
+                  onClick={() => selectTheme('cyberpunk')}
+                >
+                  Cyberpunk
+                </button>
+                <button
+                  className="block w-full py-2 text-left px-4 mountain-dew-button-hover"
+                  style={{ color: '#336633' }}
+                  onClick={() => selectTheme('mountain-dew')}
+                >
+                  Mountain Dew
+                </button>
+
+
+
               </div>
             )}
           </div>
-          <div style={{ color: 'var(--navbar-color)' }}>
+          <div>
 
             <NavLink className="mr-10" to="/" activeClassName="active-link">
               <span style={{ color: 'var(--nav1)' }}>Home</span>
@@ -156,6 +190,49 @@ export default function Navbar() {
       <main>
         <Outlet />
       </main>
+      <style>
+        {`
+          .original-button-hover:hover {
+            background-color: #f1faee;
+          }
+          .winter-button-hover:hover {
+            background: linear-gradient(260deg, #f0f5ff, #afc9ff, #e0ecff);
+            color: #067288;
+          }
+          .lemonade-button-hover:hover {
+            background: linear-gradient(264deg, #f3e598, #f5f5dc, #fff8dc);
+            color: #f0e68c;
+          }
+          .breezy-button-hover:hover {
+            background: linear-gradient(259deg, #EEF5FF, #9EB8D9, #7C93C3);
+          }
+          .summer-button-hover:hover {
+            background: linear-gradient(264deg, #effad3, #70a1ff, #a4e2c6);
+          }
+          .coffee-button-hover:hover {
+            background: linear-gradient(260deg, #54442b, #141204, #262a10);
+          }
+          .ocean-city-button-hover:hover {
+            background: linear-gradient(260deg, #023E8A, #0077B6);
+
+          }
+          .halloween-button-hover:hover {
+            background: linear-gradient(260deg, #000000, #3D0842);
+          }
+          .moonlit-button-hover:hover {
+            background: linear-gradient(260deg, #000033, #191970);
+          }
+          .street-light-button-hover:hover {
+            background: linear-gradient(260deg, #333333, #000000);
+          }
+          .neon-night-button-hover:hover {
+            background: linear-gradient(260deg, #000000, #0D0D0D);
+          }
+          .styling-button-hover:hover {
+            background: linear-gradient(260deg, #0A043C, #243B55);
+          }
+        `}
+      </style>
     </div>
   );
 }

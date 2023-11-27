@@ -3,20 +3,21 @@
 /* Define color schemes for different themes */
 :root{
     /* Default theme */
-    --nav1: #15b625; 
-    --nav2: #1aa733;
-    --nav3: #159435;
-    --nav5: #0c6d2c; 
-    --nav4: #188a36;
+    --nav1: #52b69a; 
+    --nav2: #34a0a4;
+    --nav3: #168aad;
+    --nav5: #1a759f; 
+    --nav4: #1e6091;
     --header-color: #9AD0C2;
     --description-color: #2D9596;
     --content-color: #265073;
     --background-color: #f1faee;
     --navbar-color: #a12929;
     --footer-color: #f4f4f4;
-    --title: #1aa733;
-    --subtitle: #159435;
-    --text: #0c6d2c;
+    --title: #2D9596;
+    --subtitle: #2c5e86;
+    --text: #083d77;
+    --hover-description-background: #57cc99;
   }
 
     /* Lemonade theme */
@@ -29,12 +30,13 @@
         --header-color: #0d8f4e;
         --description-color: #1d9c4e;
         --content-color: #0aac3a;
-        --background-color: linear-gradient(264deg, #ffef96, #f5f5dc, #fff8dc);
+        --background-color: linear-gradient(264deg, #f3e598, #f5f5dc, #fff8dc);
         --navbar-color: #13110b;
         --footer-color: #f0e68c;
         --title: #19bb34;
         --subtitle: #159435;
         --text: #0c6d2c;
+        --hover-description-background: #a5d1be;
       }
   
   /* Coffee theme */
@@ -42,9 +44,10 @@
     --header-color: #543b35;
     --description-color: #7a5f56;
     --content-color: #a18a80;
-  --background-color: linear-gradient(260deg, #f2e6dc, #a37c72, #a18a80);
+  --background-color: linear-gradient(260deg, #54442b, #141204, #262a10);
     --navbar-color: #d7b7a4;
     --footer-color: #c7a892;
+    --hover-description-background: #66602e;
   }
   
 
@@ -54,31 +57,14 @@
     --header-color: #70a1ff;
     --description-color: #82ccdd;
     --content-color: #a4e2c6;
-    --background-color: linear-gradient(264deg, #effad3, #70a1ff, #a4e2c6);
+    --background-color: linear-gradient(264deg, #e9f08d, #99b8f1, #a4e2c6);
     --navbar-color: #d3f3ee;
     --footer-color: #caffbf;
+    --hover-description-background: #9889bb;
+  
   }
   
-  /* Winter theme */
-  [data-theme='winter'] {
-    --header-color: #afc9ff;
-    --description-color: #cbdff5;
-    --content-color: #e0ecff;
-    --background-color: linear-gradient(260deg, #f0f5ff, #afc9ff, #e0ecff);
-    --navbar-color: #e2ebff;
-    --footer-color: #d2dbff;
-  }
-  
-  /* Mocha theme */
-  [data-theme='mocha'] {
-    --header-color: #453f35;
-    --description-color: #6b6357;
-    --content-color: #8d8479;
-    --background-color: linear-gradient(259deg, #e4ddd0, #887c68, #8d8479);
-    --navbar-color: #c7bcb0;
-    --footer-color: #b0a399;
-  }
-
+ 
   [data-theme='breezy'] {
     --nav1: #7595be;
     --nav2: #69a3ac;
@@ -93,7 +79,7 @@
     --footer-color: #b0a399;
     --title: #0077b6;
     --subtitle: #0096c7;
-    --text: #067288;
+    --text: #317988;
     --button-background: #caf0f8;
     --button-text: #3579d3;
   }
@@ -116,6 +102,7 @@
     --background-color: linear-gradient(260deg, #023E8A, #0077B6);
     --navbar-color: #00B4D8;
     --footer-color: #90D1F9;
+    --text:#067288;
   }
   
   /* Moonlit theme */
@@ -131,7 +118,7 @@
   /* Street Light theme */
   [data-theme='street-light'] {
     --header-color: #FFD700;
-    --description-color: #FFFFFF;
+    --description-color: #def5b9;
     --content-color: #A9A9A9;
     --background-color: linear-gradient(260deg, #333333, #000000);
     --navbar-color: #696969;
@@ -161,16 +148,104 @@
         --background-color: linear-gradient(260deg, #0A043C, #243B55); /* Dark blue and chrome gradient */
         --navbar-color: #32004b;
         --footer-color: #370617;
+        --text:#466cdd;
     }
 
-  
-  
+/* Mountain Dew theme */
+[data-theme='mountain-dew'] {
+  --nav1: #8AE68A;
+  --nav2: #9CEC9C;
+  --nav3: #B5F3B5;
+  --nav4: #CDFACD;
+  --nav5: #E7FFE7;
+  --header-color: #8AE68A;
+  --description-color: #B5F3B5;
+  --content-color: #CDFACD;
+  --background-color: #E7FFE7;
+  --navbar-color: #9CEC9C;
+  --footer-color: #7BDF7B;
+  --text: #336633;
+}
+
+/* Downtown theme */
+[data-theme='downtown'] {
+  --nav1: #536878;
+  --nav2: #657B9A;
+  --nav3: #7892B2;
+  --nav4: #8CA7C7;
+  --nav5: #A5C1E1;
+  --header-color: #536878;
+  --description-color: #7892B2;
+  --content-color: #8CA7C7;
+  --background-color: #A5C1E1;
+  --navbar-color: #657B9A;
+  --footer-color: #465666;
+  --text: #2B3C4E;
+}
+
+[data-theme='sprinkles'] {
+  --nav1: #ff7f50;
+  --nav2: #ffbf80;
+  --nav3: #dfff00;
+  --nav4: #00bfff;
+  --nav5: #8000ff; 
+  --header-color: #f0e68c;
+  --description-color: #f5f5dc;
+  --content-color: #fff8dc;
+  --background-color: linear-gradient(264deg, #ffffe0, #f0ffff, #e0ffff);
+  --navbar-color: #f8f8ff;
+  --footer-color: #f0f0ff;
+  --title: #ff8c00;
+  --subtitle: #ffc000;
+  --text: #ff4000;
+  --hover-description-background: #ffffcc;
+}
+
+[data-theme='sprinkles'] {
+  --nav1: #fa00ff;
+  --nav2: #f0f000;
+  --nav3: #00ff00;
+  --nav4: #ff0000;
+  --nav5: #0000ff; 
+  --header-color: #ff3333;
+  --description-color: #ff6666;
+  --content-color: #ff9999;
+  --background-color: linear-gradient(264deg, #f0f0f0, #e0e0e0, #d0d0d0);
+  --navbar-color: #cccccc;
+  --footer-color: #aaaaaa;
+  --title: #ff0000;
+  --subtitle: #ff3333;
+  --text: #ff6666;
+  --hover-description-background: #ffe6e6;
+}
+
+
+[data-theme='cyberpunk'] {
+  --nav1: #00ff9f;
+  --nav2: #00b8ff;
+  --nav3: #001eff;
+  --nav4: #bd00ff;
+  --nav5: #d600ff; 
+  --header-color: #262a10;
+  --description-color: #323716;
+  --content-color: #42481c;
+  --background-color: linear-gradient(264deg, #170013, #3a0040, #540067);
+  --navbar-color: #696969;
+  --footer-color: #8a8a8a;
+  --title: #ff0099;
+  --subtitle: #ff7f50;
+  --text: #ff4000;
+  --hover-description-background: #66602e;
+}
+
+
+
   body {
     background: var(--background-color);
   }
   
  
-  @tailwind base;
+   @tailwind base;
   @tailwind components;
   @tailwind utilities;
   
@@ -214,11 +289,5 @@
     text-align: center;
   }
   
-  main {
-    height: 100%;
-  }
   
-  a.active-link {
-    color: #535bf2; /* Define the color for the active link */
-  }
 

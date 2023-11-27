@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Matrix from './Matrix';
+import BlockchainMatrix from './BlockchainMatrix';
 
 const styles = `
 .cards-container {
@@ -16,6 +17,7 @@ const styles = `
   }
   
   .card {
+    background-color: #fff;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -270,8 +272,10 @@ const App = () => {
             ))}
           </div>
           <div>
-          <div className='mb-10 mt-20 text-3xl' style={{ color: 'var(--title)' }}>From a different perspective</div>
+          <div className='mb-10 mt-20 text-3xl' style={{ color: 'var(--title)' }}>Version #2 of the Blockchain Regulation Matrix</div>
       <Matrix /> 
+      <div className='mb-10 mt-20 text-3xl' style={{ color: 'var(--title)' }}>Version #3 of the Blockchain Regulation Matrix</div>
+      <BlockchainMatrix /> 
     </div>
     </div>
   );
