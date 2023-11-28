@@ -1,22 +1,20 @@
 import './App.css'
 import Home from './pages/Home'
-import Contact from './pages/Contact'
 import { createHashRouter, Route, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 import { NavLink } from "react-router-dom"
-import BlockchainMatrix from './pages/BlockchainMatrix'
 import Navbar from './components/NavBar'
-import Matrix from './pages/Matrix'
-import Hover from './pages/Hover'
+import BlockchainMatrix from './pages/BlockchainMatrix'
+import Contribute from './pages/Contribute'
 
 function App() {
   const router = createHashRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
         <Route index element={<Home />} />
-        <Route path="about" element={<BlockchainMatrix />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="matrix" element={<Matrix />} />
-        <Route path="hover" element={<Hover />} />
+        <Route path="blockchainmatrix" element={<BlockchainMatrix />} />
+        <Route path="contribute" element={<Contribute />} />
+
+
       </Route>
     )
   );
@@ -28,8 +26,6 @@ function App() {
           <h1 className="text-lg font-bold">Crypto Policy DAO</h1>
           <div>
             <NavLink className="mr-5" to="/">Home</NavLink>
-            <NavLink className="mr-5" to="/about">About</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
           </div>
         </nav>
       </header>

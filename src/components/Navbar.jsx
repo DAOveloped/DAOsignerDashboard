@@ -66,9 +66,16 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 defi-degen-button-hover"
                   style={{ color: '#7FFF00' }}
-                  onClick={() => selectTheme('sprinkles')}
+                  onClick={() => selectTheme('morning')}
                 >
-                  Sprinkles
+                  Morning
+                </button>
+                <button
+                  className="block w-full py-2 text-left px-4 defi-degen-button-hover"
+                  style={{ color: '#7FFF00' }}
+                  onClick={() => selectTheme('sprinkles2')}
+                >
+                  Sprinkles2
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 breezy-button-hover"
@@ -158,7 +165,7 @@ export default function Navbar() {
               <div className="effect-2"></div>
               <span style={{ color: 'var(--nav1)' }}>Home</span>
             </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/about" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/BlockchainMatrix" activeClassName="active-link">
             <div className="effect-1"></div>
               <div className="effect-2"></div>
               <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation Matrix</span>
@@ -171,22 +178,12 @@ export default function Navbar() {
             <NavLink className="mr-10 NavLink product" to="/contribute" activeClassName="active-link">
             <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav4)' }}>Join and Contribute</span>
+              <span style={{ color: 'var(--nav4)' }}>Contribute and Join</span>
             </NavLink>
             <NavLink className="mr-10 NavLink product" to="/futureTopics" activeClassName="active-link">
             <div className="effect-1"></div>
               <div className="effect-2"></div>
               <span style={{ color: 'var(--nav5)' }}>Future Topics</span>
-            </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/matrix" activeClassName="active-link">
-            <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav5)' }}>Matrix</span>
-            </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/hover" activeClassName="active-link">
-            <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav5)' }}>Hover</span>
             </NavLink>
           </div>
         </nav>
@@ -207,7 +204,17 @@ export default function Navbar() {
           display: block;
         }
         
-        .effect-1,
+        .effect-1 {
+          border-radius: 30%;
+          display: none;
+          mix-blend-mode: multiply;
+          height: 84%;
+          opacity: 1;
+          position: absolute;
+          width: 84%;
+          z-index: 3000;
+        }
+
         .effect-2 {
           border-radius: 30%;
           display: none;
@@ -243,7 +250,7 @@ export default function Navbar() {
             left: 8%;
           }
           75% {
-            top: 8%;
+            top: 38%;
             left: 16%;
           }
           100% {

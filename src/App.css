@@ -3,27 +3,71 @@
 /* Define color schemes for different themes */
 :root{
     /* Default theme */
-    --nav1: #52b69a; 
-    --nav2: #34a0a4;
-    --nav3: #168aad;
-    --nav5: #1a759f; 
-    --nav4: #1e6091;
+    --nav1: #287ab9;
+    --nav2: #276594;
+    --nav3: #265f8a;
+    --nav4: #275b83;
+    --nav5: #19526d;
+    --bac1:  #1a759f;
+    --bac2: #1e6091;
+    --bac3: #82c0d3;
+    --bac4: #34a0a4;
+    --bac5: #52b69a;
     --header-color: #9AD0C2;
-    --description-color: #2D9596;
-    --content-color: #265073;
-    --background-color: #f1faee;
-    --navbar-color: #a12929;
-    --footer-color: #f4f4f4;
-    --title: #2D9596;
-    --subtitle: #2c5e86;
-    --text: #083d77;
-    --hover-description-background: #57cc99;
+    --description-color: #90c7b7;
+    --content-color: #95d8c7;
+    --title: #0a6b51;
+    --subtitle:  #046d4f;
+    --text: #045a45;
+    --hover-description-background: #092f41;
     --navbar-color: #9AD0C2;
     --effect-1: var(--navbar-color);
-    --effect-1: cyan;
+    --effect-1: #eef7fa;
     --effect-2: var(--navbar-color);
-    --effect-2: #e7a9ff;
+    --effect-2: #d1f5eb;
+    --gradient: linear-gradient(264deg, #82c0d3, #34a0a4, #52b69a);
+    background-image: 
+    radial-gradient(circle at 10% 20%, var(--bac4), transparent),
+    radial-gradient(circle at 80% 70%, var(--bac2), transparent),
+    linear-gradient(to bottom right, var(--bac3), transparent),
+    linear-gradient(to top left, var(--bac1), transparent),
+    linear-gradient(to bottom, var(--bac5), transparent);
+  background-size: 100% 100%; /* Size of the gradients */
+  background-repeat: no-repeat; /* Prevent repeating */
   }
+
+  [data-theme='morning'] {
+    /* Morning-themed colors */
+    --nav1: #f0e68c; /* Light khaki */
+    --nav2: #fafad2; /* Light goldenrod yellow */
+    --nav3: #add8e6; /* Light blue */
+    --nav4: #ffe4c4; /* Bisque */
+    --nav5: #d3d3d3; /* Light gray */
+    --header-color: #add8e6; /* Light blue for header */
+    --description-color: #9AD0C2; /* Lighter greenish-blue for description */
+    --content-color: #fafad2; /* Light goldenrod yellow for content */
+    --title: #9AD0C2; /* Lighter greenish-blue for title */
+    --subtitle: #2c5e86; /* Darker blue for subtitle */
+    --text: #083d77; /* Dark blue for text */
+    --hover-description-background: #57cc99; /* Light green for hover description */
+    --effect-1: #add8e6; /* Light blue for effect 1 */
+    --effect-2: #ffe4c4; /* Bisque for effect 2 */
+    --effect-1: var(--navbar-color);
+    --effect-2: var(--navbar-color);
+    /* Background with gradients in different directions */
+    background-image: 
+      radial-gradient(circle at 10% 20%, var(--nav1), transparent),
+      radial-gradient(circle at 80% 70%, var(--nav2), transparent),
+      linear-gradient(to bottom right, var(--nav3), transparent),
+      linear-gradient(to top left, var(--nav4), transparent),
+      linear-gradient(to bottom, var(--nav5), transparent);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  
+
+
+
 
     /* Lemonade theme */
     [data-theme='lemonade'] {
@@ -43,9 +87,9 @@
         --text: #0c6d2c;
         --hover-description-background: #a5d1be;
         --effect-1: var(--navbar-color);
-        --effect-1: rgb(255, 253, 108);
+        --effect-1: rgb(36, 35, 6);
         --effect-2: var(--navbar-color);
-        --effect-2: #95fa6d;
+        --effect-2: #ccd36b;
       }
   
   /* Coffee theme */
@@ -170,7 +214,7 @@
   --header-color: #8AE68A;
   --description-color: #B5F3B5;
   --content-color: #CDFACD;
-  --background-color: #E7FFE7;
+  --background-color: #0a970a;
   --navbar-color: #9CEC9C;
   --footer-color: #7BDF7B;
   --text: #336633;
@@ -190,42 +234,6 @@
   --navbar-color: #657B9A;
   --footer-color: #465666;
   --text: #2B3C4E;
-}
-
-[data-theme='sprinkles'] {
-  --nav1: #ff7f50;
-  --nav2: #ffbf80;
-  --nav3: #dfff00;
-  --nav4: #00bfff;
-  --nav5: #8000ff; 
-  --header-color: #f0e68c;
-  --description-color: #f5f5dc;
-  --content-color: #fff8dc;
-  --background-color: linear-gradient(264deg, #ffffe0, #f0ffff, #e0ffff);
-  --navbar-color: #f8f8ff;
-  --footer-color: #f0f0ff;
-  --title: #ff8c00;
-  --subtitle: #ffc000;
-  --text: #ff4000;
-  --hover-description-background: #ffffcc;
-}
-
-[data-theme='sprinkles'] {
-  --nav1: #fa00ff;
-  --nav2: #f0f000;
-  --nav3: #00ff00;
-  --nav4: #ff0000;
-  --nav5: #0000ff; 
-  --header-color: #ff3333;
-  --description-color: #ff6666;
-  --content-color: #ff9999;
-  --background-color: linear-gradient(264deg, #f0f0f0, #e0e0e0, #d0d0d0);
-  --navbar-color: #cccccc;
-  --footer-color: #aaaaaa;
-  --title: #ff0000;
-  --subtitle: #ff3333;
-  --text: #ff6666;
-  --hover-description-background: #ffe6e6;
 }
 
 
