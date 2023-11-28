@@ -18,6 +18,11 @@
     --subtitle: #2c5e86;
     --text: #083d77;
     --hover-description-background: #57cc99;
+    --navbar-color: #9AD0C2;
+    --effect-1: var(--navbar-color);
+    --effect-1: cyan;
+    --effect-2: var(--navbar-color);
+    --effect-2: #e7a9ff;
   }
 
     /* Lemonade theme */
@@ -37,6 +42,10 @@
         --subtitle: #159435;
         --text: #0c6d2c;
         --hover-description-background: #a5d1be;
+        --effect-1: var(--navbar-color);
+        --effect-1: rgb(255, 253, 108);
+        --effect-2: var(--navbar-color);
+        --effect-2: #95fa6d;
       }
   
   /* Coffee theme */

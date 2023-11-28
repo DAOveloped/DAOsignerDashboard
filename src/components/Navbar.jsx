@@ -41,7 +41,7 @@ export default function Navbar() {
               Select Theme
             </button>
             {showThemes && (
-              <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg">
+              <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg theme-dropdown-options">
                 <button
                   className="block w-full py-2 text-left px-4 original-button-hover"
                   style={{ color: '#067288' }}
@@ -148,40 +148,44 @@ export default function Navbar() {
                 >
                   Cyberpunk
                 </button>
-                <button
-                  className="block w-full py-2 text-left px-4 mountain-dew-button-hover"
-                  style={{ color: '#336633' }}
-                  onClick={() => selectTheme('mountain-dew')}
-                >
-                  Mountain Dew
-                </button>
-
-
-
               </div>
             )}
           </div>
           <div>
 
-            <NavLink className="mr-10" to="/" activeClassName="active-link">
+          <NavLink className="mr-10 NavLink product" to="/" activeClassName="active-link">
+              <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav1)' }}>Home</span>
             </NavLink>
-            <NavLink className="mr-10" to="/about" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/about" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation Matrix</span>
             </NavLink>
-            <NavLink className="mr-10" to="/contact" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/contact" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav3)' }}>Bureaucratic Friction</span>
             </NavLink>
-            <NavLink className="mr-10" to="/contribute" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/contribute" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav4)' }}>Join and Contribute</span>
             </NavLink>
-            <NavLink className="mr-10" to="/futureTopics" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/futureTopics" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav5)' }}>Future Topics</span>
             </NavLink>
-            <NavLink className="mr-10" to="/matrix" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/matrix" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav5)' }}>Matrix</span>
             </NavLink>
-            <NavLink className="mr-10" to="/hover" activeClassName="active-link">
+            <NavLink className="mr-10 NavLink product" to="/hover" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
               <span style={{ color: 'var(--nav5)' }}>Hover</span>
             </NavLink>
           </div>
@@ -192,7 +196,63 @@ export default function Navbar() {
       </main>
       <style>
         {`
-          .original-button-hover:hover {
+        
+        .product {
+          position: relative;
+        }
+        
+    
+        .product:hover .effect-1,
+        .product:hover .effect-2 {
+          display: block;
+        }
+        
+        .effect-1,
+        .effect-2 {
+          border-radius: 30%;
+          display: none;
+          mix-blend-mode: multiply;
+          height: 84%;
+          opacity: 1;
+          position: absolute;
+          width: 84%;
+          z-index: 3000;
+        }
+        
+        .effect-1 {
+          animation: rotate 1.8s linear infinite;
+          background: var(--effect-1);
+        }
+        
+        .effect-2 {
+          animation: rotate 1.2s linear reverse infinite;
+          background: var(--effect-2);
+        }
+        
+        @keyframes rotate {
+          0% {
+            top: 0;
+            left: 8%;
+          }
+          25% {
+            top: 8%;
+            left: 0%;
+          }
+          50% {
+            top: 16%;
+            left: 8%;
+          }
+          75% {
+            top: 8%;
+            left: 16%;
+          }
+          100% {
+            top: 0;
+            left: 8%;
+          }
+        }
+        
+        .original-button-hover:hover {
             background-color: #f1faee;
           }
           .winter-button-hover:hover {
@@ -230,6 +290,10 @@ export default function Navbar() {
           }
           .styling-button-hover:hover {
             background: linear-gradient(260deg, #0A043C, #243B55);
+          }
+          .theme-dropdown-options {
+            max-height: 400px; /* Set your desired max height */
+            overflow-y: auto;
           }
         `}
       </style>
