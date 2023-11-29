@@ -71,13 +71,6 @@ export default function Navbar() {
                   Morning
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 defi-degen-button-hover"
-                  style={{ color: '#7FFF00' }}
-                  onClick={() => selectTheme('sprinkles2')}
-                >
-                  Sprinkles2
-                </button>
-                <button
                   className="block w-full py-2 text-left px-4 breezy-button-hover"
                   style={{ color: '#317988' }}
                   onClick={() => selectTheme('breezy')}
@@ -184,6 +177,11 @@ export default function Navbar() {
             <div className="effect-1"></div>
               <div className="effect-2"></div>
               <span style={{ color: 'var(--nav5)' }}>Future Topics</span>
+            </NavLink>
+            <NavLink className="mr-10 NavLink product" to="/hover" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
+              <span style={{ color: 'var(--nav5)' }}>Hover</span>
             </NavLink>
           </div>
         </nav>

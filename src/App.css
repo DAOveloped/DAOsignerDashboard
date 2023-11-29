@@ -35,6 +35,7 @@
   background-size: 100% 100%;
   background-repeat: no-repeat; 
   --button-text: #90e7f8;
+  --hover-text: #eff5f7;
   }
 
   [data-theme='morning'] {
@@ -308,4 +309,7 @@
   }
   
   
+
+
+
 

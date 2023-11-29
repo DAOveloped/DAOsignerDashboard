@@ -17,7 +17,7 @@ const styles = `
     flex-direction: column;
     align-items: center;
     flex: 1; /* Make the columns expand to fill the container */
-    max-width: calc(33.333% - 7rem); /* Adjust the width of each column */
+    max-width: calc(33.333% - 8rem); /* Adjust the width of each column */
     margin: 0.5rem; /* Adjust the margin between columns */
   }
   
@@ -71,6 +71,8 @@ const styles = `
     top: 0;
     left: auto;
     right: auto;
+    transform: translateX(-50%, 50%);
+    transform: translateX(50%, 50%);
   }
 
   .column:nth-child(3) .card:hover .card__description {
@@ -80,26 +82,40 @@ const styles = `
   }
 
   .column:nth-child(1) {
-    border: none;
+
   }
 
   .column:nth-child(3) {
     border: none;
-    background-image: linear-gradient(264deg, #82c0d3, #34a0a4, #52b69a);
   }
   
   .column:nth-child(1) .card {
     background-color: var(--nav2);
+    border: none;
+
   }
 
-  .column:nth-child(2) .card  {
+  .column:nth-child(2) .card {
     border: none;
-    background-image: linear-gradient(264deg, #82c0d3, #34a0a4, #52b69a);
+    background-image: 
+      radial-gradient(circle at 10% 20%, var(--nav4), transparent),
+      radial-gradient(circle at 80% 70%, var(--nav2), transparent),
+      linear-gradient(to bottom right, var(--nav3), transparent),
+      linear-gradient(to top left, var(--bac1), transparent),
+      linear-gradient(to bottom, var(--bac5), transparent),
+      url('path/to/your/background-image.jpg'); /* Replace 'path/to/your/background-image.jpg' with your actual image path */
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-radius: 15px; /* Adjust the value to control the roundness of the corners */
   }
+  
 
   .column:nth-child(3) .card {
     background-color: var(--nav2);
+    border: none;
   }
+
+  
 `;
 
 // eslint-disable-next-line react/prop-types
