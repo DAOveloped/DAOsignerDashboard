@@ -20,10 +20,8 @@
     --subtitle:  #90c7b7;
     --text: #95d8c7;
     --hover-description-background: #092f41;
-    --navbar-color: #9AD0C2;
-    --effect-1: var(--navbar-color);
+    --footer-color: linear-gradient(to right, rgba(111, 119, 223, 0) 0%, rgba(67, 110, 252, 0.8) 20%, rgba(52, 179, 230, 0.8) 60%, rgba(19, 157, 199, 0) 110%);
     --effect-1: #eef7fa;
-    --effect-2: var(--navbar-color);
     --effect-2: #d1f5eb;
     --gradient: linear-gradient(264deg, #82c0d3, #34a0a4, #52b69a);
     background-image: 
@@ -54,8 +52,6 @@
     --hover-description-background: #57cc99; 
     --effect-1: #add8e6;
     --effect-2: #ffe4c4; 
-    --effect-1: var(--navbar-color);
-    --effect-2: var(--navbar-color);
     /* Background with gradients in different directions */
     background-image: 
       radial-gradient(circle at 10% 20%, var(--nav1), transparent),
@@ -88,9 +84,7 @@
         --subtitle: #159435;
         --text: #0c6d2c;
         --hover-description-background: #a5d1be;
-        --effect-1: var(--navbar-color);
-        --effect-1: rgb(36, 35, 6);
-        --effect-2: var(--navbar-color);
+        --effect-1: rgb(243, 242, 214);
         --effect-2: #ccd36b;
       }
   
@@ -264,7 +258,7 @@
   }
   
  
-   @tailwind base;
+  @tailwind base;
   @tailwind components;
   @tailwind utilities;
   

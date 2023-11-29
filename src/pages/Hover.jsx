@@ -1,21 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
+import Footer from '../components/Footer';
 
-const ProgressBar = ({ progress }) => {
-    return (
-      <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: `${progress}%`, // Adjust the width based on scroll progress
-          height: '5px', // Set the height of the progress bar
-          background: 'blue', // Set the color of the progress bar
-          zIndex: 9999, // Ensure it's on top of other elements
-          transition: 'width 0.3s ease', // Add a transition for smoothness
-        }}
-      />
-    );
-  };
 
 function Matrix() {
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -34,6 +19,7 @@ function Matrix() {
       return () => window.removeEventListener('scroll', handleScroll);
     }, []);
   
+    
 
 
     const inlineStyles = `
@@ -149,7 +135,7 @@ function Matrix() {
       .hover-text h2{
         font-family: 'Poppins', sans-serif;
         font-weight: 800;
-        font-size: 1.4vw;
+        
         line-height: 1;
         color: #fff;
         opacity: 0;
@@ -185,19 +171,33 @@ function Matrix() {
         .hover-text h2{
           font-size: 3vw;
         }
+        .section-fluid-main {
+            position: relative;
+          }
+          
+          .section-fluid-main h1 {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+          }
+        }
         `;
-        
 
+
+          
+        
   return (
-	<div className="section-fluid-main">
-                    <h1 className="mb-5 mt-10 text-center text-4xl" style={{ color: 'var(--title)' }}>
+
+    
+    <div className="section-fluid-main">
+      <h1 className="mb-5 mt-10 text-center text-5xl" style={{ color: 'var(--title)' }}>
         Blockchain Regulation Matrix
       </h1>
 		<div className="section-row">
 			<div className="section-col" id="section1">
 				<div className="section">
 					<div className="section-in" >
-                    <img src="Electricity2.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="2.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -247,13 +247,13 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Electricity.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
+                    <img src="4.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
 					</div>
 				</div>
 			</div>
 			<div className="hover-text">
-            <h2 style={{ maxWidth: '400px' }}>
-                    This section applies to those that produce the electricity that power the blockchain and not for the users of that electricity.
+            <h2 className="text-5xl" style={{ maxWidth: '400px' }}>
+                    This section applies to those that produce the electricity that power the blockchain.
                 </h2>
 			</div>
 			<div className="section-col">
@@ -306,20 +306,11 @@ function Matrix() {
             </ul>
             </div></h2>
 			</div>
+
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
-					</div>
-				</div>
-			</div>
-			<div className="hover-text">
-				<h2>Shy Portrait</h2>
-			</div>
-			<div className="section-col">
-				<div className="section">
-					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="settlement1.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -366,10 +357,20 @@ function Matrix() {
             </ul>
             </div></h2>
 			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="SettlementLayer.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Shy Portrait</h2>
+			</div>
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="settlement2.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -469,9 +470,8 @@ function Matrix() {
 				<h2>Funny Bunny</h2>
 			</div>
 		</div>
-        <ProgressBar progress={scrollProgress} />
-
         <style>{inlineStyles}</style>
+        <Footer showFooter={scrollProgress > 5} />
 	</div>
   );
 }
