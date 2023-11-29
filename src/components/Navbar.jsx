@@ -36,7 +36,7 @@ export default function Navbar() {
             <button
               className="px-3 py-1 mr-4 bg-gray-200 rounded-md"
               onClick={toggleThemes}
-              style={{ color: "var(--button-background)", backgroundColor: "var(--button-text)" }}
+              style={{ color: "var(--button-text)", backgroundColor: "var(--button-background)" }}
             >
               Select Theme
             </button>

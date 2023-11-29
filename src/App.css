@@ -3,12 +3,12 @@
 /* Define color schemes for different themes */
 :root{
     /* Default theme */
-    --nav1: #287ab9;
+    --nav1: #2270ac;
     --nav2: #276594;
     --nav3: #265f8a;
     --nav4: #275b83;
     --nav5: #19526d;
-    --bac1:  #1a759f;
+    --bac1: #1a759f;
     --bac2: #1e6091;
     --bac3: #82c0d3;
     --bac4: #34a0a4;
@@ -16,9 +16,9 @@
     --header-color: #9AD0C2;
     --description-color: #90c7b7;
     --content-color: #95d8c7;
-    --title: #0a6b51;
-    --subtitle:  #046d4f;
-    --text: #045a45;
+    --title: #9AD0C2;
+    --subtitle:  #90c7b7;
+    --text: #95d8c7;
     --hover-description-background: #092f41;
     --navbar-color: #9AD0C2;
     --effect-1: var(--navbar-color);
@@ -32,8 +32,9 @@
     linear-gradient(to bottom right, var(--bac3), transparent),
     linear-gradient(to top left, var(--bac1), transparent),
     linear-gradient(to bottom, var(--bac5), transparent);
-  background-size: 100% 100%; /* Size of the gradients */
-  background-repeat: no-repeat; /* Prevent repeating */
+  background-size: 100% 100%;
+  background-repeat: no-repeat; 
+  --button-text: #90e7f8;
   }
 
   [data-theme='morning'] {
@@ -43,15 +44,15 @@
     --nav3: #add8e6; /* Light blue */
     --nav4: #ffe4c4; /* Bisque */
     --nav5: #d3d3d3; /* Light gray */
-    --header-color: #add8e6; /* Light blue for header */
-    --description-color: #9AD0C2; /* Lighter greenish-blue for description */
-    --content-color: #fafad2; /* Light goldenrod yellow for content */
-    --title: #9AD0C2; /* Lighter greenish-blue for title */
-    --subtitle: #2c5e86; /* Darker blue for subtitle */
-    --text: #083d77; /* Dark blue for text */
-    --hover-description-background: #57cc99; /* Light green for hover description */
-    --effect-1: #add8e6; /* Light blue for effect 1 */
-    --effect-2: #ffe4c4; /* Bisque for effect 2 */
+    --header-color: #add8e6; 
+    --description-color: #9AD0C2;
+    --content-color: #fafad2;
+    --title: #9AD0C2; 
+    --subtitle: #2c5e86; 
+    --text: #083d77;
+    --hover-description-background: #57cc99; 
+    --effect-1: #add8e6;
+    --effect-2: #ffe4c4; 
     --effect-1: var(--navbar-color);
     --effect-2: var(--navbar-color);
     /* Background with gradients in different directions */

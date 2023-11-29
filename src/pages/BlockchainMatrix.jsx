@@ -64,6 +64,7 @@ const styles = `
     transform: translateX(-50%, 50%);
     transform: translateX(50%, 50%);
     width: 600%;
+    background-color: var(--nav2);
   }
   
   .column:nth-child(2) .card:hover .card__description {
@@ -88,7 +89,7 @@ const styles = `
   }
   
   .column:nth-child(1) .card {
-    background-color: var(--gradient);
+    background-color: var(--nav2);
   }
 
   .column:nth-child(2) .card  {
@@ -97,7 +98,7 @@ const styles = `
   }
 
   .column:nth-child(3) .card {
-    background-color: var(--nav1);
+    background-color: var(--nav2);
   }
 `;
 
