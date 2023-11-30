@@ -30,8 +30,8 @@ export default function Navbar() {
   
   return (
     <div className="h-full">
-      <header className="w-100">
-        <nav className="flex justify-between p-4 items-center flex-row top-0">
+      <header className="w-full text-white p-4 fixed top-0 z-50">
+        <nav className="container mx-auto flex justify-between items-center">
           <div className="relative">
             <button
               className="px-3 py-1 mr-4 bg-gray-200 rounded-md"
@@ -194,6 +194,12 @@ export default function Navbar() {
         
         .product {
           position: relative;
+        }
+        
+        .header {
+          position: sticky;
+          top: 0;
+          z-index: 10; /* Make sure the header is above the content */
         }
         
     

@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
+
 
 
 function Matrix() {
@@ -29,7 +29,7 @@ function Matrix() {
         font-weight: 400;
         font-size: 15px;
         line-height: 1.7;
-        color: #fff;
+        color: var(--effect-2);
         background-color: #1f2029;
         margin: 0;
         padding: 0;
@@ -42,7 +42,7 @@ function Matrix() {
         font-weight: 400;
         font-size: 16px;
         line-height: 1.7;
-        color: #fff;
+        color: var(--effect-2);
         margin: 0;
       }
       .section-fluid-main{
@@ -103,7 +103,7 @@ function Matrix() {
         transition: transform 250ms linear;
       }
       .section-col:hover .section-in img{
-        transform: scale(1.1) rotate(-3deg);
+        transform: scale(1.2);
       }
       
       .hover-text{
@@ -137,7 +137,7 @@ function Matrix() {
         font-weight: 800;
         
         line-height: 1;
-        color: #fff;
+        color: var(--effect-2);
         opacity: 0;
         transform: scale(0.8);
         transition: transform 250ms linear, opacity 250ms ease;
@@ -197,13 +197,13 @@ function Matrix() {
 			<div className="section-col" id="section1">
 				<div className="section">
 					<div className="section-in" >
-                    <img src="2.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
 			<div className="hover-text">
 				<h2>        <div className="text-left">
-        <div style={{ color: "var(--hover-text)", fontWeight: 'bold' }}>
+        <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
         Electricity
         </div>
             <ul className="list-disc pl-12" style={{ color: "var(--hover-text)" }}>
@@ -251,15 +251,15 @@ function Matrix() {
 					</div>
 				</div>
 			</div>
-			<div className="hover-text">
-            <h2 className="text-5xl" style={{ maxWidth: '400px' }}>
-                    This section applies to those that produce the electricity that power the blockchain.
+			<div className="hover-text" >
+            <h2 className="text-5xl" style={{ maxWidth: '400px',  }}>
+                    This section applies to those that produce the electricity that powers the blockchain.
                 </h2>
 			</div>
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="electricity1.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d1.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -310,7 +310,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="settlement1.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -360,7 +360,38 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="SettlementLayer.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
+                    <img src="Settlement.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Future Settlement text</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="Node.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
 					</div>
 				</div>
 			</div>
@@ -370,7 +401,57 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="settlement2.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>            <div className="text-left mb-5 pl-10">
+            <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
+                Settlement Layer
+            </div>
+            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                <div>
+                <h3>Government Concerns</h3>
+                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                    <li>Not being able to update / edit fraudulent transactions</li>
+                    <li>Not being able to identify immoral activity that could be deemed fraudulent</li>
+                </ul>
+                </div>
+            </ul>
+            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                <div>
+                <h3>Consumer Risks</h3>
+                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                    <li>Lack of due diligence</li>
+                    <li>Security and attacks</li>
+                </ul>
+                </div>
+            </ul>
+            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                <div>
+                <h3>Cons to over-regulation</h3>
+                </div>
+            </ul>
+            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                <div>
+                <h3>Cons to lack of regulation</h3>
+                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+
+                </ul>
+                </div>
+            </ul>
+            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                <div>
+                <h3>Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?</h3>
+                </div>
+            </ul>
+            </div></h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -391,67 +472,18 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
-					</div>
-				</div>
-			</div>
-			<div className="hover-text">
-				<h2>Shy Portrait</h2>
-			</div>
-			<div className="section-col">
-				<div className="section">
-					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
-					</div>
-				</div>
-			</div>
-			<div className="hover-text">
-				<h2>            <div className="text-left mb-5 pl-10">
-            <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
-                Settlement Layer
-            </div>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>
-                <h3>Government Concerns</h3>
-                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
-                    <li>Not being able to update / edit fraudulent transactions</li>
-                    <li>Not being able to identify immoral activity that could be deemed fraudulent</li>
-                </ul>
-                </div>
-            </ul>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>
-                <h3>Consumer Risks</h3>
-                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
-                    <li>Lack of due diligence</li>
-                    <li>Security and attacks</li>
-                </ul>
-                </div>
-            </ul>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>
-                <h3>Cons to over-regulation</h3>
-                </div>
-            </ul>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>
-                <h3>Cons to lack of regulation</h3>
-                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 
-                </ul>
-                </div>
-            </ul>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>
-                <h3>Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?</h3>
-                </div>
-            </ul>
-            </div></h2>
+					</div>
+				</div>
 			</div>
-			<div className="section-col">
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -462,6 +494,177 @@ function Matrix() {
 				<div className="section">
 					<div className="section-in">
                     <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -471,7 +674,6 @@ function Matrix() {
 			</div>
 		</div>
         <style>{inlineStyles}</style>
-        <Footer showFooter={scrollProgress > 5} />
 	</div>
   );
 }
