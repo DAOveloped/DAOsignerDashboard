@@ -251,15 +251,21 @@ function Matrix() {
 					</div>
 				</div>
 			</div>
+                  {/* === Marker Line === */}
+                  {/* ================== */}
+                  {/* ****************** */}
 			<div className="hover-text" >
             <h2 className="text-5xl" style={{ maxWidth: '400px',  }}>
                     This section applies to those that produce the electricity that powers the blockchain.
                 </h2>
 			</div>
+                  {/* === Marker Line === */}
+                  {/* ================== */}
+                  {/* ****************** */}
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d1.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -290,7 +296,6 @@ function Matrix() {
                         </ul>
                     </div>  
                 </ul>   
-
                 <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
                 <div>
                 <h3>Cons to lack of regulation</h3>
@@ -306,7 +311,9 @@ function Matrix() {
             </ul>
             </div></h2>
 			</div>
-
+                  {/* === Marker Line === */}
+                  {/* ================== */}
+                  {/* ****************** */}
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
@@ -357,6 +364,9 @@ function Matrix() {
             </ul>
             </div></h2>
 			</div>
+                  {/* === Marker Line === */}
+                  {/* ================== */}
+                  {/* ****************** */}
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
@@ -461,7 +471,131 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Consensus.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>            <div className="text-left mb-5 pl-10"></div>
+                <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
+                    Consensus Layer
+                </div>
+                <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
+                    <li>
+                    Computation Intensive Based
+                    <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                        <li>
+                        Government Concerns
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Amount of electricity being used comparatively to similar technology that uses less</li>
+                            <li>Fault tolerant consensus</li>
+                            <li>Decryption Standards</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Consumer Risks
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>High energy consumption leading to environmental concerns</li>
+                            <li>Potential centralization of mining power</li>
+                            <li>Vulnerability to 51% attacks</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Cons to over-regulation
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Stifling innovation and development of energy-efficient consensus mechanisms</li>
+                            <li>Driving blockchain projects to operate in jurisdictions with more favorable regulations</li>
+                            <li>Disincentivizing network participation due to excessive compliance requirements</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Cons to lack of regulation
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Lack of standardization leading to security vulnerabilities</li>
+                            <li>Potential for concentration of power among mining entities</li>
+                            <li>Difficulty in addressing fraudulent or malicious activities</li>
+                        </ul>
+                        </li>
+                        <li>
+                        Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?
+                        <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                            <li>Proof of Stake (PoS) consensus algorithms that require significantly less energy</li>
+                            <li>Byzantine Fault Tolerance (BFT) protocols ensuring fault tolerance</li>
+                            <li>Advanced encryption techniques for secure transactions and data privacy</li>
+                        </ul>
+                        </li>
+                    </ul>
+                    </li>
+
+                        <li>
+                        Voting Based
+                        <ul className="list-disc pl-12 mb-5" style={{ color: "var(--subtitle)" }}>
+                            <li>
+                            Government Concerns
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Ensuring fair and transparent voting processes</li>
+                                <li>Preventing voter fraud and manipulation</li>
+                                <li>Addressing potential collusion or vote-buying</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Consumer Risks
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Lack of anonymity in voting leading to privacy concerns</li>
+                                <li>Vulnerability to Sybil attacks or stake concentration</li>
+                                <li>Complexity of verifying the legitimacy of votes</li>
+                            </ul>
+                            </li>
+                            <li>
+                            Cons to over-regulation
+                            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                <li>Overly strict regulations hindering the flexibility and innovation of voting mechanisms</li>
+                                <li>Potential centralization of voting power due to stringent requirements</li>
+                                <li>Difficulty in adapting to rapidly changing technological advancements</li>
+                            </ul>
+                            </li>
+                            <li>
+                                Cons to lack of regulation
+                                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                    <li>Vulnerability to malicious attacks on the voting process</li>
+                                    <li>Lack of accountability and transparency in voting results</li>
+                                    <li>Challenges in addressing disputes and irregularities</li>
+                                </ul>
+                            </li>
+                            <li>Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?
+                                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul></h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Funny Bunny</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Mirror Reflection</h2>
+			</div>
+			<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="Consensus2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -493,7 +627,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Consensus3.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -525,7 +659,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Transaction.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -557,39 +691,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
-
-					</div>
-				</div>
-			</div>
-			<div className="hover-text">
-				<h2>Funny Bunny</h2>
-			</div>
-            <div className="section-col">
-				<div className="section">
-					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
-
-					</div>
-				</div>
-			</div>
-			<div className="hover-text">
-				<h2>Funny Bunny</h2>
-			</div>
-            <div className="section-col">
-				<div className="section">
-					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
-					</div>
-				</div>
-			</div>
-			<div className="hover-text">
-				<h2>Mirror Reflection</h2>
-			</div>
-			<div className="section-col">
-				<div className="section">
-					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="data.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
