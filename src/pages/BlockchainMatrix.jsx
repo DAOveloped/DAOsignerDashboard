@@ -260,7 +260,7 @@ const App = () => {
 
   return (
     <div>
-            <h1 className="mb-5 mt-10 text-center text-4xl" style={{ color: 'var(--title)' }}>
+            <h1 className="mb-5 mt-20 text-center text-4xl" style={{ color: 'var(--title)' }}>
         Blockchain Regulation Matrix
       </h1>
       <p className="mb-5 text-2xl" style={{ color: 'var(--subtitle)' }}>

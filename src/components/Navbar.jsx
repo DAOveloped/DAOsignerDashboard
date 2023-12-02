@@ -183,6 +183,11 @@ export default function Navbar() {
               <div className="effect-2"></div>
               <span style={{ color: 'var(--nav5)' }}>Hover</span>
             </NavLink>
+            <NavLink className="mr-10 NavLink product" to="/ButtonRow" activeClassName="active-link">
+            <div className="effect-1"></div>
+              <div className="effect-2"></div>
+              <span style={{ color: 'var(--nav5)' }}>Button Row</span>
+            </NavLink>
           </div>
         </nav>
       </header>

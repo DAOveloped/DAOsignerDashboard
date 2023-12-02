@@ -26,7 +26,7 @@ function Matrix() {
 
     .body {
         font-family: 'Poppins', sans-serif;
-        font-weight: 400;
+        font-weight: 200;
         font-size: 15px;
         line-height: 1.7;
         color: var(--effect-2);
@@ -39,7 +39,7 @@ function Matrix() {
       
       p{
         font-family: 'Poppins', sans-serif;
-        font-weight: 400;
+        font-weight: 200;
         font-size: 16px;
         line-height: 1.7;
         color: var(--effect-2);
@@ -54,7 +54,7 @@ function Matrix() {
         padding-left: 15px;
         margin-right: auto;
         margin-left: auto;
-        max-width: 1140px;
+        max-width: 940px;
         padding: 100px 0;
       }
       .section-row{
@@ -181,6 +181,8 @@ function Matrix() {
             z-index: 1;
           }
         }
+
+        
         `;
 
 
@@ -197,8 +199,9 @@ function Matrix() {
 			<div className="section-col" id="section1">
 				<div className="section">
 					<div className="section-in" >
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
+                    
 				</div>
 			</div>
 			<div className="hover-text">
@@ -245,17 +248,20 @@ function Matrix() {
         </div></h2>
 			</div>
             <div className="section-col">
-				<div className="section">
-					<div className="section-in">
-                    <img src="4.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
-					</div>
-				</div>
-			</div>
+                <div className="section">
+                    <div className="section-in">
+                    <img src="h4.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+                    </div>
+                </div>
+                <div className="line" style={{ position: 'absolute', top: '50%', left: '-3%', transform: 'translate(-50%, -50%)', width: '100px', height: '3px', background: "var(--subtitle)" }}></div>
+                <div className="line" style={{ position: 'absolute', top: '50%', right: '-2%', transform: 'translate(50%, 50%)', width: '100px', height: '3px', background: "var(--subtitle)" }}></div>
+                </div>
+
                   {/* === Marker Line === */}
                   {/* ================== */}
                   {/* ****************** */}
 			<div className="hover-text" >
-            <h2 className="text-5xl" style={{ maxWidth: '400px',  }}>
+            <h2 className="text-5xl" style={{ maxWidth: '200px',  }}>
                     This section applies to those that produce the electricity that powers the blockchain.
                 </h2>
 			</div>
@@ -265,7 +271,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -311,13 +317,15 @@ function Matrix() {
             </ul>
             </div></h2>
 			</div>
+            <div className="line" style={{ position: 'absolute', top: '50%', left: '-3%', transform: 'translate(-50%, -50%)', width: '100px', height: '3px', background: "var(--subtitle)" }}></div>
+                <div className="line" style={{ position: 'absolute', top: '50%', right: '-2%', transform: 'translate(50%, 50%)', width: '100px', height: '3px', background: "var(--subtitle)" }}></div>
                   {/* === Marker Line === */}
                   {/* ================== */}
                   {/* ****************** */}
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -370,7 +378,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Settlement.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
+                    <img src="s2.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }}/>
 					</div>
 				</div>
 			</div>
@@ -380,7 +388,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -390,7 +398,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -401,7 +409,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Node.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }}/>
+                    <img src="node.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }}/>
 					</div>
 				</div>
 			</div>
@@ -411,7 +419,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -461,7 +469,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -471,7 +479,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Consensus.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Consensus.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -574,7 +582,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -585,7 +593,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -595,7 +603,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Consensus2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Consensus2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -606,7 +614,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -617,7 +625,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -627,7 +635,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Consensus3.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Consensus3.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -638,7 +646,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -649,7 +657,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -659,7 +667,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="Transaction.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Transaction.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -670,7 +678,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -681,7 +689,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -691,7 +699,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="data.jpg" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="data.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -702,7 +710,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -713,7 +721,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -723,7 +731,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="stable.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -734,7 +742,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -745,7 +753,7 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="c2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 					</div>
 				</div>
 			</div>
@@ -755,7 +763,7 @@ function Matrix() {
 			<div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="logo.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="Fungible.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
@@ -766,13 +774,151 @@ function Matrix() {
             <div className="section-col">
 				<div className="section">
 					<div className="section-in">
-                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '400px', height: 'auto', margin: '0 auto' }} />
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
 
 					</div>
 				</div>
 			</div>
 			<div className="hover-text">
-				<h2>Funny Bunny</h2>
+				<h2>Decentralized</h2>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Centralized</h2>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="nft.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+			<div className="hover-text">
+				<h2>Topic</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Decentralized</h2>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Centralized</h2>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="p6.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+			<div className="hover-text">
+				<h2>Topic</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="d2.png" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Decentralized</h2>
+			</div>
+            <div className="hover-text">
+				<h2>Decentralized</h2>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+<div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="p5.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Centralized</h2>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="p5.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+{/* === Marker Line === */}
+{/* ================== */}
+{/* ****************** */}
+{/* Rest of your JSX */}
+			<div className="hover-text">
+				<h2>Topic</h2>
+			</div>
+            <div className="section-col">
+				<div className="section">
+					<div className="section-in">
+                    <img src="p4.jpg" alt="Logo" style={{ display: 'block', width: '200px', height: 'auto', margin: '0 auto' }} />
+
+					</div>
+				</div>
+			</div>
+			<div className="hover-text">
+				<h2>Decentralized</h2>
 			</div>
 		</div>
         <style>{inlineStyles}</style>

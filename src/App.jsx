@@ -6,6 +6,8 @@ import Navbar from './components/NavBar'
 import BlockchainMatrix from './pages/BlockchainMatrix'
 import Contribute from './pages/Contribute'
 import Hover from './pages/Hover'
+import ButtonRow from './pages/ButtonRow'
+import Row from './pages/Row'
 
 function App() {
   const router = createHashRouter(
@@ -15,7 +17,8 @@ function App() {
         <Route path="blockchainmatrix" element={<BlockchainMatrix />} />
         <Route path="contribute" element={<Contribute />} />
         <Route path="hover" element={<Hover />} />
-
+        <Route path="buttonrow" element={<ButtonRow />} />
+        <Route path="row" element={<Row />} />
       </Route>
     )
   );
