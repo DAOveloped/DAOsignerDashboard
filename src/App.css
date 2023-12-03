@@ -33,7 +33,8 @@
   background-size: 100% 100%;
   background-repeat: no-repeat; 
   --button-text: #90e7f8;
-  --hover-text: #eff5f7;
+  --hover-text: #d8fafa;
+  --hover-subtext: #f9faf5;
   }
 
   [data-theme='morning'] {
@@ -43,10 +44,10 @@
     --nav3: #add8e6; /* Light blue */
     --nav4: #ffe4c4; /* Bisque */
     --nav5: #d3d3d3; /* Light gray */
-    --header-color: #add8e6; 
+    --header-color: #076381; 
     --description-color: #9AD0C2;
     --content-color: #fafad2;
-    --title: #9AD0C2; 
+    --title: #120fe4; 
     --subtitle: #2c5e86; 
     --text: #083d77;
     --hover-description-background: #57cc99; 
@@ -61,6 +62,8 @@
       linear-gradient(to bottom, var(--nav5), transparent);
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    --hover-text: #d8fafa;
+    --hover-subtext: #f9faf5;
   }
   
 
@@ -69,23 +72,25 @@
 
     /* Lemonade theme */
     [data-theme='lemonade'] {
-        --nav1: #099e47;
-        --nav2: #15ac10;
-        --nav3: #0a773b;
-        --nav4: #1aa733;
-        --nav5: #15b625; 
-        --header-color: #0d8f4e;
-        --description-color: #1d9c4e;
-        --content-color: #0aac3a;
+        --nav1: #046120;
+        --nav2: #046120;
+        --nav3: #046120;
+        --nav4: #046120;
+        --nav5: #046120; 
+        --header-color: #084102;
+        --description-color: #046120;
+        --content-color: #046120;
         --background-color: linear-gradient(264deg, #f3e598, #f5f5dc, #fff8dc);
         --navbar-color: #13110b;
         --footer-color: #f0e68c;
-        --title: #19bb34;
-        --subtitle: #159435;
-        --text: #0c6d2c;
+        --title: #084102;
+        --subtitle: #046120;
+        --text: #046120;
         --hover-description-background: #a5d1be;
         --effect-1: rgb(243, 242, 214);
         --effect-2: #ccd36b;
+        --hover-text: #084102;
+        --hover-subtext: #046120;
       }
   
   /* Coffee theme */
@@ -97,20 +102,33 @@
     --navbar-color: #d7b7a4;
     --footer-color: #c7a892;
     --hover-description-background: #66602e;
+    --hover-text: #855d08;
+    --hover-subtext: #f9faf5;
+    --title: #8a6d0c;
+    --subtitle:  #978222;
+    --text: #95d8c7;
+    --hover-text: #cfb86a;
+    --hover-subtext: #cfbe5c;
   }
   
 
   
   /* Summer theme */
   [data-theme='summer'] {
-    --header-color: #70a1ff;
+    --header-color: #164396;
     --description-color: #82ccdd;
     --content-color: #a4e2c6;
     --background-color: linear-gradient(264deg, #e9f08d, #99b8f1, #a4e2c6);
     --navbar-color: #d3f3ee;
     --footer-color: #caffbf;
     --hover-description-background: #9889bb;
-  
+    --hover-text: #d8fafa;
+    --hover-subtext: #f9faf5;
+    --title: #0c8a68;
+    --subtitle:  #54c2a3;
+    --text: #95d8c7;
+    --hover-text: #273c75;
+    --hover-subtext: #0e5bc0;
   }
   
  
@@ -141,6 +159,13 @@
     --background-color: linear-gradient(260deg, #000000, #3D0842);
     --navbar-color: #4E598C;
     --footer-color: #FFD166;
+    --hover-text: #855d08;
+    --hover-subtext: #f9faf5;
+    --title: #df8908;
+    --subtitle:  #5f3804;
+    --text: #ffbe0b;
+    --hover-text: #faad07;
+    --hover-subtext: #faad07;
   }
   
   /* Ocean City theme */
@@ -172,6 +197,15 @@
     --background-color: linear-gradient(260deg, #333333, #000000);
     --navbar-color: #696969;
     --footer-color: #FFD700;
+    --hover-text: #f1e575;
+    --hover-subtext: #f1e575;
+    --title: #fcf26d;
+    --subtitle:  #f3a53e;
+    --text: #f0dc6a;
+    --hover-text: #f0dc6a;
+    --hover-subtext: #fdeb81;
+  
+  
   }
   
   /* Neon Night theme */
@@ -182,6 +216,13 @@
     --background-color: linear-gradient(260deg, #000000, #0D0D0D);
     --navbar-color: #191970;
     --footer-color: #00FF00;
+    --hover-text: #fa38b0;
+    --hover-subtext: #c942f1;
+    --title: #f31efa;
+    --subtitle:  #f0a503;
+    --text: #43fd15;
+    --hover-text: #1ee0fa;
+    --hover-subtext: #0cf866;
   }
   
     /* Styling theme color palette */
@@ -210,7 +251,7 @@
   --header-color: #8AE68A;
   --description-color: #B5F3B5;
   --content-color: #CDFACD;
-  --background-color: #0a970a;
+  --background-color: #08b349;
   --navbar-color: #9CEC9C;
   --footer-color: #7BDF7B;
   --text: #336633;
@@ -245,10 +286,13 @@
   --background-color: linear-gradient(264deg, #170013, #3a0040, #540067);
   --navbar-color: #696969;
   --footer-color: #8a8a8a;
-  --title: #ff0099;
-  --subtitle: #ff7f50;
-  --text: #ff4000;
-  --hover-description-background: #66602e;
+  --title: #a80366;
+  --subtitle: #f04b0f;
+  --text: #a8fc0c;
+  --hover-description-background: #baec03;
+  --hover-text: #a1b430;
+  --hover-subtext: #c9f30f;
+
 }
 
 

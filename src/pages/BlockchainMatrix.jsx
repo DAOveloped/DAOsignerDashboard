@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import MatrixShortForm from './MatrixShortForm';
-import MatrixLongForm from './MatrixLongForm';
-import '../App.css';
+import { useState } from "react";
+import MatrixShortForm from "./MatrixShortForm";
+import Matrix from "./Matrix";
+import "../App.css";
+import MatrixLongForm from "./MatrixLongForm";
 
 const styles = `
   .cards-container {
@@ -122,7 +123,6 @@ const styles = `
 const Card = ({ title, description }) => {
   const [showDescription, setShowDescription] = useState(false);
 
-
   const handleMouseEnter = () => {
     setShowDescription(true);
   };
@@ -132,9 +132,16 @@ const Card = ({ title, description }) => {
   };
 
   return (
-    <div className="card" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div
+      className="card"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <h3 className="card__title">{title}</h3>
-      <div className="card__description" style={{ backgroundColor: "var(--background-color)" }}>
+      <div
+        className="card__description"
+        style={{ backgroundColor: "var(--background-color)" }}
+      >
         <p>{description}</p>
       </div>
       {showDescription && (
@@ -147,164 +154,61 @@ const Card = ({ title, description }) => {
 };
 
 const App = () => {
-  const centralized = [
-    { title: 'Electricity', description: (
- 
-        <div className="text-left">
-        <div style={{ color: "var(--subtitle)", fontWeight: 'bold' }}>
-        Electricity
-        </div>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-            <div> Government Concerns
-                <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
-                    <li>Protecting consumers from loss of use due to a geopolitical situation</li>
-                    <li>Amount of electricity required to maintain the blockchain and the amount per transaction</li>
-                </ul>
-            </div>
-            </ul>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>Consumer Risks
-                    <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
-                        <li>Potential geopolitical risks leading to electricity access disruptions</li>
-                    </ul>
-                </div>
-            </ul>
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-                <div>Cons to over-regulation
-                    <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
-                        <li>Potential risks of concentration and control by certain countries</li>
-                    </ul>
-                </div>  
-            </ul>   
-  
-            <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-            <div>
-            <h3>Cons to lack of regulation</h3>
-            <ul className="list-disc pl-12" style={{ color: "var(--text)" }}>
-                <li>Potential displacement of development activities to more permissive jurisdictions</li>
-            </ul>
-            </div>
-        </ul>
-        <ul className="list-disc pl-12" style={{ color: "var(--subtitle)" }}>
-            <div>
-            <h3>Does blockchain technology currently exist to fulfill these obligations, and if so, what is it?</h3>
-            </div>
-        </ul>
-        </div>
-  
-        ) },
-    { title: 'Card 2', description: 'Description for card 2' },
-    { title: 'Card 3', description: 'Description for card 3' },
-    { title: 'Card 4', description: 'Description for card 4' },
-    { title: 'Card 5', description: 'Description for card 5' },
-    { title: 'Card 6', description: 'Description for card 6' },
-    { title: 'Card 7', description: 'Description for card 7' },
-    { title: 'Card 8', description: 'Description for card 8' },
-    { title: 'Card 9', description: 'Description for card 9' },
-    { title: 'Card 10', description: 'Description for card 10' },
-    { title: 'Card 11', description: 'Description for card 11' },
-    { title: 'Card 12', description: 'Description for card 12' },
-    { title: 'Card 13', description: 'Description for card 13' },
-    { title: 'Card 14', description: 'Description for card 14' },
-    { title: 'Card 15', description: 'Description for card 15' },
-    { title: 'Card 16', description: 'Description for card 16' },
-    { title: 'Card 17', description: 'Description for card 17' },
-  ];
-
-  const decentralized = [
-    { title: 'Card 18', description: 'Description for card 18' },
-    { title: 'Card 19', description: 'Description for card 19' },
-    { title: 'Card 20', description: 'Description for card 20' },
-    { title: 'Card 21', description: 'Description for card 21' },
-    { title: 'Card 22', description: 'Description for card 22' },
-    { title: 'Card 23', description: 'Description for card 23' },
-    { title: 'Card 24', description: 'Description for card 24' },
-    { title: 'Card 25', description: 'Description for card 25' },
-    { title: 'Card 26', description: 'Description for card 26' },
-    { title: 'Card 27', description: 'Description for card 27' },
-    { title: 'Card 28', description: 'Description for card 28' },
-    { title: 'Card 29', description: 'Description for card 29' },
-    { title: 'Card 30', description: 'Description for card 30' },
-    { title: 'Card 31', description: 'Description for card 31' },
-    { title: 'Card 32', description: 'Description for card 32' },
-    { title: 'Card 33', description: 'Description for card 33' },
-    { title: 'Card 34', description: 'Description for card 34' },
-  ];
-
-  const info = [
-    { title: 'Info about the ', description: 'This section is about those that directly produce the electricity that powers the blockchain.' },
-    { title: 'Card 19', description: 'Description for card 19' },
-    { title: 'Card 20', description: 'Description for card 20' },
-    { title: 'Card 21', description: 'Description for card 21' },
-    { title: 'Card 22', description: 'Description for card 22' },
-    { title: 'Card 23', description: 'Description for card 23' },
-    { title: 'Card 24', description: 'Description for card 24' },
-    { title: 'Card 25', description: 'Description for card 25' },
-    { title: 'Card 26', description: 'Description for card 26' },
-    { title: 'Card 27', description: 'Description for card 27' },
-    { title: 'Card 28', description: 'Description for card 28' },
-    { title: 'Card 29', description: 'Description for card 29' },
-    { title: 'Card 30', description: 'Description for card 30' },
-    { title: 'Card 31', description: 'Description for card 31' },
-    { title: 'Card 32', description: 'Description for card 32' },
-    { title: 'Card 33', description: 'Description for card 33' },
-    { title: 'Card 34', description: 'Description for card 34' },
-  ];
-
-  const categorizedCards = [
-    { title: 'Centralized', cards: centralized },
-    { title: 'Info', cards: info },
-    { title: 'Decentralized', cards: decentralized },
-
-  ];
-
   return (
     <div>
-            <h1 className="mb-5 mt-20 text-center text-4xl" style={{ color: 'var(--title)' }}>
+      <h1
+        className="mb-5 mt-20 text-center text-4xl"
+        style={{ color: "var(--title)" }}
+      >
         Blockchain Regulation Matrix
       </h1>
-      <p className="mb-5 text-2xl" style={{ color: 'var(--subtitle)' }}>
+      <p className="mb-5 text-2xl" style={{ color: "var(--subtitle)" }}>
         An overview of Blockchain Regulation Concentrations
       </p>
-        <div className="mb-10 text-center mx-auto" style={{ color: 'var(--text)', maxWidth: '900px' }}>
-            <p>
-                The Blockchain Regulation Matrix (BRM) aims to construct a comprehensive framework outlining blockchain&apos;s regulation aspects.
-                It delves into centralized and decentralized protocols, emphasizing compliance without compromising blockchain ethos.
-                This matrix categorizes technology stacks and invites contributions to assess each layer&apos;s government concerns, consumer risks, regulatory pros, and cons.
-            </p>
-            <br></br>
-            <p>
-                This initiative aims to spotlight areas of concern, particularly focusing
-                on aspects related to the Howie test&apos;s significance in determining whether a token qualifies
-                as a security or commodity. However, paramount to all objectives is the identification
-                of spaces within blockchain technology that adhere to its ethos while ensuring regulatory compliance.
-            </p>
-            <br></br>
-            <p>
-                The BRM comprises a conglomerate of technology and resources constituting the foundational
-                structure of the blockchain and all its derivatives. Initially, the BRM dissects the blockchain
-                stack into two core categories: centralized and decentralized. Subsequently, each category
-                is subjected to a predefined set of inquiries across various layers of the blockchain stack.
-            </p>
+      <div
+        className="mb-10 text-center mx-auto"
+        style={{ color: "var(--text)", maxWidth: "900px" }}
+      >
+        <p>
+          The Blockchain Regulation Matrix (BRM) aims to construct a
+          comprehensive framework outlining blockchain&apos;s regulation
+          aspects. It delves into centralized and decentralized protocols,
+          emphasizing compliance without compromising blockchain ethos. This
+          matrix categorizes technology stacks and invites contributions to
+          assess each layer&apos;s government concerns, consumer risks,
+          regulatory pros, and cons.
+        </p>
+        <br></br>
+        <p>
+          This initiative aims to spotlight areas of concern, particularly
+          focusing on aspects related to the Howie test&apos;s significance in
+          determining whether a token qualifies as a security or commodity.
+          However, paramount to all objectives is the identification of spaces
+          within blockchain technology that adhere to its ethos while ensuring
+          regulatory compliance.
+        </p>
+        <br></br>
+        <p>
+          The BRM comprises a conglomerate of technology and resources
+          constituting the foundational structure of the blockchain and all its
+          derivatives. Initially, the BRM dissects the blockchain stack into two
+          core categories: centralized and decentralized. Subsequently, each
+          category is subjected to a predefined set of inquiries across various
+          layers of the blockchain stack.
+        </p>
+      </div>
+
+      <div>
+        <Matrix />
+        <div className="mb-10 mt-20 text-3xl" style={{ color: "var(--title)" }}>
+          Version #2 of the Blockchain Regulation Matrix
         </div>
-          <div className='mb-10 mt-10 text-3xl' style={{ color: 'var(--title)' }}>Centralized and Decentralized</div>
-          <style>{styles}</style>
-          <div className="cards-container">
-            {categorizedCards.map((category, index) => (
-              <div key={index} className="column" style={{ width: '33%' }}>
-                <h3>{category.title}</h3>
-                {category.cards.map((card) => (
-                  <Card key={card.title} title={card.title} description={card.description} />
-                ))}
-              </div>
-            ))}
-          </div>
-          <div>
-          <div className='mb-10 mt-20 text-3xl' style={{ color: 'var(--title)' }}>Version #2 of the Blockchain Regulation Matrix</div>
-      <MatrixShortForm /> 
-      <div className='mb-10 mt-20 text-3xl' style={{ color: 'var(--title)' }}>Version #3 of the Blockchain Regulation Matrix</div>
-      <MatrixLongForm /> 
-    </div>
+        <MatrixShortForm />
+        <div className="mb-10 mt-20 text-3xl" style={{ color: "var(--title)" }}>
+          Version #3 of the Blockchain Regulation Matrix
+        </div>
+        <MatrixLongForm />
+      </div>
     </div>
   );
 };

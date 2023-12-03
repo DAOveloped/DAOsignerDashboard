@@ -1,33 +1,31 @@
-import { useState, useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import '../App.css';
+import { useState, useEffect } from "react";
+import { NavLink, Outlet } from "react-router-dom";
+import "../App.css";
 
 export default function Navbar() {
-  const [showThemes, setShowThemes] = useState(false); 
+  const [showThemes, setShowThemes] = useState(false);
 
   const toggleThemes = () => {
-    setShowThemes(!showThemes); 
+    setShowThemes(!showThemes);
   };
 
   const selectTheme = (selectedTheme) => {
-    document.documentElement.setAttribute('data-theme', selectedTheme);
-    setShowThemes(false); 
+    document.documentElement.setAttribute("data-theme", selectedTheme);
+    setShowThemes(false);
   };
 
+  const handleClickOutside = (event) => {
+    const toggleButtonElement = document.querySelector(".relative");
+    if (!toggleButtonElement.contains(event.target)) {
+      setShowThemes(false);
+    }
+  };
 
-    const handleClickOutside = (event) => {
-      const toggleButtonElement = document.querySelector('.relative');
-      if (!toggleButtonElement.contains(event.target)) {
-        setShowThemes(false);
-      }
-    };
-  
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
 
-    useEffect(() => {
-      document.addEventListener('click', handleClickOutside);
-      return () => document.removeEventListener('click', handleClickOutside);
-    }, []);
-  
   return (
     <div className="h-full">
       <header className="w-full text-white p-4 fixed top-0 z-50">
@@ -36,7 +34,10 @@ export default function Navbar() {
             <button
               className="px-3 py-1 mr-4 bg-gray-200 rounded-md"
               onClick={toggleThemes}
-              style={{ color: "var(--button-text)", backgroundColor: "var(--button-background)" }}
+              style={{
+                color: "var(--button-text)",
+                backgroundColor: "var(--button-background)",
+              }}
             >
               Select Theme
             </button>
@@ -44,52 +45,52 @@ export default function Navbar() {
               <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg theme-dropdown-options">
                 <button
                   className="block w-full py-2 text-left px-4 original-button-hover"
-                  style={{ color: '#067288' }}
-                  onClick={() => selectTheme('original')}
+                  style={{ color: "#067288" }}
+                  onClick={() => selectTheme("original")}
                 >
                   Original
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 mountain-dew-button-hover"
-                  style={{ color: '#336633' }}
-                  onClick={() => selectTheme('mountain-dew')}
+                  style={{ color: "#336633" }}
+                  onClick={() => selectTheme("mountain-dew")}
                 >
                   Mountain Dew
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 lemonade-button-hover"
-                  style={{color: '#0c6d2c' }}
-                  onClick={() => selectTheme('lemonade')}
+                  style={{ color: "#0c6d2c" }}
+                  onClick={() => selectTheme("lemonade")}
                 >
                   Lemonade
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 defi-degen-button-hover"
-                  style={{ color: '#7FFF00' }}
-                  onClick={() => selectTheme('morning')}
+                  style={{ color: "#7FFF00" }}
+                  onClick={() => selectTheme("morning")}
                 >
                   Morning
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 breezy-button-hover"
-                  style={{ color: '#317988' }}
-                  onClick={() => selectTheme('breezy')}
+                  style={{ color: "#317988" }}
+                  onClick={() => selectTheme("breezy")}
                 >
                   Breezy
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 summer-button-hover"
                   style={{
-                    color: '#70a1ff',
+                    color: "#70a1ff",
                   }}
-                  onClick={() => selectTheme('summer')}
+                  onClick={() => selectTheme("summer")}
                 >
                   Summer
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 ocean-city-button-hover"
-                  style={{ color: '#90D1F9' }}
-                  onClick={() => selectTheme('ocean-city')}
+                  style={{ color: "#90D1F9" }}
+                  onClick={() => selectTheme("ocean-city")}
                 >
                   Ocean City
                 </button>
@@ -97,54 +98,54 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 styling-button-hover"
                   style={{
-                    color: '#466cdd',
+                    color: "#466cdd",
                   }}
-                  onClick={() => selectTheme('styling')}
+                  onClick={() => selectTheme("styling")}
                 >
                   Styling
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 coffee-button-hover"
                   style={{
-                    color: '#7a5f56',
+                    color: "#7a5f56",
                   }}
-                  onClick={() => selectTheme('coffee')}
+                  onClick={() => selectTheme("coffee")}
                 >
                   Coffee
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 halloween-button-hover"
-                  style={{ color: '#FFB166'}}
-                  onClick={() => selectTheme('halloween')}
+                  style={{ color: "#FFB166" }}
+                  onClick={() => selectTheme("halloween")}
                 >
                   Halloween
                 </button>
 
                 <button
                   className="block w-full py-2 text-left px-4 moonlit-button-hover"
-                  style={{ color: '#99FFFF'}}
-                  onClick={() => selectTheme('moonlit')}
+                  style={{ color: "#99FFFF" }}
+                  onClick={() => selectTheme("moonlit")}
                 >
                   Moonlit
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 street-light-button-hover"
-                  style={{ color: '#def5b9'}}
-                  onClick={() => selectTheme('street-light')}
+                  style={{ color: "#def5b9" }}
+                  onClick={() => selectTheme("street-light")}
                 >
                   Street Light
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 neon-night-button-hover"
-                  style={{ color: '#00FF00'}}
-                  onClick={() => selectTheme('neon-night')}
+                  style={{ color: "#00FF00" }}
+                  onClick={() => selectTheme("neon-night")}
                 >
                   Neon Night
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 neon-night-button-hover"
-                  style={{ color: '#00FF00'}}
-                  onClick={() => selectTheme('cyberpunk')}
+                  style={{ color: "#00FF00" }}
+                  onClick={() => selectTheme("cyberpunk")}
                 >
                   Cyberpunk
                 </button>
@@ -152,41 +153,63 @@ export default function Navbar() {
             )}
           </div>
           <div>
-
-          <NavLink className="mr-10 NavLink product" to="/" activeClassName="active-link">
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/"
+              activeClassName="active-link"
+            >
               <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav1)' }}>Home</span>
+              <span style={{ color: "var(--nav1)" }}>Home</span>
             </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/BlockchainMatrix" activeClassName="active-link">
-            <div className="effect-1"></div>
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/BlockchainMatrix"
+              activeClassName="active-link"
+            >
+              <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav2)' }}>Blockchain Regulation Matrix</span>
+              <span style={{ color: "var(--nav2)" }}>
+                Blockchain Regulation Matrix
+              </span>
             </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/contact" activeClassName="active-link">
-            <div className="effect-1"></div>
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/contact"
+              activeClassName="active-link"
+            >
+              <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav3)' }}>Bureaucratic Friction</span>
+              <span style={{ color: "var(--nav3)" }}>
+                Bureaucratic Friction
+              </span>
             </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/contribute" activeClassName="active-link">
-            <div className="effect-1"></div>
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/contribute"
+              activeClassName="active-link"
+            >
+              <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav4)' }}>Contribute and Join</span>
+              <span style={{ color: "var(--nav4)" }}>Contribute and Join</span>
             </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/futureTopics" activeClassName="active-link">
-            <div className="effect-1"></div>
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/futureTopics"
+              activeClassName="active-link"
+            >
+              <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav5)' }}>Future Topics</span>
+              <span style={{ color: "var(--nav5)" }}>Future Topics</span>
             </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/hover" activeClassName="active-link">
-            <div className="effect-1"></div>
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/Matrix"
+              activeClassName="active-link"
+            >
+              <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav5)' }}>Hover</span>
-            </NavLink>
-            <NavLink className="mr-10 NavLink product" to="/ButtonRow" activeClassName="active-link">
-            <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: 'var(--nav5)' }}>Button Row</span>
+              <span style={{ color: "var(--nav5)" }}>Matrix</span>
             </NavLink>
           </div>
         </nav>

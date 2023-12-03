@@ -1,13 +1,16 @@
-import './App.css'
-import Home from './pages/Home'
-import { createHashRouter, Route, createRoutesFromElements, RouterProvider } from 'react-router-dom'
-import { NavLink } from "react-router-dom"
-import Navbar from './components/NavBar'
-import BlockchainMatrix from './pages/BlockchainMatrix'
-import Contribute from './pages/Contribute'
-import Hover from './pages/Hover'
-import ButtonRow from './pages/ButtonRow'
-import Row from './pages/Row'
+import "./App.css";
+import Home from "./pages/Home";
+import {
+  createHashRouter,
+  Route,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import BlockchainMatrix from "./pages/BlockchainMatrix";
+import Contribute from "./pages/Contribute";
+import Matrix from "./pages/Matrix";
 
 function App() {
   const router = createHashRouter(
@@ -16,9 +19,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="blockchainmatrix" element={<BlockchainMatrix />} />
         <Route path="contribute" element={<Contribute />} />
-        <Route path="hover" element={<Hover />} />
-        <Route path="buttonrow" element={<ButtonRow />} />
-        <Route path="row" element={<Row />} />
+        <Route path="matrix" element={<Matrix />} />
       </Route>
     )
   );
@@ -29,7 +30,9 @@ function App() {
         <nav className="flex justify-between p-4 items-center flex-row top-0">
           <h1 className="text-lg font-bold">Crypto Policy DAO</h1>
           <div>
-            <NavLink className="mr-5" to="/">Home</NavLink>
+            <NavLink className="mr-5" to="/">
+              Home
+            </NavLink>
           </div>
         </nav>
       </header>
@@ -38,4 +41,3 @@ function App() {
 }
 
 export default App;
-
