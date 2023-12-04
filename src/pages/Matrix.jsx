@@ -129,23 +129,7 @@ function Matrix() {
       }
       
       
-      .logo {
-        position: fixed;
-        top: 25px;
-        left: 25px;
-        display: block;
-        z-index: 1000;
-        transition: all 250ms linear;
-        display: "block";
-        width: "200px";
-        height: "auto";
-        margin: "0 auto";
-      }
-      
-      .logo img {
-        display: block;
-        transition: filter 250ms 700ms linear;
-      }
+
       
       
       @media (max-width: 767px) {
@@ -197,12 +181,6 @@ function Matrix() {
 
   return (
     <div className="section-fluid-main">
-      <h1
-        className="mb-5 mt-10 text-center text-5xl title"
-        style={{ color: "var(--title)" }}
-      >
-        Blockchain Regulation Matrix
-      </h1>
       <div className="section-row">
         <div className="section-col" id="section1">
           <div className="section">
@@ -329,8 +307,8 @@ function Matrix() {
             className="text-3xl"
             style={{ maxWidth: "400px", color: "var(--hover-subtext)" }}
           >
-            This section applies to those that produce the electricity that
-            powers the blockchain.
+            This row applies to those that produce the electricity that powers
+            the blockchain.
           </h2>
         </div>
         <div className="section-col">
@@ -434,7 +412,7 @@ function Matrix() {
             <div className="text-left mb-5 pl-10">
               <div className="header">Settlement Layer</div>
               <ul className="pl-12">
-                <li className="description">
+                <li className="topic">
                   <div>
                     <h3>Government Concerns</h3>
                     <ul className="list-disc pl-12 description">
@@ -450,7 +428,7 @@ function Matrix() {
                 </li>
               </ul>
               <ul className="pl-12">
-                <li className="description">
+                <li className="topic">
                   <div>
                     <h3>Consumer Risks</h3>
                     <ul className="list-disc pl-12 description">
@@ -461,14 +439,14 @@ function Matrix() {
                 </li>
               </ul>
               <ul className="pl-12">
-                <li className="description">
+                <li className="topic">
                   <div>
                     <h3>Cons to over-regulation</h3>
                   </div>
                 </li>
               </ul>
               <ul className="pl-12">
-                <li className="description">
+                <li className="topic">
                   <div>
                     <h3>Cons to lack of regulation</h3>
                     <ul className="list-disc pl-12 description">
@@ -481,7 +459,7 @@ function Matrix() {
                 </li>
               </ul>
               <ul className="pl-12">
-                <li className="description">
+                <li className="topic">
                   <div>
                     <h3>
                       Does blockchain technology currently exist to fulfill
@@ -538,7 +516,203 @@ function Matrix() {
             className="text-3xl"
             style={{ maxWidth: "400px", color: "var(--hover-subtext)" }}
           >
-            The settlement layer is the layer that permanently records the
+            This row applies to the Settlement Layer in the sense of permanently
+            recording the transactions.
+          </h2>
+        </div>
+        <div className="section-col">
+          <div className="section">
+            <div className="section-in">
+              <img
+                src="d2.png"
+                alt="Logo"
+                style={{
+                  display: "block",
+                  width: "200px",
+                  height: "auto",
+                  margin: "0 auto",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="hover-text">
+          <h2>
+            <div className="text-left mb-5 pl-10">
+              <div className="header">Settlement Layer</div>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Government Concerns</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>
+                        Not being able to update / edit fraudulent transactions
+                      </li>
+                      <li>
+                        Not being able to identify immoral activity that could
+                        be deemed fraudulent
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Consumer Risks</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>Lack of due diligence</li>
+                      <li>Security and attacks</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Cons to over-regulation</h3>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Cons to lack of regulation</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>
+                        Potential displacement of development activities to more
+                        permissive jurisdictions
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>
+                      Does blockchain technology currently exist to fulfill
+                      these obligations, and if so, what is it?
+                    </h3>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </h2>
+        </div>
+        <div className="section-col" id="section1">
+          <div className="section">
+            <div className="section-in">
+              <img
+                src="c2.png"
+                alt="Logo"
+                style={{
+                  display: "block",
+                  width: "200px",
+                  height: "auto",
+                  margin: "0 auto",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="hover-text">
+          <h2>
+            <div className="text-left mb-5 pl-10">
+              <div className="header">Node / Validator</div>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Government Concerns</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>Not reporting income</li>
+                      <li>Fault tolerant consensus</li>
+                      <li>Decryption Standards</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Consumer Risks</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>Private Transactions</li>
+                      <li>Selective Transactions</li>
+                      <li>MEV Protection</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Cons to over-regulation</h3>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Cons to lack of regulation</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>
+                        Potential displacement of development activities to more
+                        permissive jurisdictions
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </h2>
+        </div>
+        <div className="section-col">
+          <div className="section">
+            <div className="section-in">
+              <img
+                src="Node.png"
+                alt="Logo"
+                style={{
+                  display: "block",
+                  width: "200px",
+                  height: "auto",
+                  margin: "0 auto",
+                }}
+              />
+            </div>
+          </div>
+          <div
+            className="line"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "-3%",
+              transform: "translate(-50%, -50%)",
+              width: "100px",
+              height: "3px",
+              background: "var(--subtitle)",
+            }}
+          ></div>
+          <div
+            className="line"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "-2%",
+              transform: "translate(50%, 50%)",
+              width: "100px",
+              height: "3px",
+              background: "var(--subtitle)",
+            }}
+          ></div>
+        </div>
+        <div className="hover-text">
+          <h2
+            className="text-3xl"
+            style={{ maxWidth: "400px", color: "var(--hover-subtext)" }}
+          >
+            This row is referring to nodes or validators that are validating the
             transactions.
           </h2>
         </div>
@@ -560,7 +734,326 @@ function Matrix() {
         </div>
         <div className="hover-text">
           <h2>
-            <div className="text-left"></div>
+            <div className="text-left mb-5 pl-10">
+              <div className="header">Node / Validator</div>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Government Concerns</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>Not reporting income</li>
+                      <li>Fault tolerant consensus</li>
+                      <li>Decryption Standards</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Consumer Risks</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>Private Transactions</li>
+                      <li>Selective Transactions</li>
+                      <li>MEV Protection</li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Cons to over-regulation</h3>
+                  </div>
+                </li>
+              </ul>
+              <ul className="pl-12">
+                <li className="topic">
+                  <div>
+                    <h3>Cons to lack of regulation</h3>
+                    <ul className="list-disc pl-12 description">
+                      <li>
+                        Potential displacement of development activities to more
+                        permissive jurisdictions
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </h2>
+        </div>
+        <div className="section-col">
+          <div className="section">
+            <div className="section-in">
+              <img
+                src="d2.png"
+                alt="Logo"
+                style={{
+                  display: "block",
+                  width: "200px",
+                  height: "auto",
+                  margin: "0 auto",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="hover-text">
+          <h2>
+            <div className="text-left mb-5 pl-10">
+              <div className="header">Consensus Layer</div>
+              <ul className="pl-12">
+                <li className="description">
+                  Computation Intensive Based
+                  <ul className="list-disc pl-12 description">
+                    <li>
+                      <h3>Government Concerns</h3>
+                      <ul className="list-disc pl-12 description">
+                        <li>
+                          Amount of electricity being used comparatively to
+                          similar technology that uses less
+                        </li>
+                        <li>Fault tolerant consensus</li>
+                        <li>Decryption Standards</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Consumer Risks</h3>
+                      <ul className="list-disc pl-12 description">
+                        <li>
+                          High energy consumption leading to environmental
+                          concerns
+                        </li>
+                        <li>Potential centralization of mining power</li>
+                        <li>Vulnerability to 51% attacks</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Cons to over-regulation</h3>
+                      <ul className="list-disc pl-12 description">
+                        <li>
+                          Stifling innovation and development of
+                          energy-efficient consensus mechanisms
+                        </li>
+                        <li>
+                          Driving blockchain projects to operate in
+                          jurisdictions with more favorable regulations
+                        </li>
+                        <li>
+                          Disincentivizing network participation due to
+                          excessive compliance requirements
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Cons to lack of regulation</h3>
+                      <ul className="list-disc pl-12 description">
+                        <li>
+                          Lack of standardization leading to security
+                          vulnerabilities
+                        </li>
+                        <li>
+                          Potential for concentration of power among mining
+                          entities
+                        </li>
+                        <li>
+                          Difficulty in addressing fraudulent or malicious
+                          activities
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>
+                        Does blockchain technology currently exist to fulfill
+                        these obligations, and if so, what is it?
+                      </h3>
+                      <ul className="list-disc pl-12 description">
+                        <li>
+                          Proof of Stake (PoS) consensus algorithms that require
+                          significantly less energy
+                        </li>
+                        <li>
+                          Byzantine Fault Tolerance (BFT) protocols ensuring
+                          fault tolerance
+                        </li>
+                        <li>
+                          Advanced encryption techniques for secure transactions
+                          and data privacy
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </h2>
+        </div>
+        <div className="section-col">
+          <div className="section">
+            <div className="section-in">
+              <img
+                src="computation.png"
+                alt="Logo"
+                style={{
+                  display: "block",
+                  width: "200px",
+                  height: "auto",
+                  margin: "0 auto",
+                }}
+              />
+            </div>
+          </div>
+          <div
+            className="line"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "-3%",
+              transform: "translate(-50%, -50%)",
+              width: "100px",
+              height: "3px",
+              background: "var(--subtitle)",
+            }}
+          ></div>
+          <div
+            className="line"
+            style={{
+              position: "absolute",
+              top: "50%",
+              right: "-2%",
+              transform: "translate(50%, 50%)",
+              width: "100px",
+              height: "3px",
+              background: "var(--subtitle)",
+            }}
+          ></div>
+        </div>
+        <div className="hover-text">
+          <h2
+            className="text-3xl"
+            style={{ maxWidth: "400px", color: "var(--hover-subtext)" }}
+          >
+            This row is referring to the Computation-Intensive Based style of
+            Consensus Mechanisms
+          </h2>
+        </div>
+        <div className="section-col">
+          <div className="section">
+            <div className="section-in">
+              <img
+                src="d2.png"
+                alt="Logo"
+                style={{
+                  display: "block",
+                  width: "200px",
+                  height: "auto",
+                  margin: "0 auto",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="hover-text">
+          <h2>
+            <div className="text-left mb-5 pl-10">
+              <div className="header">Consensus Layer</div>
+              <ul className="pl-12">
+                <li className="topic">
+                  Computation Intensive Based
+                  <ul className="list-disc pl-12 topic">
+                    <li>
+                      <h3>Government Concerns</h3>
+                      <ul className="list-disc pl-12 description">
+                        <li>
+                          Amount of electricity being used comparatively to
+                          similar technology that uses less
+                        </li>
+                        <li>Fault tolerant consensus</li>
+                        <li>Decryption Standards</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Consumer Risks</h3>
+                      <ul
+                        className="list-disc pl-12 description"
+                        style={{ color: "var(--text)" }}
+                      >
+                        <li>
+                          High energy consumption leading to environmental
+                          concerns
+                        </li>
+                        <li>Potential centralization of mining power</li>
+                        <li>Vulnerability to 51% attacks</li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Cons to over-regulation</h3>
+                      <ul
+                        className="list-disc pl-12 description"
+                        style={{ color: "var(--text)" }}
+                      >
+                        <li>
+                          Stifling innovation and development of
+                          energy-efficient consensus mechanisms
+                        </li>
+                        <li>
+                          Driving blockchain projects to operate in
+                          jurisdictions with more favorable regulations
+                        </li>
+                        <li>
+                          Disincentivizing network participation due to
+                          excessive compliance requirements
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>Cons to lack of regulation</h3>
+                      <ul
+                        className="list-disc pl-12 description"
+                        style={{ color: "var(--text)" }}
+                      >
+                        <li>
+                          Lack of standardization leading to security
+                          vulnerabilities
+                        </li>
+                        <li>
+                          Potential for concentration of power among mining
+                          entities
+                        </li>
+                        <li>
+                          Difficulty in addressing fraudulent or malicious
+                          activities
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <h3>
+                        Does blockchain technology currently exist to fulfill
+                        these obligations, and if so, what is it?
+                      </h3>
+                      <ul
+                        className="list-disc pl-12 description"
+                        style={{ color: "var(--text)" }}
+                      >
+                        <li>
+                          Proof of Stake (PoS) consensus algorithms that require
+                          significantly less energy
+                        </li>
+                        <li>
+                          Byzantine Fault Tolerance (BFT) protocols ensuring
+                          fault tolerance
+                        </li>
+                        <li>
+                          Advanced encryption techniques for secure transactions
+                          and data privacy
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
           </h2>
         </div>
       </div>
