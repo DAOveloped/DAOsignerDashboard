@@ -8,6 +8,8 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import Balances from "./Balances";
+import ChainSelector from "./ChainSelector";
 
 const colors = [
   "#F44336",
@@ -73,10 +75,17 @@ function Portfolio() {
   const [data, setData] = useState([]);
   const [keys, setKeys] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [chainId] = useState(250);
+  const [chainId, setChainId] = useState(250);
   const [publicKey] = useState("0xD156382c8B7CF309865c7ACAc5Caea323f8C30A4");
   const [apiKey, setApiKey] = useState("");
   const [balances, setBalances] = useState([]); // State to hold token balances
+  const [selectedChain, setSelectedChain] = useState(); // State to hold selected blockchain
+  const [chains, setChains] = useState([]);
+
+  // Function to handle blockchain selection
+  const handleChainSelect = (chainId) => {
+    setSelectedChain(chainId);
+  };
 
   useEffect(() => {
     setApiKey(import.meta.env.VITE_API_KEY);
@@ -84,7 +93,6 @@ function Portfolio() {
       setLoading(true);
 
       const historicPortfolioValueEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${publicKey}/portfolio_v2/?days=365`;
-      const balancesEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${publicKey}/balances_v2/`;
 
       // Fetching historic portfolio value
       fetch(historicPortfolioValueEndpoint, {
@@ -106,26 +114,10 @@ function Portfolio() {
           console.error("Error fetching portfolio data:", error);
           setLoading(false);
         });
-
-      // Fetching token balances
-      fetch(balancesEndpoint, {
-        method: "GET",
-        headers: {
-          Authorization: `Basic ${btoa(apiKey + ":")}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          const balancesData = res.data.items || [];
-          setBalances(balancesData);
-        })
-        .catch((error) => {
-          console.error("Error fetching balances data:", error);
-        });
     }
   }, [publicKey, chainId, apiKey]);
 
-  if (!data || !balances) {
+  if (!data) {
     return <div>Loading...</div>;
   }
 
@@ -145,24 +137,8 @@ function Portfolio() {
           allocated to the DAO members for their contributions.
         </p>
       </div>
-      <div className="balances-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Token</th>
-              <th>Balance</th>
-            </tr>
-          </thead>
-          <tbody>
-            {balances.map((balance, index) => (
-              <tr key={index}>
-                <td>{balance.contract_ticker_symbol}</td>
-                <td>{parseFloat(balance.balance).toFixed(2)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ChainSelector chainId={chains} handleChainSelect={handleChainSelect} />
+      <Balances />
       <div className="chart-container mb-40">
         <LineChart
           width={1200}
@@ -177,7 +153,7 @@ function Portfolio() {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="timestamp"
-            tick={{ fill: "var(--description-color)", fontSize: "1em" }}
+            tick={{ fill: "var(--description-color)", fontSize: ".9em" }}
           />
           <YAxis
             tickFormatter={(value) => `$${value}`}
