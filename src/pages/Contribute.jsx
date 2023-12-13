@@ -1,15 +1,29 @@
-import Matrix from "./Matrix";
+import videoFile from "../../public/memberNFT.mp4";
 
 export default function Contribute() {
+  const inlineStyles = `
+    p {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 200;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--effect-2);
+      margin: 0;
+    }
+  `;
+
   return (
     <div>
       <h1
-        className="mb-5 mt-10 text-center text-4xl"
+        className="mb-5 mt-20 text-center text-4xl"
         style={{ color: "var(--title)" }}
       >
         Contribute and Join
       </h1>
-      <p className="mb-10 mt-10 text-2xl" style={{ color: "var(--subtitle)" }}>
+      <p
+        className="mb-10 mt-10 text-2xl text-center"
+        style={{ color: "var(--subtitle)" }}
+      >
         Join Crypto Policy DAO to enhance regulatory clarity and to promote
         blockchain innovation
       </p>
@@ -23,14 +37,14 @@ export default function Contribute() {
           enthusiasts collaborate on regulatory and technical research in the
           web3 landscape.
         </p>
-        <br></br>
+        <br />
         <p>
           To become a part of our community, clone our GitHub repository and
           propose your changes. Submit your alterations via pull requests for
           our evaluation. Once accepted, you will receive an exclusive NFT and
           gain access to our members-only chatroom for further collaboration.
         </p>
-        <br></br>
+        <br />
         <p>
           Join us by providing your crypto wallet address and GitHub profile.
           Accepted contributors gain access to a dedicated platform within
@@ -38,7 +52,21 @@ export default function Contribute() {
           efforts and research in blockchain technology.
         </p>
       </div>
-      <Matrix />
+      <div
+        className="video-container"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          marginBottom: "50px",
+        }}
+      >
+        <video autoPlay loop muted width="840" height="660">
+          <source src={videoFile} type="video/mp4" />
+        </video>
+      </div>
+      <style>{inlineStyles}</style>
     </div>
   );
 }

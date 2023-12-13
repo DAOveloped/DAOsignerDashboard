@@ -94,16 +94,6 @@ export default function Navbar() {
                 >
                   Ocean City
                 </button>
-
-                <button
-                  className="block w-full py-2 text-left px-4 styling-button-hover"
-                  style={{
-                    color: "#466cdd",
-                  }}
-                  onClick={() => selectTheme("styling")}
-                >
-                  Styling
-                </button>
                 <button
                   className="block w-full py-2 text-left px-4 coffee-button-hover"
                   style={{
