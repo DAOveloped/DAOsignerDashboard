@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar";
 import BlockchainMatrix from "./pages/BlockchainMatrix";
 import Contribute from "./pages/Contribute";
 import Matrix from "./pages/Matrix";
+import Treasury from "./pages/Treasury";
 
 function App() {
   const router = createHashRouter(
@@ -20,19 +21,18 @@ function App() {
         <Route path="blockchainmatrix" element={<BlockchainMatrix />} />
         <Route path="contribute" element={<Contribute />} />
         <Route path="matrix" element={<Matrix />} />
+        <Route path="treasury" element={<Treasury />} />
       </Route>
     )
   );
 
   return (
     <RouterProvider router={router}>
-      <header className="w-100">
-        <nav className="flex justify-between p-4 items-center flex-row top-0">
-          <h1 className="text-lg font-bold">Crypto Policy DAO</h1>
+      <header>
+        <nav>
+          <h1>Crypto Policy DAO</h1>
           <div>
-            <NavLink className="mr-5" to="/">
-              Home
-            </NavLink>
+            <NavLink to="/">Home</NavLink>
           </div>
         </nav>
       </header>

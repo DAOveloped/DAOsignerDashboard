@@ -24,7 +24,10 @@ function MatrixLongForm() {
 
       {isExpanded && (
         <div className="mt-5 mx-auto">
-          <h2 className="header text-center" style={{ color: "var(--title)" }}>
+          <h2
+            className="text-center text-2xl"
+            style={{ color: "var(--title)" }}
+          >
             The Blockchain Stack encompasses the layers involved throughout a
             transaction, spanning from electricity generation to end-user
             interaction.
@@ -82,7 +85,7 @@ function MatrixLongForm() {
           </div>
 
           <p
-            className="mt-10 header text-center"
+            className="mt-10 text-2xl text-center"
             style={{ color: "var(--subtitle)" }}
           >
             Each layer demands consideration across various categories, inviting

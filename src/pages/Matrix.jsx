@@ -4,20 +4,20 @@ function Matrix() {
     .body {
         font-family: 'Poppins', sans-serif;
         font-weight: 200;
-        font-size: 15px;
+
         line-height: 1.7;
         color: var(--effect-2);
         background-color: #1f2029;
         margin: 0;
         padding: 0;
-        overflow-x: none;
+
       }
       
       
       p{
         font-family: 'Poppins', sans-serif;
-        font-weight: 200;
-        font-size: 16px;
+
+
         line-height: 1.7;
         color: var(--effect-2);
         margin: 0;
@@ -115,7 +115,7 @@ function Matrix() {
       }
       .hover-text h2{
         font-family: 'Poppins', sans-serif;
-        font-weight: 800;
+
         
         line-height: 1.5;
         color: var(--effect-2);

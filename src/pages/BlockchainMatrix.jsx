@@ -5,14 +5,18 @@ export default function Contribute() {
   return (
     <div>
       <h1
-        className="mb-5 mt-20 text-center text-5xl title"
-        style={{ color: "var(--title)" }}
+        className="mb-5 mt-40 text-center title"
+        style={{ color: "var(--header-color)", fontSize: "3rem" }}
       >
         Blockchain Regulation Matrix
       </h1>
       <div
         className="text-center mx-auto"
-        style={{ color: "var(--text)", maxWidth: "900px" }}
+        style={{
+          color: "var(--description-color)",
+          maxWidth: "900px",
+          fontSize: "1.2rem",
+        }}
       >
         <p>
           The Blockchain Regulation Matrix (BRM) aims to construct a
@@ -43,7 +47,6 @@ export default function Contribute() {
         </p>
       </div>
       <Matrix />
-
       <br></br>
       <MatrixLongForm />
     </div>

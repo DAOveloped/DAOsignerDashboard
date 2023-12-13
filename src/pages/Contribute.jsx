@@ -1,4 +1,4 @@
-import videoFile from "../../public/memberNFT.mp4";
+import videoFile from "/MemberNFT.mp4";
 
 export default function Contribute() {
   const inlineStyles = `
@@ -16,20 +16,20 @@ export default function Contribute() {
     <div>
       <h1
         className="mb-5 mt-20 text-center text-4xl"
-        style={{ color: "var(--title)" }}
+        style={{ color: "var(--header-color)" }}
       >
         Contribute and Join
       </h1>
       <p
         className="mb-10 mt-10 text-2xl text-center"
-        style={{ color: "var(--subtitle)" }}
+        style={{ color: "var(--description-color)" }}
       >
         Join Crypto Policy DAO to enhance regulatory clarity and to promote
         blockchain innovation
       </p>
       <div
         className="mb-10 text-center mx-auto"
-        style={{ color: "var(--text)", maxWidth: "900px" }}
+        style={{ color: "var(--content-color)", maxWidth: "900px" }}
       >
         <p>
           Interested in contributing to regulatory innovation in the blockchain
@@ -41,15 +41,14 @@ export default function Contribute() {
         <p>
           To become a part of our community, clone our GitHub repository and
           propose your changes. Submit your alterations via pull requests for
-          our evaluation. Once accepted, you will receive an exclusive NFT and
-          gain access to our members-only chatroom for further collaboration.
+          our evaluation. Once accepted, you will receive the NFT below and gain
+          access to our members-only chatroom for further collaboration.
         </p>
         <br />
         <p>
-          Join us by providing your crypto wallet address and GitHub profile.
-          Accepted contributors gain access to a dedicated platform within
-          Crypto Policy DAO. This platform focuses on collaborative legislative
-          efforts and research in blockchain technology.
+          As the DAO earns revenue for its crypto lobbying efforts, all members
+          will split the DAO&apos;s treasury every quarter, and you can view the
+          current revenue under the Treasury tab.
         </p>
       </div>
       <div

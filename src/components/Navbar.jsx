@@ -201,6 +201,15 @@ export default function Navbar() {
               <div className="effect-2"></div>
               <span style={{ color: "var(--nav5)" }}>Matrix</span>
             </NavLink>
+            <NavLink
+              className="mr-10 NavLink product"
+              to="/Treasury"
+              activeClassName="active-link"
+            >
+              <div className="effect-1"></div>
+              <div className="effect-2"></div>
+              <span style={{ color: "var(--nav5)" }}>Treasury</span>
+            </NavLink>
           </div>
         </nav>
       </header>
@@ -217,10 +226,13 @@ export default function Navbar() {
         .header {
           position: sticky;
           top: 0;
-          z-index: 10; /* Make sure the header is above the content */
+          z-index: 10;
         }
         
-    
+    .NavLink {
+        font-size: 1.2em; 
+      }
+
         .product:hover .effect-1,
         .product:hover .effect-2 {
           display: block;
@@ -316,9 +328,6 @@ export default function Navbar() {
           }
           .neon-night-button-hover:hover {
             background: linear-gradient(260deg, #000000, #0D0D0D);
-          }
-          .styling-button-hover:hover {
-            background: linear-gradient(260deg, #0A043C, #243B55);
           }
           .theme-dropdown-options {
             max-height: 400px; /* Set your desired max height */
