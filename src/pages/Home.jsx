@@ -1,10 +1,14 @@
+import videoFile from "/3Dlogo.mp4";
+
 export default function Home() {
   return (
     <div className="pt-40 flex items-center">
-      <div className="w-1/3 text-center pl-40">
-        <img src="logo.png" alt="Logo" />
+      <div className="w-1/2 text-center pl-20">
+        <video autoPlay loop muted width="690" height="580">
+          <source src={videoFile} type="video/mp4" />
+        </video>
       </div>
-      <div className="w-2/3 text-left pl-40" style={{ maxWidth: "800px" }}>
+      <div className="w-1/2 text-left" style={{ maxWidth: "800px" }}>
         <p
           className="text-left"
           style={{ color: "var(--header-color)", fontSize: "3rem" }}

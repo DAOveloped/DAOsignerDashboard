@@ -24,13 +24,7 @@ const ChainSelector = ({ chains, handleChainSelect }) => {
 const Logo = ({ url }) => {
   return (
     <>
-      <img
-        src={url}
-        alt="chains"
-        height="28px"
-        width="28px"
-        style={{ color: "var(--header-color)" }}
-      />
+      <img src={url} alt="chains" height="25px" width="25px" />
     </>
   );
 };
