@@ -1,8 +1,6 @@
 import { Button } from "antd";
 
 const ChainSelector = ({ chains, handleChainSelect }) => {
-  const iconColor = "var(--header-color)";
-
   return (
     <div className="buttonsContainer">
       {chains &&
@@ -10,10 +8,10 @@ const ChainSelector = ({ chains, handleChainSelect }) => {
           return (
             <Button
               type="primary"
-              icon={<Logo url={item.logo_url} color={iconColor} />}
+              icon={<Logo url={item.logo_url} />}
               size="large"
               onClick={() => handleChainSelect(item.chain_id)}
-              style={{ color: iconColor }}
+              style={{ color: "var(--header-color)", marginRight: "10px" }}
             >
               {item.category_label}
             </Button>
@@ -23,7 +21,7 @@ const ChainSelector = ({ chains, handleChainSelect }) => {
   );
 };
 
-const Logo = ({ url, color }) => {
+const Logo = ({ url }) => {
   return (
     <>
       <img
@@ -31,7 +29,7 @@ const Logo = ({ url, color }) => {
         alt="chains"
         height="28px"
         width="28px"
-        style={{ color: color }}
+        style={{ color: "var(--header-color)" }}
       />
     </>
   );
