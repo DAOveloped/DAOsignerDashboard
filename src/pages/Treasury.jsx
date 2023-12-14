@@ -84,7 +84,7 @@ function Portfolio() {
 
   // Function to handle blockchain selection
   const handleChainSelect = (chainId) => {
-    setSelectedChain(chainId);
+    setChainId(chainId);
   };
 
   useEffect(() => {
@@ -117,6 +117,33 @@ function Portfolio() {
     }
   }, [publicKey, chainId, apiKey]);
 
+  useEffect(() => {
+    const fetchWalletActivity = (publicKey) => {
+      const walletActivityEndpoint = `https://api.covalenthq.com/v1/labs/activity/${publicKey}/`;
+      fetch(walletActivityEndpoint, {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${btoa(apiKey + ":")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.data && res.data.items) {
+            const excludeTestnet = res.data.items.filter(
+              (item) => !item.is_testnet
+            );
+            setChains(excludeTestnet);
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching wallet activity:", error);
+          // Handle errors here as needed
+        });
+    };
+
+    fetchWalletActivity(publicKey);
+  }, [apiKey, publicKey]);
+
   if (!data) {
     return <div>Loading...</div>;
   }
@@ -137,8 +164,28 @@ function Portfolio() {
           allocated to the DAO members for their contributions.
         </p>
       </div>
-      <ChainSelector chainId={chains} handleChainSelect={handleChainSelect} />
-      <Balances />
+      <br />
+      <div
+        style={{
+          marginBottom: "40px",
+        }}
+      >
+        {chains && chains.length > 0 ? (
+          <div>
+            {console.log("Chains:", chains)}
+
+            <ChainSelector
+              chains={chains}
+              handleChainSelect={handleChainSelect}
+            />
+          </div>
+        ) : (
+          <div>No chains found or loading...</div>
+        )}
+      </div>
+      <br />
+      <Balances chainId={chainId} />
+      <br />
       <div className="chart-container mb-40">
         <LineChart
           width={1200}

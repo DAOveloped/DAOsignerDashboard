@@ -4,14 +4,14 @@ import defaultLogo from "../assets/logo1.png";
 import { getDataFromCovalentAPI } from "../utils/api";
 
 const TokenBalances = ({
+  chainId, // Receive chainId as a prop
   nft = true,
   noNFTFetch = true,
   quoteCurrency = "USD",
 }) => {
-  const [data, getData] = useState([]);
+  const [data, setData] = useState([]); // Use setData instead of getData
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [chainId] = useState(250);
   const [publicKey] = useState("0xD156382c8B7CF309865c7ACAc5Caea323f8C30A4");
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const TokenBalances = ({
     getDataFromCovalentAPI(URL)
       .then((response) => {
         setIsLoading(false);
-        getData(response.data.items);
+        setData(response.data.items); // Update state with received data
       })
       .catch((e) => setError(true));
   };
