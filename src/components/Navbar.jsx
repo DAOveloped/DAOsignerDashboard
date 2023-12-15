@@ -157,61 +157,22 @@ export default function Navbar() {
             </NavLink>
             <NavLink
               className="mr-10 NavLink product"
-              to="/BlockchainMatrix"
+              to="/DAOsigners"
               activeClassName="active-link"
             >
               <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: "var(--nav2)" }}>
-                Blockchain Regulation Matrix
-              </span>
+              <span style={{ color: "var(--nav4)" }}>DAOsigners</span>
             </NavLink>
+
             <NavLink
               className="mr-10 NavLink product"
-              to="/friction"
+              to="/Dashboard"
               activeClassName="active-link"
             >
               <div className="effect-1"></div>
               <div className="effect-2"></div>
-              <span style={{ color: "var(--nav3)" }}>
-                Bureaucratic Friction
-              </span>
-            </NavLink>
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/contribute"
-              activeClassName="active-link"
-            >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav4)" }}>Contribute and Join</span>
-            </NavLink>
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/futureTopics"
-              activeClassName="active-link"
-            >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav5)" }}>Future Topics</span>
-            </NavLink>
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/Matrix"
-              activeClassName="active-link"
-            >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav5)" }}>Matrix</span>
-            </NavLink>
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/Treasury"
-              activeClassName="active-link"
-            >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav5)" }}>Treasury</span>
+              <span style={{ color: "var(--nav5)" }}>DAOsigner Dashboard</span>
             </NavLink>
           </div>
         </nav>

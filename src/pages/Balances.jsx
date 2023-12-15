@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Table, ConfigProvider } from "antd";
-import defaultLogo from "../assets/logo1.png";
 import { getDataFromCovalentAPI } from "../utils/api";
 
 const TokenBalances = ({

@@ -8,22 +8,16 @@ import {
 } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import BlockchainMatrix from "./pages/BlockchainMatrix";
-import Contribute from "./pages/Contribute";
-import Matrix from "./pages/Matrix";
-import Treasury from "./pages/Treasury";
-import Friction from "./pages/Friction";
+import Treasury from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const router = createHashRouter(
     createRoutesFromElements(
       <Route path="/" element={<Navbar />}>
         <Route index element={<Home />} />
-        <Route path="blockchainmatrix" element={<BlockchainMatrix />} />
-        <Route path="contribute" element={<Contribute />} />
-        <Route path="matrix" element={<Matrix />} />
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="treasury" element={<Treasury />} />
-        <Route path="friction" element={<Friction />} />
       </Route>
     )
   );
@@ -32,7 +26,7 @@ function App() {
     <RouterProvider router={router}>
       <header>
         <nav>
-          <h1>Crypto Policy DAO</h1>
+          <h1>DAOsigner Apparel</h1>
           <div>
             <NavLink to="/">Home</NavLink>
           </div>

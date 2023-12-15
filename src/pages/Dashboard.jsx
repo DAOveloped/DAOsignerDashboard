@@ -159,23 +159,11 @@ function Portfolio() {
             marginBottom: "20px",
           }}
         >
-          This is the current balance and the value of the DAO&apos;s Treasury
-          over the past year. Contributions to Crypto Policy DAO will be
-          displayed here and will be allocated to the DAO members for their
-          contributions.
+          This is the DAOsigner Dashboard, which is a tool for DAOsigners to
+          track their earnings and portfolio value over time, as well as for you
+          to see our historical sales.
         </p>
         <br />
-        <p
-          style={{
-            color: "var(--header-color)",
-            fontSize: "1.7rem",
-            maxWidth: "800px",
-            marginBottom: "20px",
-          }}
-        >
-          By default it will display the values on Fantom first, but you can
-          select other chains below:
-        </p>
       </div>
       <div
         style={{

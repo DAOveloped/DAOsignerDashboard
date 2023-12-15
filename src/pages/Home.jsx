@@ -1,45 +1,52 @@
-import videoFile from "/3DLogo.mp4";
+import imageFile from "../assets/DAOsigner.png";
 
 export default function Home() {
   return (
     <div className="pt-40 flex items-center">
       <div className="w-1/2 text-center pl-20">
-        <video autoPlay loop muted width="690" height="580">
-          <source src={videoFile} type="video/mp4" />
-        </video>
+        <img src={imageFile} alt="DAOsigner Apparel" width="690" height="580" />
       </div>
       <div className="w-1/2 text-left" style={{ maxWidth: "800px" }}>
         <p
           className="text-left"
           style={{ color: "var(--header-color)", fontSize: "3rem" }}
         >
-          Crypto Policy DAO
+          DAOsigner Apparel
         </p>
         <br></br>
         <p
           className="text-left"
           style={{ color: "var(--header-color)", fontSize: "2rem" }}
         >
-          Web3-friendly Regulatory Think Tank
+          Designs by You
         </p>
 
         <br></br>
         <div className="text-left">
           <p style={{ color: "var(--description-color)", fontSize: "1.2rem" }}>
-            Our mission is to be a platform for policymakers and blockchain
-            builders to collaborate on the technical and regulatory research of
-            blockchain technologies that promote a web3-friendly regulatory
-            environment. The speed of blockchain innovation is outpacing the
-            regulatory environment and leaving legislators behind in
-            understanding and creating web3-friendly regulation.
+            DAOsigner Apparel is a decentralized fashion house that allows you
+            to design clothing that we advertise and sell for you. You earn
+            20-30% of the profits for each sale, forever.
           </p>
           <br />
           <p style={{ color: "var(--content-color)", fontSize: "1.2rem" }}>
-            The underlying technology propelling the blockchain will
-            continuously advance regardless of any political regulation, and for
-            us to capture the benefits of emerging and innovative blockchain
-            technology, we need to understand how and where regulation of the
-            blockchain connect.
+            Whether it's your first design or not, we want to help you get the
+            global exposure you deserve. We are building a community of
+            designers, artists, and crypto enthusiasts passionate about creating
+            and selling unique designs.
+          </p>
+          <br />
+          <p style={{ color: "var(--content-color)", fontSize: "1.2rem" }}>
+            As a DAOsigner, you deserve to earn profits from your designs
+            forever, not just today. That's why we created DAOsigner Apparel, so
+            start designing and earning today!
+          </p>
+          <br />
+          <p style={{ color: "var(--content-color)", fontSize: "1.2rem" }}>
+            To submit your designs, please visit our submission form at{" "}
+            <a href="https://app.deform.cc/form/27997b11-7f60-4298-9c99-7226ff9305eb/">
+              DAOsigner Apparel Submission Form
+            </a>
           </p>
         </div>
       </div>
