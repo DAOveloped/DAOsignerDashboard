@@ -159,12 +159,24 @@ function Portfolio() {
             marginBottom: "20px",
           }}
         >
-          This is the value of the DAO&apos;s Treasury over the past year.
-          Contributions to Crypto Policy DAO will be displayed here and will be
-          allocated to the DAO members for their contributions.
+          This is the current balance and the value of the DAO&apos;s Treasury
+          over the past year. Contributions to Crypto Policy DAO will be
+          displayed here and will be allocated to the DAO members for their
+          contributions.
+        </p>
+        <br />
+        <p
+          style={{
+            color: "var(--header-color)",
+            fontSize: "1.7rem",
+            maxWidth: "800px",
+            marginBottom: "20px",
+          }}
+        >
+          By default it will display the values on Fantom first, but you can
+          select other chains below:
         </p>
       </div>
-      <br />
       <div
         style={{
           marginBottom: "40px",
@@ -184,8 +196,28 @@ function Portfolio() {
         )}
       </div>
       <br />
+      <p
+        style={{
+          color: "var(--description-color)",
+          fontSize: "1.7rem",
+          maxWidth: "800px",
+          marginBottom: "20px",
+        }}
+      >
+        Current Balance
+      </p>
       <Balances chainId={chainId} />
       <br />
+      <p
+        style={{
+          color: "var(--description-color)",
+          fontSize: "1.7rem",
+          maxWidth: "800px",
+          marginBottom: "20px",
+        }}
+      >
+        Historical Value
+      </p>
       <div className="chart-container mb-40">
         <LineChart
           width={1200}

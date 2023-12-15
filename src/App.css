@@ -26,7 +26,7 @@
   --hover-subtext: #f9faf5;
 }
 
-[data-theme="morning"] {
+[data-theme="Morning"] {
   /* Morning-themed colors */
   --nav1: #f0e68c; /* Light khaki */
   --nav2: #fafad2; /* Light goldenrod yellow */
@@ -56,7 +56,7 @@
 }
 
 /* Lemonade theme */
-[data-theme="lemonade"] {
+[data-theme="Lemonade"] {
   --nav1: #d1a670; /* Bisque */
   --nav2: #ceb00a; /* Gold */
   --nav3: #dac938; /* Khaki */
@@ -84,7 +84,7 @@
 }
 
 /* Mountain Dew theme */
-[data-theme="mountain-dew"] {
+[data-theme="Mountain Dew"] {
   --nav1: #2699bd; /* Mountain Dew Green */
   --nav2: #32aada; /* Ice Blue */
   --nav3: #4ac0eb; /* Dark Mountain Dew Green */
@@ -111,7 +111,7 @@
   --effect-2: #c6e1f2; /* Lighter Ice Blue */
 }
 
-[data-theme="breezy"] {
+[data-theme="Breezy"] {
   --nav1: #7595be;
   --nav2: #69a3ac;
   --nav3: #00b4d8;
@@ -136,7 +136,7 @@
 }
 
 /* Coffee theme with various brown shades */
-[data-theme="coffee"] {
+[data-theme="Coffee"] {
   --nav1: #dbc2a2; /* Light brown */
   --nav2: #b2916e; /* Medium-light brown */
   --nav3: #825f49; /* Medium brown */
@@ -164,7 +164,7 @@
 }
 
 /* Summer theme */
-[data-theme="summer"] {
+[data-theme="Summer"] {
   --nav1: #ffcc00; /* Vivid Yellow */
   --nav2: #ffa500; /* Orange */
   --nav3: #ff7f50; /* Coral */
@@ -192,7 +192,7 @@
 }
 
 /* Halloween theme with added variables */
-[data-theme="halloween"] {
+[data-theme="Halloween"] {
   --header-color: #ff6b6b; /* Red */
   --description-color: #ffb166; /* Orange */
   --content-color: #470864; /* Dark Gray */
@@ -220,7 +220,7 @@
 }
 
 /* Custom theme with provided background color */
-[data-theme="moonlit"] {
+[data-theme="Moonlit"] {
   --nav1: #ffd700; /* Gold */
   --nav2: #99ffff; /* Light Cyan */
   --nav3: #c0c0c0; /* Silver */
@@ -248,7 +248,7 @@
 }
 
 /* Ocean City theme */
-[data-theme="ocean-city"] {
+[data-theme="Ccean City"] {
   --nav1: #2270ac;
   --nav2: #276594;
   --nav3: #265f8a;
@@ -277,7 +277,7 @@
 }
 
 /* Street Light theme */
-[data-theme="street-light"] {
+[data-theme="Street Light"] {
   --nav1: #fae25b; /* Gold */
   --nav2: #def5b9; /* Pale Green */
   --nav3: #a9a9a9; /* Dark Gray */
@@ -306,7 +306,7 @@
 }
 
 /* Neon Night theme */
-[data-theme="neon-night"] {
+[data-theme="Neon Night"] {
   --nav1: #ff00ff; /* Neon Magenta */
   --nav2: #00ff00; /* Neon Green */
   --nav3: #2b9dac; /* Neon Blue */
@@ -334,8 +334,8 @@
 }
 
 /* Cyberpunk theme */
-[data-theme="cyberpunk"] {
-  --nav1: #00ffcc; /* Neon Cyan */
+[data-theme="Cyberpunk"] {
+  --nav1: #04b491; /* Neon Cyan */
   --nav2: #ff66ff; /* Neon Pink */
   --nav3: #00ccff; /* Neon Blue */
   --bac1: #1a001a; /* Dark Purple */
@@ -425,4 +425,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ChainSelector */
+.buttonsContainer {
+  display: flex;
+  margin-top: 3em;
+  margin-bottom: 1.5em;
+  flex-wrap: wrap;
+  gap: 11px;
+  align-items: center;
+  justify-content: center;
+}
+
+.ant-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }

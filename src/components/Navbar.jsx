@@ -4,6 +4,7 @@ import "../App.css";
 
 export default function Navbar() {
   const [showThemes, setShowThemes] = useState(false);
+  const [selectedTheme, setSelectedTheme] = useState("original");
 
   const toggleThemes = () => {
     setShowThemes(!showThemes);
@@ -11,7 +12,8 @@ export default function Navbar() {
 
   const selectTheme = (selectedTheme) => {
     document.documentElement.setAttribute("data-theme", selectedTheme);
-    setShowThemes(false);
+    setShowThemes(true);
+    setSelectedTheme(selectedTheme); // Update the state with selected theme name
   };
 
   const handleClickOutside = (event) => {
@@ -39,42 +41,43 @@ export default function Navbar() {
                 backgroundColor: "var(--button-background)",
               }}
             >
-              Select Theme
+              {selectedTheme}
             </button>
+
             {showThemes && (
               <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg theme-dropdown-options">
                 <button
                   className="block w-full py-2 text-left px-4 original-button-hover"
                   style={{ color: "#067288" }}
-                  onClick={() => selectTheme("original")}
+                  onClick={() => selectTheme("Select Theme")}
                 >
                   Original
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 mountain-dew-button-hover"
                   style={{ color: "#336633" }}
-                  onClick={() => selectTheme("mountain-dew")}
+                  onClick={() => selectTheme("Mountain Dew")}
                 >
                   Mountain Dew
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 lemonade-button-hover"
                   style={{ color: "#0c6d2c" }}
-                  onClick={() => selectTheme("lemonade")}
+                  onClick={() => selectTheme("Lemonade")}
                 >
                   Lemonade
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 defi-degen-button-hover"
                   style={{ color: "#7FFF00" }}
-                  onClick={() => selectTheme("morning")}
+                  onClick={() => selectTheme("Morning")}
                 >
                   Morning
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 breezy-button-hover"
                   style={{ color: "#317988" }}
-                  onClick={() => selectTheme("breezy")}
+                  onClick={() => selectTheme("Breezy")}
                 >
                   Breezy
                 </button>
@@ -83,14 +86,14 @@ export default function Navbar() {
                   style={{
                     color: "#70a1ff",
                   }}
-                  onClick={() => selectTheme("summer")}
+                  onClick={() => selectTheme("Summer")}
                 >
                   Summer
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 ocean-city-button-hover"
                   style={{ color: "#90D1F9" }}
-                  onClick={() => selectTheme("ocean-city")}
+                  onClick={() => selectTheme("Ocean City")}
                 >
                   Ocean City
                 </button>
@@ -99,14 +102,14 @@ export default function Navbar() {
                   style={{
                     color: "#7a5f56",
                   }}
-                  onClick={() => selectTheme("coffee")}
+                  onClick={() => selectTheme("Coffee")}
                 >
                   Coffee
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 halloween-button-hover"
                   style={{ color: "#FFB166" }}
-                  onClick={() => selectTheme("halloween")}
+                  onClick={() => selectTheme("Halloween")}
                 >
                   Halloween
                 </button>
@@ -114,28 +117,28 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 moonlit-button-hover"
                   style={{ color: "#99FFFF" }}
-                  onClick={() => selectTheme("moonlit")}
+                  onClick={() => selectTheme("Moonlit")}
                 >
                   Moonlit
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 street-light-button-hover"
                   style={{ color: "#def5b9" }}
-                  onClick={() => selectTheme("street-light")}
+                  onClick={() => selectTheme("Street Light")}
                 >
                   Street Light
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 neon-night-button-hover"
                   style={{ color: "#00FF00" }}
-                  onClick={() => selectTheme("neon-night")}
+                  onClick={() => selectTheme("Neon Night")}
                 >
                   Neon Night
                 </button>
                 <button
                   className="block w-full py-2 text-left px-4 neon-night-button-hover"
                   style={{ color: "#00FF00" }}
-                  onClick={() => selectTheme("cyberpunk")}
+                  onClick={() => selectTheme("Cyberpunk")}
                 >
                   Cyberpunk
                 </button>

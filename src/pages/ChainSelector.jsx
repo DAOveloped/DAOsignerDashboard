@@ -7,11 +7,16 @@ const ChainSelector = ({ chains, handleChainSelect }) => {
         chains.map((item) => {
           return (
             <Button
-              type="primary"
+              type="default"
+              className="ant-btn-hover"
               icon={<Logo url={item.logo_url} />}
               size="large"
               onClick={() => handleChainSelect(item.chain_id)}
-              style={{ color: "var(--header-color)", marginRight: "10px" }}
+              style={{
+                color: "var(--nav1)",
+                background: "var(--effect-1)",
+                marginRight: "20px",
+              }}
             >
               {item.category_label}
             </Button>
