@@ -1,4 +1,4 @@
-import videoFile from "/3Dlogo.mp4";
+import videoFile from "/3DLogo.mp4";
 
 export default function Home() {
   return (
