@@ -1,29 +1,29 @@
 :root {
   /* Default theme */
-  --nav1: #145b91;
-  --nav2: #154a72;
-  --nav3: #164468;
-  --bac1: #1a759f;
-  --bac2: #1e6091;
-  --bac3: #82c0d3;
-  --bac4: #34a0a4;
-  --bac5: #52b69a;
-  --header-color: #9ad0c2;
-  --description-color: #90c7b7;
-  --content-color: #95d8c7;
-  --hover-description-background: #092f41;
-  --effect-1: #77d5f7;
-  --effect-2: #52f7c8;
-  background-image: radial-gradient(circle at 10% 20%, var(--bac4), transparent),
+  --nav1: #e6f6e9;
+  --nav2: #e3e7d8;
+  --nav3: #d4eddf;
+  --bac1: #f2f8f3;
+  --bac2: #d3d3d3;
+  --bac3: #b2d4c3;
+  --bac4: #e3f5eb;
+  --bac5: #d0e2d5;
+  --header-color: #678677;
+  --description-color: #67976f;
+  --content-color: #819251;
+  --hover-description-background: #d0e2d5;
+  --effect-1: #e3f5eb;
+  --effect-2: #f2f8f3;
+  background-image: radial-gradient(circle at 10% 20%, var(--bac1), transparent),
     radial-gradient(circle at 80% 70%, var(--bac2), transparent),
-    linear-gradient(to bottom right, var(--bac3), transparent),
-    linear-gradient(to top left, var(--bac1), transparent),
-    linear-gradient(to bottom, var(--bac5), transparent);
+    linear-gradient(to bottom right, var(--bac3), rgba(var(--bac3), 0.5)),
+    linear-gradient(to top left, var(--bac4), rgba(var(--bac4), 0.5)),
+    linear-gradient(to bottom, var(--bac5), rgba(var(--bac5), 0.8));
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  --button-text: #90e7f8;
-  --hover-text: #d8fafa;
-  --hover-subtext: #f9faf5;
+  --button-text: #649e83;
+  --hover-text: #f0f8f6;
+  --hover-subtext: #f8f5f2;
 }
 
 [data-theme="Morning"] {
@@ -248,7 +248,7 @@
 }
 
 /* Ocean City theme */
-[data-theme="Ccean City"] {
+[data-theme="Ocean City"] {
   --nav1: #2270ac;
   --nav2: #276594;
   --nav3: #265f8a;

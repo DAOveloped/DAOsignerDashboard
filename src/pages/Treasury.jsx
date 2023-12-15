@@ -229,7 +229,7 @@ function Portfolio() {
             left: 20,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" stroke="var(--header-color)" />
           <XAxis
             dataKey="timestamp"
             tick={{ fill: "var(--description-color)", fontSize: ".9em" }}
@@ -245,7 +245,6 @@ function Portfolio() {
               <Line
                 key={i}
                 dataKey={item}
-                type="monotone"
                 stroke={colors[i]}
                 dot={false} // Remove dots marking each data point
                 strokeWidth={3.2} // Set the line thickness

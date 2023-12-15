@@ -125,7 +125,12 @@ const TokenBalances = ({
           },
         }}
       >
-        <Table columns={columns} dataSource={data} rowKey="contract_address" />
+        <Table
+          columns={columns}
+          dataSource={data}
+          rowKey="contract_address"
+          style={{ width: "65%" }}
+        />
       </ConfigProvider>
     );
   }

@@ -4,7 +4,7 @@ import "../App.css";
 
 export default function Navbar() {
   const [showThemes, setShowThemes] = useState(false);
-  const [selectedTheme, setSelectedTheme] = useState("original");
+  const [selectedTheme, setSelectedTheme] = useState("Select Theme");
 
   const toggleThemes = () => {
     setShowThemes(!showThemes);
@@ -49,7 +49,7 @@ export default function Navbar() {
                 <button
                   className="block w-full py-2 text-left px-4 original-button-hover"
                   style={{ color: "#067288" }}
-                  onClick={() => selectTheme("Select Theme")}
+                  onClick={() => selectTheme("Original")}
                 >
                   Original
                 </button>
@@ -68,7 +68,7 @@ export default function Navbar() {
                   Lemonade
                 </button>
                 <button
-                  className="block w-full py-2 text-left px-4 defi-degen-button-hover"
+                  className="block w-full py-2 text-left px-4 morning-button-hover"
                   style={{ color: "#7FFF00" }}
                   onClick={() => selectTheme("Morning")}
                 >
@@ -168,7 +168,7 @@ export default function Navbar() {
             </NavLink>
             <NavLink
               className="mr-10 NavLink product"
-              to="/contact"
+              to="/friction"
               activeClassName="active-link"
             >
               <div className="effect-1"></div>
@@ -299,7 +299,7 @@ export default function Navbar() {
         .original-button-hover:hover {
             background-color: #f1faee;
           }
-          .winter-button-hover:hover {
+          .mountain-dew-button-hover:hover {
             background: linear-gradient(260deg, #f0f5ff, #afc9ff, #e0ecff);
             color: #067288;
           }
@@ -318,8 +318,10 @@ export default function Navbar() {
           }
           .ocean-city-button-hover:hover {
             background: linear-gradient(260deg, #023E8A, #0077B6);
-
           }
+          .morning-button-hover:hover {
+            background: linear-gradient(260deg, #d3d3d3, #076381);
+          } 
           .halloween-button-hover:hover {
             background: linear-gradient(260deg, #000000, #3D0842);
           }
