@@ -10,7 +10,7 @@ DAOsigner Apparel is a platform that empowers artists, crypto enthusiasts, and d
 
 ### Design and Earn!
 
-Whether you're an artist, a crypto enthusiast, or someone passionate about unique designs, this is your platform! Express your creativity by designing clothing that represents your favorite protocols, meme coins, or anything crypto-related.
+Whether you're an artist, a crypto enthusiast, or someone passionate about unique designs, this is your platform!
 
 ### How to Submit Your Designs
 

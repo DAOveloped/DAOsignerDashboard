@@ -1,306 +1,221 @@
-import { useState, useEffect } from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import "../App.css";
+import { useState, useEffect } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navbar() {
-  const [showThemes, setShowThemes] = useState(false);
-  const [selectedTheme, setSelectedTheme] = useState("Select Theme");
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleThemes = () => {
-    setShowThemes(!showThemes);
-  };
-
-  const selectTheme = (selectedTheme) => {
-    document.documentElement.setAttribute("data-theme", selectedTheme);
-    setShowThemes(true);
-    setSelectedTheme(selectedTheme); // Update the state with selected theme name
-  };
-
-  const handleClickOutside = (event) => {
-    const toggleButtonElement = document.querySelector(".relative");
-    if (!toggleButtonElement.contains(event.target)) {
-      setShowThemes(false);
-    }
-  };
-
+  // Handle scroll effect
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location]);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
   return (
-    <div className="h-full">
-      <header className="w-full text-white p-4 fixed top-0 z-50">
-        <nav className="container mx-auto flex justify-between items-center">
-          <div className="relative">
-            <button
-              className="px-3 py-1 mr-4 bg-gray-200 rounded-md"
-              onClick={toggleThemes}
-              style={{
-                color: "var(--button-text)",
-                backgroundColor: "var(--button-background)",
-              }}
-            >
-              {selectedTheme}
-            </button>
-
-            {showThemes && (
-              <div className="absolute z-10 top-10 right-0 bg-white border border-gray-300 rounded-md shadow-lg theme-dropdown-options">
-                <button
-                  className="block w-full py-2 text-left px-4 original-button-hover"
-                  style={{ color: "#067288" }}
-                  onClick={() => selectTheme("Original")}
-                >
-                  Original
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 mountain-dew-button-hover"
-                  style={{ color: "#336633" }}
-                  onClick={() => selectTheme("Mountain Dew")}
-                >
-                  Mountain Dew
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 lemonade-button-hover"
-                  style={{ color: "#0c6d2c" }}
-                  onClick={() => selectTheme("Lemonade")}
-                >
-                  Lemonade
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 morning-button-hover"
-                  style={{ color: "#7FFF00" }}
-                  onClick={() => selectTheme("Morning")}
-                >
-                  Morning
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 breezy-button-hover"
-                  style={{ color: "#317988" }}
-                  onClick={() => selectTheme("Breezy")}
-                >
-                  Breezy
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 summer-button-hover"
-                  style={{
-                    color: "#70a1ff",
-                  }}
-                  onClick={() => selectTheme("Summer")}
-                >
-                  Summer
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 ocean-city-button-hover"
-                  style={{ color: "#90D1F9" }}
-                  onClick={() => selectTheme("Ocean City")}
-                >
-                  Ocean City
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 coffee-button-hover"
-                  style={{
-                    color: "#7a5f56",
-                  }}
-                  onClick={() => selectTheme("Coffee")}
-                >
-                  Coffee
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 halloween-button-hover"
-                  style={{ color: "#FFB166" }}
-                  onClick={() => selectTheme("Halloween")}
-                >
-                  Halloween
-                </button>
-
-                <button
-                  className="block w-full py-2 text-left px-4 moonlit-button-hover"
-                  style={{ color: "#99FFFF" }}
-                  onClick={() => selectTheme("Moonlit")}
-                >
-                  Moonlit
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 street-light-button-hover"
-                  style={{ color: "#def5b9" }}
-                  onClick={() => selectTheme("Street Light")}
-                >
-                  Street Light
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 neon-night-button-hover"
-                  style={{ color: "#00FF00" }}
-                  onClick={() => selectTheme("Neon Night")}
-                >
-                  Neon Night
-                </button>
-                <button
-                  className="block w-full py-2 text-left px-4 neon-night-button-hover"
-                  style={{ color: "#00FF00" }}
-                  onClick={() => selectTheme("Cyberpunk")}
-                >
-                  Cyberpunk
-                </button>
-              </div>
-            )}
-          </div>
-          <div>
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/"
-              activeClassName="active-link"
-            >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav1)" }}>Home</span>
-            </NavLink>
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/DAOsigners"
-              activeClassName="active-link"
-            >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav4)" }}>DAOsigners</span>
+    <>
+      <motion.header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'glass py-3'
+            : 'bg-transparent py-5'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="container">
+          <nav className="flex items-center justify-between">
+            {/* Logo */}
+            <NavLink to="/" className="flex items-center gap-3 group">
+              <motion.img
+                src="/images/logo.png"
+                alt="DAOsigner"
+                className="h-10 w-auto"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              />
+              <span className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors hidden sm:block">
+                DAOsigner
+              </span>
             </NavLink>
 
-            <NavLink
-              className="mr-10 NavLink product"
-              to="/Dashboard"
-              activeClassName="active-link"
+            {/* Desktop Navigation */}
+            <ul className="hidden md:flex items-center gap-8">
+              {navLinks.map((link) => (
+                <li key={link.name}>
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      `relative py-2 text-sm font-medium transition-colors ${
+                        isActive
+                          ? 'text-purple-400'
+                          : 'text-gray-300 hover:text-white'
+                      }`
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        {link.name}
+                        {isActive && (
+                          <motion.div
+                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-purple-400"
+                            layoutId="navbar-indicator"
+                            transition={{ duration: 0.3 }}
+                          />
+                        )}
+                      </>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+
+            {/* Right Section */}
+            <div className="flex items-center gap-4">
+              {/* Sign In Button */}
+              <NavLink
+                to="/signin"
+                className="hidden sm:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-full text-white text-sm font-medium hover:from-purple-500 hover:to-cyan-500 transition-all"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-4 h-4"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                  />
+                </svg>
+                Sign In
+              </NavLink>
+
+              {/* Cart Button */}
+              <motion.button
+                className="relative p-2 text-gray-300 hover:text-white transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+                  />
+                </svg>
+                {/* Cart Count Badge */}
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-purple-500 text-white text-xs rounded-full flex items-center justify-center">
+                  0
+                </span>
+              </motion.button>
+
+              {/* Mobile Menu Button */}
+              <button
+                className="md:hidden p-2 text-gray-300 hover:text-white"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                    />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </nav>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="md:hidden glass absolute top-full left-0 right-0"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              <div className="effect-1"></div>
-              <div className="effect-2"></div>
-              <span style={{ color: "var(--nav5)" }}>DAOsigner Dashboard</span>
-            </NavLink>
-          </div>
-        </nav>
-      </header>
+              <ul className="py-4 px-6 space-y-4">
+                {navLinks.map((link) => (
+                  <li key={link.name}>
+                    <NavLink
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `block py-2 text-lg font-medium transition-colors ${
+                          isActive
+                            ? 'text-purple-400'
+                            : 'text-gray-300 hover:text-white'
+                        }`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  </li>
+                ))}
+                <li>
+                  <NavLink
+                    to="/signin"
+                    className="block py-2 text-lg font-medium text-purple-400 hover:text-purple-300 transition-colors"
+                  >
+                    Sign In
+                  </NavLink>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+
+      {/* Page Content */}
       <main>
         <Outlet />
       </main>
-      <style>
-        {`
-        
-        .product {
-          position: relative;
-        }
-        
-        .header {
-          position: sticky;
-          top: 0;
-          z-index: 10;
-        }
-        
-    .NavLink {
-        font-size: 1.2em; 
-      }
-
-        .product:hover .effect-1,
-        .product:hover .effect-2 {
-          display: block;
-        }
-        
-        .effect-1 {
-          border-radius: 30%;
-          display: none;
-          mix-blend-mode: multiply;
-          height: 84%;
-          opacity: 1;
-          position: absolute;
-          width: 84%;
-          z-index: 3000;
-        }
-
-        .effect-2 {
-          border-radius: 30%;
-          display: none;
-          mix-blend-mode: multiply;
-          height: 84%;
-          opacity: 1;
-          position: absolute;
-          width: 84%;
-          z-index: 3000;
-        }
-        
-        .effect-1 {
-          animation: rotate 1.8s linear infinite;
-          background: var(--effect-1);
-        }
-        
-        .effect-2 {
-          animation: rotate 1.2s linear reverse infinite;
-          background: var(--effect-2);
-        }
-        
-        @keyframes rotate {
-          0% {
-            top: 0;
-            left: 8%;
-          }
-          25% {
-            top: 8%;
-            left: 0%;
-          }
-          50% {
-            top: 16%;
-            left: 8%;
-          }
-          75% {
-            top: 38%;
-            left: 16%;
-          }
-          100% {
-            top: 0;
-            left: 8%;
-          }
-        }
-        
-        .original-button-hover:hover {
-            background-color: #f1faee;
-          }
-          .mountain-dew-button-hover:hover {
-            background: linear-gradient(260deg, #f0f5ff, #afc9ff, #e0ecff);
-            color: #067288;
-          }
-          .lemonade-button-hover:hover {
-            background: linear-gradient(264deg, #f3e598, #f5f5dc, #fff8dc);
-            color: #f0e68c;
-          }
-          .breezy-button-hover:hover {
-            background: linear-gradient(259deg, #EEF5FF, #9EB8D9, #7C93C3);
-          }
-          .summer-button-hover:hover {
-            background: linear-gradient(264deg, #effad3, #70a1ff, #a4e2c6);
-          }
-          .coffee-button-hover:hover {
-            background: linear-gradient(260deg, #54442b, #141204, #262a10);
-          }
-          .ocean-city-button-hover:hover {
-            background: linear-gradient(260deg, #023E8A, #0077B6);
-          }
-          .morning-button-hover:hover {
-            background: linear-gradient(260deg, #d3d3d3, #076381);
-          } 
-          .halloween-button-hover:hover {
-            background: linear-gradient(260deg, #000000, #3D0842);
-          }
-          .moonlit-button-hover:hover {
-            background: linear-gradient(260deg, #000033, #191970);
-          }
-          .street-light-button-hover:hover {
-            background: linear-gradient(260deg, #333333, #000000);
-          }
-          .neon-night-button-hover:hover {
-            background: linear-gradient(260deg, #000000, #0D0D0D);
-          }
-          .theme-dropdown-options {
-            max-height: 400px; /* Set your desired max height */
-            overflow-y: auto;
-          }
-        `}
-      </style>
-    </div>
+    </>
   );
-}
+};
+
+export default Navbar;

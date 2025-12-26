@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:shirt.sh)",
+      "WebFetch(domain:shirtslop.com)",
+      "WebSearch",
+      "WebFetch(domain:developers.printify.com)",
+      "WebFetch(domain:daosignerapparel.com)"
+    ]
+  }
+}

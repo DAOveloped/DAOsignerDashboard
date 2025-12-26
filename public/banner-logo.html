@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAOsigner Banner</title>
+    <style>
+      /* === GLOBAL RESET === */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      /* === BANNER === */
+      .dao-banner {
+        position: relative;
+        width: 1500px;
+        height: 300px;
+        overflow: hidden;
+        border-radius: 6px;
+        background: linear-gradient(
+          135deg,
+          #ffb347 0%,
+          #ff8966 35%,
+          #ff4f81 70%,
+          #d13fff 100%
+        );
+        font-family: "Inter", system-ui, sans-serif;
+      }
+
+      /* === WATERMARK LOGO === */
+      .dao-banner img.watermark {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0.08; /* Adjust this to make watermark lighter/darker */
+        pointer-events: none;
+        mix-blend-mode: multiply; /* helps it blend smoothly into the gradient */
+      }
+
+      /* === COPY TEXT === */
+      .dao-banner .copy {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      .dao-banner h1 {
+        margin: 0 0 8px;
+        font-size: 64px;
+        font-weight: 800;
+        letter-spacing: 0.02em;
+      }
+
+      .dao-banner p {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dao-banner">
+      <!-- ✅ The centered copy -->
+      <div class="copy">
+        <h1>CREATE ONCE. EARN FOREVER.</h1>
+        <p>DESIGN • EARN • REPEAT</p>
+      </div>
+    </div>
+  </body>
+</html>
