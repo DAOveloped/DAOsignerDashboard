@@ -7,7 +7,8 @@
       "WebFetch(domain:shirtslop.com)",
       "WebSearch",
       "WebFetch(domain:developers.printify.com)",
-      "WebFetch(domain:daosignerapparel.com)"
+      "WebFetch(domain:daosignerapparel.com)",
+      "Bash(mkdir:*)"
     ]
   }
 }
