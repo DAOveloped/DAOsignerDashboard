@@ -8,6 +8,9 @@ import SignIn from "./pages/SignIn";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
 import Submit from "./pages/Submit";
+import Studio from "./pages/Studio";
+import Dashboard from "./pages/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 import {
   createHashRouter,
   Route,
@@ -36,6 +39,23 @@ function App() {
         </Route>
         {/* Standalone pages without Navbar */}
         <Route path="signin" element={<SignIn />} />
+        {/* Protected designer pages */}
+        <Route
+          path="studio"
+          element={
+            <ProtectedRoute>
+              <Studio />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
       </>
     )
   );

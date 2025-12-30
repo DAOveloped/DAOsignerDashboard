@@ -1,274 +1,382 @@
-import { useState, useEffect } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
-import Balances from "./Balances";
-import ChainSelector from "./ChainSelector";
+import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useAuth } from '../context/AuthContext'
+import { supabase } from '../utils/supabase'
+import AnimatedBackground from '../components/AnimatedBackground'
 
-const colors = [
-  "#F44336",
-  "#673AB7",
-  "#03A9F4",
-  "#4CAF50",
-  "#FFEB3B",
-  "#FF5722",
-  "#607D8B",
-  "#E91E63",
-  "#3F51B5",
-  "#00BCD4",
-  "#8BC34A",
-  "#FFC107",
-  "#795548",
-  "#9C27B0",
-  "#2196F3",
-  "#009688",
-  "#CDDC39",
-  "#FF9800",
-  "#9E9E9E",
-  "#EF9A9A",
-  "#B39DDB",
-  "#81D4FA",
-  "#A5D6A7",
-  "#FFF59D",
-  "#FFAB91",
-  "#B0BEC5",
-  "#F48FB1",
-  "#9FA8DA",
-  "#80DEEA",
-  "#C5E1A5",
-  "#FFE082",
-  "#BCAAA4",
-  "#CE93D8",
-  "#90CAF9",
-  "#80CBC4",
-  "#E6EE9C",
-  "#FFCC80",
-  "#EEEEEE",
-  "#B71C1C",
-  "#311B92",
-  "#01579B",
-  "#1B5E20",
-  "#F57F17",
-  "#BF360C",
-  "#263238",
-  "#880E4F",
-  "#1A237E",
-  "#006064",
-  "#33691E",
-  "#FF6F00",
-  "#3E2723",
-  "#4A148C",
-  "#0D47A1",
-  "#004D40",
-  "#827717",
-  "#E65100",
-  "#212121",
-];
+const levelInfo = {
+  new: { name: 'New', icon: '🌱', slots: 1, nextLevel: 'proven', nextRequirement: 5 },
+  proven: { name: 'Proven', icon: '🌿', slots: 2, nextLevel: 'established', nextRequirement: 25 },
+  established: { name: 'Established', icon: '🌳', slots: 5, nextLevel: 'pro', nextRequirement: 100 },
+  pro: { name: 'Pro', icon: '🏆', slots: 15, nextLevel: 'verified', nextRequirement: 500 },
+  verified: { name: 'Verified', icon: '⭐', slots: '∞', nextLevel: null, nextRequirement: null },
+}
 
-function Portfolio() {
-  const [data, setData] = useState([]);
-  const [keys, setKeys] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [chainId, setChainId] = useState(250);
-  const [publicKey] = useState("0xD156382c8B7CF309865c7ACAc5Caea323f8C30A4");
-  const [apiKey, setApiKey] = useState("");
-  const [balances, setBalances] = useState([]); // State to hold token balances
-  const [selectedChain, setSelectedChain] = useState(); // State to hold selected blockchain
-  const [chains, setChains] = useState([]);
+export default function Dashboard() {
+  const { user, designerProfile, designerLevel, designSlots, totalSales, canSubmitDesign, signOut } = useAuth()
+  const location = useLocation()
+  const [designs, setDesigns] = useState([])
+  const [stats, setStats] = useState({ totalEarnings: 0, pendingEarnings: 0, monthlyEarnings: 0 })
+  const [loading, setLoading] = useState(true)
+  const [showSuccess, setShowSuccess] = useState(location.state?.submitted)
 
-  // Function to handle blockchain selection
-  const handleChainSelect = (chainId) => {
-    setChainId(chainId);
-  };
+  const currentLevelInfo = levelInfo[designerLevel] || levelInfo.new
 
   useEffect(() => {
-    setApiKey(import.meta.env.VITE_API_KEY);
-    if (publicKey && chainId) {
-      setLoading(true);
-
-      const historicPortfolioValueEndpoint = `https://api.covalenthq.com/v1/${chainId}/address/${publicKey}/portfolio_v2/?days=365`;
-
-      // Fetching historic portfolio value
-      fetch(historicPortfolioValueEndpoint, {
-        method: "GET",
-        headers: {
-          Authorization: `Basic ${btoa(apiKey + ":")}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          const rawData = res.data.items;
-          const transformedData = transformForRecharts(rawData);
-          const dataKeys = rawData.map((item) => item.contract_ticker_symbol);
-          setKeys(dataKeys);
-          setData(transformedData);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching portfolio data:", error);
-          setLoading(false);
-        });
+    if (user && designerProfile) {
+      fetchDesigns()
+      fetchStats()
     }
-  }, [publicKey, chainId, apiKey]);
+  }, [user, designerProfile])
 
+  // Clear success message after showing
   useEffect(() => {
-    const fetchWalletActivity = (publicKey) => {
-      const walletActivityEndpoint = `https://api.covalenthq.com/v1/labs/activity/${publicKey}/`;
-      fetch(walletActivityEndpoint, {
-        method: "GET",
-        headers: {
-          Authorization: `Basic ${btoa(apiKey + ":")}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if (res.data && res.data.items) {
-            const excludeTestnet = res.data.items.filter(
-              (item) => !item.is_testnet
-            );
-            setChains(excludeTestnet);
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching wallet activity:", error);
-          // Handle errors here as needed
-        });
-    };
+    if (showSuccess) {
+      const timer = setTimeout(() => setShowSuccess(false), 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [showSuccess])
 
-    fetchWalletActivity(publicKey);
-  }, [apiKey, publicKey]);
+  const fetchDesigns = async () => {
+    try {
+      const { data, error } = await supabase
+        .schema('products')
+        .from('designs')
+        .select('*')
+        .eq('designer_id', user.id)
+        .order('created_at', { ascending: false })
 
-  if (!data) {
-    return <div>Loading...</div>;
+      if (error) throw error
+      setDesigns(data || [])
+    } catch (error) {
+      console.error('Error fetching designs:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const fetchStats = async () => {
+    try {
+      // Fetch royalty stats
+      const { data, error } = await supabase
+        .schema('royalties')
+        .from('payments')
+        .select('amount, status, created_at')
+        .eq('designer_id', user.id)
+
+      if (error) throw error
+
+      const now = new Date()
+      const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
+
+      const totalEarnings = data?.reduce((sum, p) => sum + (p.status === 'paid' ? Number(p.amount) : 0), 0) || 0
+      const pendingEarnings = data?.reduce((sum, p) => sum + (p.status === 'pending' ? Number(p.amount) : 0), 0) || 0
+      const monthlyEarnings = data?.filter(p => new Date(p.created_at) >= monthStart)
+        .reduce((sum, p) => sum + Number(p.amount), 0) || 0
+
+      setStats({ totalEarnings, pendingEarnings, monthlyEarnings })
+    } catch (error) {
+      console.error('Error fetching stats:', error)
+    }
+  }
+
+  const getStatusBadge = (status) => {
+    const styles = {
+      pending_review: 'bg-amber-500/20 text-amber-400',
+      approved: 'bg-green-500/20 text-green-400',
+      rejected: 'bg-red-500/20 text-red-400',
+      live: 'bg-purple-500/20 text-purple-400',
+    }
+    const labels = {
+      pending_review: 'Under Review',
+      approved: 'Approved',
+      rejected: 'Rejected',
+      live: 'Live',
+    }
+    return (
+      <span className={`px-2 py-1 rounded-full text-xs font-medium ${styles[status] || styles.pending_review}`}>
+        {labels[status] || status}
+      </span>
+    )
+  }
+
+  if (!designerProfile) {
+    return (
+      <div className="relative min-h-screen">
+        <AnimatedBackground />
+        <div className="min-h-screen flex items-center justify-center px-4">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <h2 className="text-2xl font-bold text-white mb-4">Not a Designer Yet</h2>
+            <p className="text-gray-400 mb-6">Create your designer profile to access the dashboard</p>
+            <Link
+              to="/studio"
+              className="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+            >
+              Get Started
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <div className="page-container mt-20">
-      <div className="paragraph-container mt-10">
-        <p
-          style={{
-            color: "var(--header-color)",
-            fontSize: "1.7rem",
-            maxWidth: "800px",
-            marginBottom: "20px",
-          }}
-        >
-          This is the DAOsigner Dashboard, which is a tool for DAOsigners to
-          track their earnings and portfolio value over time, as well as for you
-          to see our historical sales.
-        </p>
-        <br />
-      </div>
-      <div
-        style={{
-          marginBottom: "40px",
-        }}
-      >
-        {chains && chains.length > 0 ? (
-          <div>
-            {console.log("Chains:", chains)}
+    <div className="relative min-h-screen">
+      <AnimatedBackground />
 
-            <ChainSelector
-              chains={chains}
-              handleChainSelect={handleChainSelect}
-            />
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <Link to="/" className="text-xl font-bold text-white">
+            DAOsigner
+          </Link>
+
+          <div className="flex items-center gap-4">
+            <Link
+              to="/shop"
+              className="text-gray-300 hover:text-white transition-colors text-sm"
+            >
+              Shop
+            </Link>
+            <button
+              onClick={signOut}
+              className="text-gray-400 hover:text-white transition-colors text-sm"
+            >
+              Sign Out
+            </button>
           </div>
-        ) : (
-          <div>No chains found or loading...</div>
-        )}
-      </div>
-      <br />
-      <p
-        style={{
-          color: "var(--description-color)",
-          fontSize: "1.7rem",
-          maxWidth: "800px",
-          marginBottom: "20px",
-        }}
-      >
-        Current Balance
-      </p>
-      <Balances chainId={chainId} />
-      <br />
-      <p
-        style={{
-          color: "var(--description-color)",
-          fontSize: "1.7rem",
-          maxWidth: "800px",
-          marginBottom: "20px",
-        }}
-      >
-        Historical Value
-      </p>
-      <div className="chart-container mb-40">
-        <LineChart
-          width={1200}
-          height={500}
-          data={data}
-          margin={{
-            top: 5,
-            right: 20,
-            left: 20,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" stroke="var(--header-color)" />
-          <XAxis
-            dataKey="timestamp"
-            tick={{ fill: "var(--description-color)", fontSize: ".9em" }}
-          />
-          <YAxis
-            tickFormatter={(value) => `$${value}`}
-            tick={{ fill: "var(--header-color)", fontSize: "1.2em" }}
-          />
-          <Tooltip formatter={(value) => `$${parseFloat(value).toFixed(2)}`} />
-          <Legend tick={{ fontSize: "1.6em" }} />
-          {keys.map((item, i) => {
-            return (
-              <Line
-                key={i}
-                dataKey={item}
-                stroke={colors[i]}
-                dot={false} // Remove dots marking each data point
-                strokeWidth={3.2} // Set the line thickness
-              />
-            );
-          })}
-        </LineChart>
-      </div>
+        </div>
+      </header>
+
+      <main className="pt-24 pb-12 px-4">
+        <div className="container mx-auto max-w-6xl">
+
+          {/* Success Toast */}
+          <AnimatePresence>
+            {showSuccess && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-4 flex items-center gap-3"
+              >
+                <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span className="text-green-300">Design submitted successfully! We'll review it within 24-48 hours.</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Welcome Header */}
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            <h1 className="text-3xl font-bold text-white mb-2">
+              Welcome back, {designerProfile.display_name}
+            </h1>
+            <p className="text-gray-400">Manage your designs and track your earnings</p>
+          </motion.div>
+
+          {/* Stats Grid */}
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            {/* Level Card */}
+            <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl p-5 border border-purple-500/20">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">{currentLevelInfo.icon}</span>
+                <div>
+                  <p className="text-gray-400 text-sm">Current Level</p>
+                  <p className="text-white font-semibold">{currentLevelInfo.name}</p>
+                </div>
+              </div>
+              {currentLevelInfo.nextLevel && (
+                <div>
+                  <div className="flex justify-between text-xs mb-1">
+                    <span className="text-gray-400">{totalSales} / {currentLevelInfo.nextRequirement} sales</span>
+                    <span className="text-purple-400">Next: {levelInfo[currentLevelInfo.nextLevel].name}</span>
+                  </div>
+                  <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all"
+                      style={{ width: `${Math.min((totalSales / currentLevelInfo.nextRequirement) * 100, 100)}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Design Slots */}
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <p className="text-gray-400 text-sm mb-1">Design Slots</p>
+              <p className="text-3xl font-bold text-white">
+                {designs.length} <span className="text-lg text-gray-500">/ {designSlots}</span>
+              </p>
+              <p className="text-gray-500 text-xs mt-1">
+                {canSubmitDesign ? `${designSlots - designs.length} available` : 'All slots used'}
+              </p>
+            </div>
+
+            {/* Total Earnings */}
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <p className="text-gray-400 text-sm mb-1">Total Earnings</p>
+              <p className="text-3xl font-bold text-white">${stats.totalEarnings.toFixed(2)}</p>
+              {stats.pendingEarnings > 0 && (
+                <p className="text-amber-400 text-xs mt-1">
+                  ${stats.pendingEarnings.toFixed(2)} pending
+                </p>
+              )}
+            </div>
+
+            {/* This Month */}
+            <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+              <p className="text-gray-400 text-sm mb-1">This Month</p>
+              <p className="text-3xl font-bold text-white">${stats.monthlyEarnings.toFixed(2)}</p>
+              <p className="text-gray-500 text-xs mt-1">{totalSales} total sales</p>
+            </div>
+          </motion.div>
+
+          {/* Quick Actions */}
+          <motion.div
+            className="flex gap-4 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <Link
+              to="/studio"
+              className={`inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl transition-colors ${
+                canSubmitDesign
+                  ? 'bg-purple-500 hover:bg-purple-600 text-white'
+                  : 'bg-white/5 text-gray-500 cursor-not-allowed'
+              }`}
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Create New Design
+            </Link>
+          </motion.div>
+
+          {/* Designs List */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+          >
+            <h2 className="text-xl font-semibold text-white mb-4">Your Designs</h2>
+
+            {loading ? (
+              <div className="text-center py-12">
+                <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto"></div>
+              </div>
+            ) : designs.length === 0 ? (
+              <div className="bg-white/5 rounded-2xl p-12 border border-white/10 text-center">
+                <div className="w-16 h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">No designs yet</h3>
+                <p className="text-gray-400 mb-6">Create your first design to start earning royalties</p>
+                <Link
+                  to="/studio"
+                  className="inline-flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+                >
+                  Create Your First Design
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {designs.map((design) => (
+                  <motion.div
+                    key={design.id}
+                    className="bg-white/5 rounded-2xl border border-white/10 overflow-hidden group"
+                    whileHover={{ y: -4 }}
+                  >
+                    <div className="aspect-square bg-gray-800 relative">
+                      {design.image_url ? (
+                        <img
+                          src={design.image_url}
+                          alt={design.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-600">
+                          <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        </div>
+                      )}
+                      <div className="absolute top-3 right-3">
+                        {getStatusBadge(design.status)}
+                      </div>
+                    </div>
+
+                    <div className="p-4">
+                      <h3 className="font-semibold text-white mb-1 truncate">{design.title}</h3>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-gray-400">
+                          {design.sales_count || 0} sales
+                        </span>
+                        <span className="text-purple-400 font-medium">
+                          ${((design.sales_count || 0) * 3.5).toFixed(2)} earned
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </motion.div>
+
+          {/* Level Progression Info */}
+          <motion.div
+            className="mt-12 bg-white/5 rounded-2xl p-6 border border-white/10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <h3 className="text-lg font-semibold text-white mb-4">Level Progression</h3>
+            <div className="grid sm:grid-cols-5 gap-4">
+              {Object.entries(levelInfo).map(([key, info]) => (
+                <div
+                  key={key}
+                  className={`text-center p-4 rounded-xl ${
+                    designerLevel === key
+                      ? 'bg-purple-500/20 border border-purple-500/50'
+                      : 'bg-white/5'
+                  }`}
+                >
+                  <div className="text-2xl mb-2">{info.icon}</div>
+                  <p className="font-medium text-white text-sm">{info.name}</p>
+                  <p className="text-purple-400 font-bold">{info.slots} slots</p>
+                  {info.nextRequirement && (
+                    <p className="text-gray-500 text-xs mt-1">{info.nextRequirement} sales</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </main>
     </div>
-  );
+  )
 }
-
-export default Portfolio;
-
-const transformForRecharts = (rawData) => {
-  const transformedData = rawData.reduce((acc, curr) => {
-    const singleTokenTimeSeries = curr.holdings.map((holdingsItem) => {
-      // Formatting the date string just a little...
-      const dateStr = holdingsItem.timestamp.slice(0, 10);
-      const date = new Date(dateStr);
-      const options = {
-        day: "numeric",
-        month: "short",
-        year: "numeric",
-      };
-      const formattedDate = date.toLocaleDateString("en-US", options);
-      return {
-        timestamp: formattedDate,
-        [curr.contract_ticker_symbol]: holdingsItem.close.quote,
-      };
-    });
-    const newArr = singleTokenTimeSeries.map((item, i) =>
-      Object.assign(item, acc[i])
-    );
-    return newArr;
-  }, []);
-
-  return transformedData;
-};

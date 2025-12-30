@@ -1,36 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AnimatedBackground from "../components/AnimatedBackground";
-
-// TODO: Import authentication libraries when ready
-// import { signInWithGoogle } from "../lib/auth";
-// import { connectInDemniFiWallet } from "../lib/wallet";
+import { useAuth } from "../context/AuthContext";
 
 export default function SignIn() {
+  const { signInWithGoogle, isAuthenticated, loading } = useAuth();
+  const navigate = useNavigate();
+
   const [isConnecting, setIsConnecting] = useState(false);
   const [connectionType, setConnectionType] = useState(null); // 'google' | 'wallet'
   const [error, setError] = useState(null);
 
-  // TODO: Implement Google sign-in
+  // Redirect if already authenticated
+  useEffect(() => {
+    if (!loading && isAuthenticated) {
+      navigate('/dashboard');
+    }
+  }, [isAuthenticated, loading, navigate]);
+
+  // Handle Google sign-in with Supabase
   const handleGoogleSignIn = async () => {
     setIsConnecting(true);
     setConnectionType("google");
     setError(null);
 
     try {
-      // TODO: Implement with Supabase Auth or Firebase
-      // const { user, error } = await signInWithGoogle();
-      console.log("Google sign-in clicked - to be implemented");
-
-      // Simulate loading for demo
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // TODO: Redirect to dashboard on success
-      // navigate("/dashboard");
+      await signInWithGoogle();
+      // Supabase will redirect to the callback URL, then to dashboard
     } catch (err) {
-      setError("Google sign-in not yet implemented");
-    } finally {
+      console.error('Google sign-in error:', err);
+      setError(err.message || "Failed to sign in with Google. Please try again.");
       setIsConnecting(false);
       setConnectionType(null);
     }
@@ -45,14 +45,12 @@ export default function SignIn() {
     try {
       // TODO: Implement inDemniFi wallet connection
       // Reference: https://indemnifi.me
-      // const { address, error } = await connectInDemniFiWallet();
       console.log("inDemniFi wallet connect clicked - to be implemented");
 
       // Simulate loading for demo
       await new Promise(resolve => setTimeout(resolve, 1500));
 
-      // TODO: Redirect to dashboard on success
-      // navigate("/dashboard");
+      setError("Wallet connection coming soon!");
     } catch (err) {
       setError("Wallet connection not yet implemented");
     } finally {
