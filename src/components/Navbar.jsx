@@ -55,7 +55,7 @@ const Navbar = () => {
                 transition={{ duration: 0.2 }}
               />
               <span className="text-lg md:text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                DAOsigner
+                DAOsigner Apparel
               </span>
             </NavLink>
 

@@ -81,36 +81,43 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <span className="text-white">Your Purchase</span>
+            <span className="text-white">Apparel Where</span>
             <br />
-            <span className="gradient-text">Supports Real Artists</span>
+            <span className="gradient-text">Artists Earn Forever</span>
           </motion.h1>
 
           {/* Subheadline */}
           <motion.p
-            className="text-base sm:text-lg md:text-xl text-gray-400 max-w-lg mx-auto mb-10 px-4"
+            className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xl mx-auto mb-10 px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Every shirt, every hat—designers earn royalties forever.
-            Verified on the blockchain.
+            Every purchase pays the designer a royalty. Not once—on every sale, forever.
+            Wear something that matters.
           </motion.p>
 
-          {/* Single Primary CTA */}
+          {/* Dual CTAs - Designer-first */}
           <motion.div
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
             <Link
-              to="/shop"
+              to="/submit"
               className="inline-flex items-center gap-2 bg-white text-gray-900 font-semibold text-lg px-8 py-4 rounded-full hover:bg-gray-100 transition-colors"
             >
-              Shop the Collection
+              Submit Your Design
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
+            </Link>
+            <Link
+              to="/shop"
+              className="inline-flex items-center gap-2 text-white font-medium text-lg px-6 py-4 rounded-full border border-white/30 hover:bg-white/10 transition-colors"
+            >
+              Shop Designs
             </Link>
           </motion.div>
         </motion.div>
@@ -161,9 +168,11 @@ export default function Home() {
                 <span className="text-2xl md:text-3xl font-bold text-white group-hover:text-cyan-400 transition-colors">
                   Hats
                 </span>
-                <span className="text-sm text-gray-500">
-                  {hatCount || 'soon'}
-                </span>
+                {hatCount > 0 && (
+                  <span className="text-sm text-gray-500">
+                    {hatCount}
+                  </span>
+                )}
                 <svg className="w-5 h-5 text-gray-500 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -347,7 +356,7 @@ export default function Home() {
                 How It Works
               </h2>
               <p className="text-gray-400 mb-10 md:mb-14">
-                Supporting artists has never been easier
+                A better deal for artists and customers
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
@@ -356,9 +365,9 @@ export default function Home() {
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl md:text-3xl font-bold text-purple-400">1</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Shop</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Browse</h3>
                   <p className="text-gray-400 text-sm">
-                    Browse unique designs from independent artists
+                    Discover original designs from independent artists
                   </p>
                 </div>
 
@@ -367,9 +376,9 @@ export default function Home() {
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-cyan-500/20 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl md:text-3xl font-bold text-cyan-400">2</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Purchase</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Order</h3>
                   <p className="text-gray-400 text-sm">
-                    Buy the apparel you love, made on demand
+                    Premium apparel, printed on demand and shipped to you
                   </p>
                 </div>
 
@@ -378,17 +387,17 @@ export default function Home() {
                   <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-500/20 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl md:text-3xl font-bold text-amber-400">3</span>
                   </div>
-                  <h3 className="text-lg font-semibold text-white mb-2">Support</h3>
+                  <h3 className="text-lg font-semibold text-white mb-2">Artists Earn</h3>
                   <p className="text-gray-400 text-sm">
-                    Artists earn royalties on every sale, forever
+                    Designers receive royalties on every sale—automatically
                   </p>
                 </div>
               </div>
 
               <p className="mt-10 md:mt-14 text-gray-400 text-sm md:text-base max-w-xl mx-auto">
-                <span className="text-purple-400 font-medium">Blockchain-verified payments</span> mean
-                designers receive their royalties automatically and transparently.
-                No middlemen, no broken promises.
+                We're building a platform where artist royalties are
+                <span className="text-purple-400 font-medium"> guaranteed and transparent</span>.
+                No middlemen taking unfair cuts.
               </p>
             </div>
           </ScrollReveal>
@@ -449,19 +458,19 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-6 max-w-4xl mx-auto">
               <div className="text-center md:text-left">
                 <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
-                  Are you a designer?
+                  Got a design idea?
                 </h3>
                 <p className="text-gray-400 text-sm md:text-base">
-                  Create designs, earn royalties on every sale, join the DAO.
+                  Turn your art into apparel. Earn royalties every time it sells.
                 </p>
               </div>
               <Link
-                to="/about"
-                className="btn-secondary whitespace-nowrap"
+                to="/submit"
+                className="btn-primary whitespace-nowrap"
               >
-                Learn More
+                Start Earning
                 <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
             </div>

@@ -1,38 +1,29 @@
-import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const AnimatedBackground = () => {
-  // Generate random particles
-  const particles = useMemo(() => {
-    return Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      delay: `${Math.random() * 15}s`,
-      duration: `${15 + Math.random() * 10}s`,
-      size: `${3 + Math.random() * 4}px`,
-      color: i % 3 === 0
-        ? 'rgba(139, 92, 246, 0.6)'
-        : i % 3 === 1
-          ? 'rgba(6, 182, 212, 0.4)'
-          : 'rgba(245, 158, 11, 0.3)'
-    }));
-  }, []);
-
   return (
     <>
-      {/* Base animated gradient background */}
+      {/* Deep dark base */}
       <div className="animated-bg" />
 
-      {/* Large gradient orbs - fixed position, visible throughout the page */}
+      {/* Artistic iridescent layers */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none" style={{ zIndex: -1 }}>
-        {/* Primary purple/cyan orb - top left area */}
+
+        {/* Primary aurora sweep - flows diagonally across screen */}
         <motion.div
-          className="absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-gradient-to-br from-purple-500/25 via-cyan-500/15 to-amber-500/10 blur-3xl rounded-full"
-          style={{ top: '10%', left: '5%' }}
+          className="absolute"
+          style={{
+            width: '200%',
+            height: '60%',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.15) 15%, rgba(6,182,212,0.2) 35%, rgba(236,72,153,0.15) 55%, rgba(168,85,247,0.18) 75%, transparent 100%)',
+            top: '10%',
+            left: '-50%',
+            filter: 'blur(80px)',
+            transform: 'rotate(-12deg)',
+          }}
           animate={{
-            x: [0, 50, 0],
-            y: [0, 30, 0],
-            scale: [1, 1.1, 1],
+            x: [0, 100, 0],
+            opacity: [0.6, 0.9, 0.6],
           }}
           transition={{
             duration: 20,
@@ -41,14 +32,21 @@ const AnimatedBackground = () => {
           }}
         />
 
-        {/* Secondary amber/purple orb - bottom right area */}
+        {/* Secondary aurora sweep - opposite direction */}
         <motion.div
-          className="absolute w-[500px] h-[500px] md:w-[700px] md:h-[700px] bg-gradient-to-br from-amber-500/15 via-purple-500/20 to-cyan-500/10 blur-3xl rounded-full"
-          style={{ bottom: '10%', right: '5%' }}
+          className="absolute"
+          style={{
+            width: '200%',
+            height: '50%',
+            background: 'linear-gradient(90deg, transparent 0%, rgba(52,211,153,0.12) 20%, rgba(59,130,246,0.18) 40%, rgba(139,92,246,0.15) 60%, rgba(244,114,182,0.12) 80%, transparent 100%)',
+            bottom: '5%',
+            left: '-50%',
+            filter: 'blur(90px)',
+            transform: 'rotate(8deg)',
+          }}
           animate={{
-            x: [0, -40, 0],
-            y: [0, -50, 0],
-            scale: [1, 1.15, 1],
+            x: [0, -80, 0],
+            opacity: [0.5, 0.8, 0.5],
           }}
           transition={{
             duration: 25,
@@ -57,41 +55,119 @@ const AnimatedBackground = () => {
           }}
         />
 
-        {/* Third accent orb - center area, subtle */}
+        {/* Iridescent focal point - top left */}
         <motion.div
-          className="absolute w-[400px] h-[400px] md:w-[500px] md:h-[500px] bg-gradient-to-br from-cyan-500/10 via-purple-500/15 to-transparent blur-3xl rounded-full"
-          style={{ top: '40%', left: '40%' }}
+          className="absolute rounded-full"
+          style={{
+            width: '800px',
+            height: '800px',
+            background: 'conic-gradient(from 0deg, rgba(139,92,246,0.25), rgba(6,182,212,0.2), rgba(52,211,153,0.15), rgba(250,204,21,0.1), rgba(251,146,60,0.15), rgba(236,72,153,0.2), rgba(139,92,246,0.25))',
+            top: '-20%',
+            left: '-15%',
+            filter: 'blur(100px)',
+          }}
           animate={{
-            x: [0, -30, 30, 0],
-            y: [0, 40, -20, 0],
+            rotate: [0, 360],
+            scale: [1, 1.1, 1],
           }}
           transition={{
-            duration: 30,
+            rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+            scale: { duration: 15, repeat: Infinity, ease: "easeInOut" },
+          }}
+        />
+
+        {/* Iridescent focal point - bottom right */}
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '700px',
+            height: '700px',
+            background: 'conic-gradient(from 180deg, rgba(236,72,153,0.2), rgba(168,85,247,0.25), rgba(59,130,246,0.2), rgba(34,211,238,0.15), rgba(52,211,153,0.18), rgba(250,204,21,0.12), rgba(236,72,153,0.2))',
+            bottom: '-15%',
+            right: '-10%',
+            filter: 'blur(90px)',
+          }}
+          animate={{
+            rotate: [360, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            rotate: { duration: 50, repeat: Infinity, ease: "linear" },
+            scale: { duration: 18, repeat: Infinity, ease: "easeInOut" },
+          }}
+        />
+
+        {/* Floating iridescent ribbon - center */}
+        <motion.div
+          className="absolute"
+          style={{
+            width: '120%',
+            height: '200px',
+            background: 'linear-gradient(180deg, transparent, rgba(139,92,246,0.1) 20%, rgba(6,182,212,0.15) 40%, rgba(236,72,153,0.12) 60%, rgba(168,85,247,0.1) 80%, transparent)',
+            top: '40%',
+            left: '-10%',
+            filter: 'blur(60px)',
+            transform: 'rotate(-5deg)',
+          }}
+          animate={{
+            y: [-30, 30, -30],
+            x: [-20, 20, -20],
+            opacity: [0.4, 0.7, 0.4],
+          }}
+          transition={{
+            duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
           }}
         />
+
+        {/* Subtle shimmer accents */}
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '400px',
+            height: '400px',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%)',
+            top: '25%',
+            right: '20%',
+            filter: 'blur(40px)',
+          }}
+          animate={{
+            scale: [1, 1.5, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: '300px',
+            height: '300px',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%)',
+            bottom: '30%',
+            left: '15%',
+            filter: 'blur(30px)',
+          }}
+          animate={{
+            scale: [1, 1.4, 1],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        />
+
       </div>
 
-      {/* Floating particles */}
-      <div className="particles">
-        {particles.map(particle => (
-          <div
-            key={particle.id}
-            className="particle"
-            style={{
-              left: particle.left,
-              animationDelay: particle.delay,
-              animationDuration: particle.duration,
-              width: particle.size,
-              height: particle.size,
-              background: particle.color,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Noise texture overlay */}
+      {/* Subtle noise texture overlay for depth */}
       <div className="noise-overlay" />
     </>
   );

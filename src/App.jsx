@@ -7,6 +7,7 @@ import Designers from "./pages/Designers";
 import SignIn from "./pages/SignIn";
 import ProductDetail from "./pages/ProductDetail";
 import Checkout from "./pages/Checkout";
+import Submit from "./pages/Submit";
 import {
   createHashRouter,
   Route,
@@ -16,6 +17,7 @@ import {
 import Navbar from "./components/Navbar";
 import { ProductProvider } from "./context/ProductContext";
 import { CartProvider } from "./context/CartContext";
+import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   const router = createHashRouter(
@@ -30,6 +32,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="checkout" element={<Checkout />} />
+          <Route path="submit" element={<Submit />} />
         </Route>
         {/* Standalone pages without Navbar */}
         <Route path="signin" element={<SignIn />} />
@@ -38,11 +41,13 @@ function App() {
   );
 
   return (
-    <ProductProvider>
-      <CartProvider>
-        <RouterProvider router={router} />
-      </CartProvider>
-    </ProductProvider>
+    <AuthProvider>
+      <ProductProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </ProductProvider>
+    </AuthProvider>
   );
 }
 

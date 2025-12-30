@@ -101,11 +101,11 @@ const Footer = () => {
                 className="h-8 w-auto"
               />
               <span className="text-xl font-bold text-white">
-                DAOsigner
+                DAOsigner Apparel
               </span>
             </Link>
             <p className="text-gray-400 text-sm mb-6 max-w-xs">
-              Where every purchase supports real artists. Designers earn royalties on every sale, verified on the blockchain.
+              Apparel where artists earn royalties on every sale. Independent designers, forever earnings.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
