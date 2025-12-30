@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const ProductCard = ({
   id,
@@ -9,7 +10,43 @@ const ProductCard = ({
   category,
   isNew = false,
   isFeatured = false,
+  variants = [],
+  blueprintId,
+  printProviderId,
 }) => {
+  const { addItem, openCart } = useCart();
+
+  // Get the default variant or first available variant
+  const getDefaultVariant = () => {
+    if (!variants || variants.length === 0) return null;
+    const defaultVariant = variants.find(v => v.isDefault);
+    return defaultVariant || variants[0];
+  };
+
+  const handleQuickAdd = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const variant = getDefaultVariant();
+    if (!variant) {
+      // No variants available, navigate to product page instead
+      console.log('No variants available for quick add');
+      return;
+    }
+
+    // Create product object for cart
+    const product = {
+      id,
+      title,
+      image,
+      blueprintId,
+      printProviderId,
+    };
+
+    addItem(product, variant, 1);
+    openCart();
+  };
+
   return (
     <motion.div
       className="product-card"
@@ -78,13 +115,22 @@ const ProductCard = ({
               className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 hover:bg-purple-500 hover:text-white transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              onClick={(e) => {
-                e.preventDefault();
-                // Add to cart logic will be added with Printify integration
-                console.log('Add to cart:', id);
-              }}
+              onClick={handleQuickAdd}
+              title={variants.length > 0 ? "Add to cart" : "View product"}
             >
-              +
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 4v16m8-8H4"
+                />
+              </svg>
             </motion.button>
           </div>
         </div>

@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 // Current designers (will be replaced with API data)
 const allDesigners = [
   { id: 1, name: "EnjoyWeaver", slug: "enjoyweaver", designCount: 27, earnings: 0, isNew: false },
-  { id: 2, name: "DesignerTwo", slug: "designertwo", designCount: 1, earnings: 0, isNew: true },
 ];
 
 const filters = [
