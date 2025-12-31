@@ -15,7 +15,7 @@ export default function SignIn() {
   // Redirect if already authenticated
   useEffect(() => {
     if (!loading && isAuthenticated) {
-      navigate('/dashboard');
+      navigate("/dashboard");
     }
   }, [isAuthenticated, loading, navigate]);
 
@@ -29,8 +29,10 @@ export default function SignIn() {
       await signInWithGoogle();
       // Supabase will redirect to the callback URL, then to dashboard
     } catch (err) {
-      console.error('Google sign-in error:', err);
-      setError(err.message || "Failed to sign in with Google. Please try again.");
+      console.error("Google sign-in error:", err);
+      setError(
+        err.message || "Failed to sign in with Google. Please try again."
+      );
       setIsConnecting(false);
       setConnectionType(null);
     }
@@ -48,7 +50,7 @@ export default function SignIn() {
       console.log("inDemniFi wallet connect clicked - to be implemented");
 
       // Simulate loading for demo
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      await new Promise((resolve) => setTimeout(resolve, 1500));
 
       setError("Wallet connection coming soon!");
     } catch (err) {
@@ -79,9 +81,7 @@ export default function SignIn() {
             />
           </Link>
 
-          <h1 className="text-3xl font-bold text-white mb-2">
-            Welcome Back
-          </h1>
+          <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
           <p className="text-gray-400">
             Sign in to access your designer dashboard
           </p>
@@ -220,8 +220,18 @@ export default function SignIn() {
           className="mt-8 p-4 bg-purple-500/10 border border-purple-500/20 rounded-xl"
         >
           <h3 className="text-purple-400 font-semibold mb-2 flex items-center gap-2">
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
             </svg>
             Why inDemniFi Wallet?
           </h3>
@@ -235,8 +245,8 @@ export default function SignIn() {
             >
               inDemniFi
             </a>{" "}
-            for secure Web3 authentication and wallet management. Your royalty payments
-            are sent directly to your connected wallet on Base L2.
+            for secure Web3 authentication and wallet management. Your royalty
+            payments are sent directly to your connected wallet.
           </p>
         </motion.div>
 
@@ -266,8 +276,18 @@ export default function SignIn() {
             to="/"
             className="text-gray-500 hover:text-gray-300 text-sm flex items-center justify-center gap-2"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
             </svg>
             Back to Home
           </Link>

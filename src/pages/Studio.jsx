@@ -1,19 +1,17 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
 import { supabase } from '../utils/supabase'
 import AnimatedBackground from '../components/AnimatedBackground'
+import ProductMockup from '../components/ProductMockup'
+import { getCuratedProducts, getProductWithVariants } from '../utils/printifyCatalog'
 
-// Mock product templates for preview
-const productTemplates = [
-  { id: 'tshirt', name: 'T-Shirt', basePrice: 24.99, image: '/products/tshirt-template.png' },
-  { id: 'hoodie', name: 'Hoodie', basePrice: 49.99, image: '/products/hoodie-template.png' },
-  { id: 'longsleeve', name: 'Long Sleeve', basePrice: 29.99, image: '/products/longsleeve-template.png' },
-]
+// Get curated products from Printify catalog
+const curatedProducts = getCuratedProducts()
 
 export default function Studio() {
-  const { user, isDesigner, designerProfile, becomeDesigner, canSubmitDesign, designSlots, designerLevel, refreshDesignerProfile } = useAuth()
+  const { user, isDesigner, designerProfile, becomeDesigner, canSubmitDesign, designSlots, designerLevel, totalDesigns, refreshDesignerProfile } = useAuth()
   const navigate = useNavigate()
 
   // Onboarding state (for new designers)
@@ -28,9 +26,20 @@ export default function Studio() {
   const [step, setStep] = useState(1) // 1: Create, 2: Preview, 3: Details, 4: Submit
   const [designMethod, setDesignMethod] = useState(null) // 'ai' or 'upload'
   const [aiPrompt, setAiPrompt] = useState('')
+  const [selectedStyles, setSelectedStyles] = useState([])
+  const [selectedColors, setSelectedColors] = useState([])
   const [uploadedImage, setUploadedImage] = useState(null)
   const [generatedImage, setGeneratedImage] = useState(null)
-  const [selectedProduct, setSelectedProduct] = useState(productTemplates[0])
+  const [generatedVariations, setGeneratedVariations] = useState([])
+  const [selectedProduct, setSelectedProduct] = useState(curatedProducts[0])
+  const [productDetails, setProductDetails] = useState(null)
+  const [selectedColor, setSelectedColor] = useState(null)
+  const [loadingProduct, setLoadingProduct] = useState(false)
+  // Design adjustment controls
+  const [designScale, setDesignScale] = useState(75)
+  const [designPosition, setDesignPosition] = useState('center') // center, top, bottom
+  const [designRotation, setDesignRotation] = useState(0)
+  const [previewColor, setPreviewColor] = useState('black')
   const [designTitle, setDesignTitle] = useState('')
   const [designDescription, setDesignDescription] = useState('')
   const [tags, setTags] = useState([])
@@ -39,7 +48,68 @@ export default function Studio() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState('')
 
+  // Style and color options for AI generation
+  const styleOptions = [
+    { id: 'minimalist', label: 'Minimalist' },
+    { id: 'vintage', label: 'Vintage' },
+    { id: 'bold', label: 'Bold' },
+    { id: 'illustrative', label: 'Illustrative' },
+    { id: 'abstract', label: 'Abstract' },
+    { id: 'typography', label: 'Typography' },
+  ]
+
+  const colorOptions = [
+    { id: 'warm', label: 'Warm', colors: ['#FF6B6B', '#FFE66D'] },
+    { id: 'cool', label: 'Cool', colors: ['#4ECDC4', '#45B7D1'] },
+    { id: 'vibrant', label: 'Vibrant', colors: ['#FF00FF', '#00FFFF'] },
+    { id: 'monochrome', label: 'Monochrome', colors: ['#333333', '#CCCCCC'] },
+    { id: 'pastel', label: 'Pastel', colors: ['#FFB5E8', '#B5DEFF'] },
+    { id: 'earth', label: 'Earth Tones', colors: ['#8B7355', '#556B2F'] },
+  ]
+
+  const toggleStyle = (styleId) => {
+    setSelectedStyles(prev =>
+      prev.includes(styleId)
+        ? prev.filter(s => s !== styleId)
+        : [...prev, styleId]
+    )
+  }
+
+  const toggleColor = (colorId) => {
+    setSelectedColors(prev =>
+      prev.includes(colorId)
+        ? prev.filter(c => c !== colorId)
+        : [...prev, colorId]
+    )
+  }
+
   const fileInputRef = useRef(null)
+
+  // Fetch product details when entering Step 2 or changing product
+  useEffect(() => {
+    if (step === 2 && selectedProduct?.id) {
+      fetchProductDetails(selectedProduct.id)
+    }
+  }, [step, selectedProduct?.id])
+
+  const fetchProductDetails = async (blueprintId) => {
+    setLoadingProduct(true)
+    try {
+      const details = await getProductWithVariants(blueprintId)
+      setProductDetails(details)
+      // Set first color as default
+      if (details.colors && details.colors.length > 0) {
+        setSelectedColor(details.colors[0])
+        setPreviewColor(details.colors[0].hex || 'black')
+      }
+    } catch (error) {
+      console.error('Error fetching product details:', error)
+      // Fallback to basic mode
+      setProductDetails(null)
+    } finally {
+      setLoadingProduct(false)
+    }
+  }
 
   // Handle designer onboarding
   const handleOnboardingSubmit = async () => {
@@ -87,7 +157,33 @@ export default function Studio() {
     reader.readAsDataURL(file)
   }
 
-  // Handle AI generation (placeholder)
+  // Build enhanced prompt with style and color hints
+  const buildEnhancedPrompt = (basePrompt) => {
+    let enhancedPrompt = basePrompt.trim()
+
+    // Add style hints
+    if (selectedStyles.length > 0) {
+      const styleLabels = selectedStyles.map(id =>
+        styleOptions.find(s => s.id === id)?.label
+      ).filter(Boolean)
+      enhancedPrompt += `. Style: ${styleLabels.join(', ')}`
+    }
+
+    // Add color hints
+    if (selectedColors.length > 0) {
+      const colorLabels = selectedColors.map(id =>
+        colorOptions.find(c => c.id === id)?.label
+      ).filter(Boolean)
+      enhancedPrompt += `. Color palette: ${colorLabels.join(', ')}`
+    }
+
+    // Add t-shirt design context
+    enhancedPrompt += '. Design suitable for printing on apparel, high contrast, clean edges, transparent or solid background.'
+
+    return enhancedPrompt
+  }
+
+  // Handle AI generation
   const handleGenerateAI = async () => {
     if (!aiPrompt.trim()) {
       setError('Please enter a description for your design')
@@ -98,16 +194,44 @@ export default function Studio() {
     setError('')
 
     try {
-      // TODO: Integrate with actual AI service
-      // For now, show a placeholder
-      await new Promise(resolve => setTimeout(resolve, 2000))
+      const enhancedPrompt = buildEnhancedPrompt(aiPrompt)
 
-      // Placeholder: In production, this would be the generated image URL
-      setGeneratedImage('/placeholder-generated.png')
-      setDesignMethod('ai')
-      setStep(2)
+      // Call AI generation API
+      const response = await fetch('/api/generate-design', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: enhancedPrompt,
+          styles: selectedStyles,
+          colors: selectedColors,
+        }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Failed to generate design')
+      }
+
+      const data = await response.json()
+
+      if (data.imageUrl) {
+        setGeneratedImage(data.imageUrl)
+        setDesignMethod('ai')
+        setStep(2)
+      } else if (data.variations && data.variations.length > 0) {
+        // If multiple variations, store them and let user pick
+        setGeneratedVariations(data.variations)
+        setGeneratedImage(data.variations[0])
+        setDesignMethod('ai')
+        setStep(2)
+      } else {
+        throw new Error('No image generated')
+      }
     } catch (error) {
-      setError('Failed to generate design. Please try again.')
+      console.error('AI generation error:', error)
+      setError(error.message || 'Failed to generate design. Please try again.')
     } finally {
       setIsGenerating(false)
     }
@@ -132,6 +256,65 @@ export default function Studio() {
     setTags(tags.filter(tag => tag !== tagToRemove))
   }
 
+  // Upload image to Supabase Storage
+  const uploadImageToStorage = async (imageData, fileName) => {
+    // Convert base64 to blob if necessary
+    let file
+    if (imageData.startsWith('data:')) {
+      const response = await fetch(imageData)
+      const blob = await response.blob()
+      file = new File([blob], fileName, { type: blob.type })
+    } else {
+      // It's already a URL (e.g., from AI generation)
+      return imageData
+    }
+
+    // Generate unique file path
+    const fileExt = file.type.split('/')[1] || 'png'
+    const filePath = `${designerProfile.id}/${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
+
+    // Upload to Supabase Storage (bucket: design-submissions)
+    const { data, error } = await supabase.storage
+      .from('design-submissions')
+      .upload(filePath, file, {
+        cacheControl: '3600',
+        upsert: false,
+      })
+
+    if (error) {
+      console.error('Storage upload error:', error)
+      throw new Error('Failed to upload image. Please try again.')
+    }
+
+    // Get public URL
+    const { data: urlData } = supabase.storage
+      .from('design-submissions')
+      .getPublicUrl(filePath)
+
+    return urlData.publicUrl
+  }
+
+  // AI Review for submitted designs
+  const reviewDesignWithAI = async (imageUrl, title, description, tags) => {
+    try {
+      const response = await fetch('/api/review-design', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageUrl, title, description, tags }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Review API failed')
+      }
+
+      return await response.json()
+    } catch (error) {
+      console.error('AI review error:', error)
+      // On error, default to pending for manual review
+      return { approved: false, requiresManualReview: true, reason: 'Review system unavailable' }
+    }
+  }
+
   // Handle design submission
   const handleSubmit = async () => {
     if (!designTitle.trim()) {
@@ -139,27 +322,68 @@ export default function Studio() {
       return
     }
 
+    if (!designerProfile?.id) {
+      setError('Designer profile not found. Please try again.')
+      return
+    }
+
+    const imageData = designMethod === 'ai' ? generatedImage : uploadedImage
+    if (!imageData) {
+      setError('Please create or upload a design first.')
+      return
+    }
+
     setIsSubmitting(true)
     setError('')
 
     try {
-      const imageUrl = designMethod === 'ai' ? generatedImage : uploadedImage
-
       // Upload image to Supabase Storage
-      // TODO: Implement actual image upload
+      const imageUrl = await uploadImageToStorage(
+        imageData,
+        `${designTitle.trim().replace(/[^a-z0-9]/gi, '-').toLowerCase()}.png`
+      )
 
-      // Create design submission in database
+      // Run AI review on the design
+      const reviewResult = await reviewDesignWithAI(
+        imageUrl,
+        designTitle.trim(),
+        designDescription.trim(),
+        tags
+      )
+
+      // Determine status based on AI review
+      let designStatus = 'pending'
+      let rejectionReason = null
+
+      if (reviewResult.approved) {
+        // AI approved - set to live immediately
+        designStatus = 'live'
+      } else if (reviewResult.requiresManualReview) {
+        // Needs manual review - keep as pending
+        designStatus = 'pending'
+      } else {
+        // AI rejected
+        designStatus = 'rejected'
+        rejectionReason = reviewResult.reason || 'Content policy violation'
+      }
+
+      // Create design submission in designers.submissions table
       const { data, error: submitError } = await supabase
-        .schema('products')
-        .from('designs')
+        .schema('designers')
+        .from('submissions')
         .insert({
-          designer_id: user.id,
+          designer_id: designerProfile.id,
           title: designTitle.trim(),
           description: designDescription.trim(),
-          image_url: imageUrl, // This would be the uploaded URL
+          image_url: imageUrl,
+          ai_generated: designMethod === 'ai',
           ai_prompt: designMethod === 'ai' ? aiPrompt : null,
           tags: tags,
-          status: 'pending_review',
+          category: selectedProduct.category,
+          status: designStatus,
+          rejection_reason: rejectionReason,
+          reviewed_at: reviewResult.approved || !reviewResult.requiresManualReview ? new Date().toISOString() : null,
+          published_at: designStatus === 'live' ? new Date().toISOString() : null,
         })
         .select()
         .single()
@@ -169,8 +393,14 @@ export default function Studio() {
       // Refresh designer profile to update slots
       await refreshDesignerProfile()
 
-      // Navigate to success or dashboard
-      navigate('/dashboard', { state: { submitted: true } })
+      // Navigate to dashboard with appropriate message
+      navigate('/dashboard', {
+        state: {
+          submitted: true,
+          status: designStatus,
+          rejectionReason: rejectionReason,
+        }
+      })
     } catch (error) {
       setError(error.message || 'Failed to submit design. Please try again.')
     } finally {
@@ -317,7 +547,7 @@ export default function Studio() {
 
           <div className="flex items-center gap-4">
             <span className="text-gray-400 text-sm">
-              {designSlots - (designerProfile?.progress?.designs_submitted || 0)} slots remaining
+              {designSlots === Infinity ? 'Unlimited' : `${designSlots - totalDesigns} slots remaining`}
             </span>
             <Link
               to="/dashboard"
@@ -413,9 +643,55 @@ export default function Studio() {
                     value={aiPrompt}
                     onChange={(e) => setAiPrompt(e.target.value)}
                     placeholder="A minimalist geometric wolf howling at the moon, white lines on transparent background..."
-                    rows={4}
+                    rows={3}
                     className="w-full px-4 py-3 bg-black/30 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 resize-none mb-4"
                   />
+
+                  {/* Style Hints */}
+                  <div className="mb-4">
+                    <label className="block text-xs font-medium text-gray-400 mb-2">Style (optional)</label>
+                    <div className="flex flex-wrap gap-2">
+                      {styleOptions.map((style) => (
+                        <button
+                          key={style.id}
+                          onClick={() => toggleStyle(style.id)}
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+                            selectedStyles.includes(style.id)
+                              ? 'bg-purple-500 text-white'
+                              : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                          }`}
+                        >
+                          {style.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Color Mood */}
+                  <div className="mb-4">
+                    <label className="block text-xs font-medium text-gray-400 mb-2">Color mood (optional)</label>
+                    <div className="flex flex-wrap gap-2">
+                      {colorOptions.map((color) => (
+                        <button
+                          key={color.id}
+                          onClick={() => toggleColor(color.id)}
+                          className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors flex items-center gap-1.5 ${
+                            selectedColors.includes(color.id)
+                              ? 'bg-purple-500 text-white'
+                              : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                          }`}
+                        >
+                          <span
+                            className="w-3 h-3 rounded-full"
+                            style={{
+                              background: `linear-gradient(135deg, ${color.colors[0]}, ${color.colors[1]})`
+                            }}
+                          />
+                          {color.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
 
                   <button
                     onClick={handleGenerateAI}
@@ -485,62 +761,185 @@ export default function Studio() {
             >
               <div className="text-center mb-8">
                 <h1 className="text-3xl font-bold text-white mb-2">Preview Your Design</h1>
-                <p className="text-gray-400">See how it looks on different products</p>
+                <p className="text-gray-400">Adjust placement and see how it looks on different products</p>
               </div>
 
               <div className="grid lg:grid-cols-2 gap-8">
-                {/* Product Preview */}
+                {/* Product Preview with Mockup */}
                 <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                  <div className="aspect-square bg-gray-800 rounded-xl flex items-center justify-center overflow-hidden mb-4">
-                    {currentImage ? (
-                      <img
-                        src={currentImage}
-                        alt="Design preview"
-                        className="max-w-[60%] max-h-[60%] object-contain"
-                      />
-                    ) : (
-                      <div className="text-gray-500">No image</div>
+                  {loadingProduct ? (
+                    <div className="aspect-square rounded-xl flex items-center justify-center bg-gray-800">
+                      <div className="text-center">
+                        <div className="w-8 h-8 border-2 border-purple-500 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                        <p className="text-gray-400 text-sm">Loading product...</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <ProductMockup
+                      designImage={currentImage}
+                      productType={selectedProduct.category}
+                      productColor={previewColor}
+                      designScale={designScale}
+                      designPosition={designPosition}
+                      designRotation={designRotation}
+                    />
+                  )}
+
+                  {/* Color Selector - Real Printify Colors */}
+                  <div className="mt-4">
+                    <p className="text-gray-400 text-xs mb-2 text-center">
+                      {productDetails ? `${productDetails.colors?.length || 0} colors available` : 'Select color'}
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-2">
+                      {productDetails?.colors?.slice(0, 12).map(color => (
+                        <button
+                          key={color.name}
+                          onClick={() => {
+                            setSelectedColor(color)
+                            setPreviewColor(color.hex)
+                          }}
+                          className={`w-8 h-8 rounded-full border-2 transition-all ${
+                            selectedColor?.name === color.name
+                              ? 'border-purple-500 ring-2 ring-purple-500/30'
+                              : 'border-white/20 hover:border-white/40'
+                          }`}
+                          style={{ backgroundColor: color.hex }}
+                          title={color.name}
+                        />
+                      )) || (
+                        // Fallback colors if no product loaded
+                        ['#1a1a2e', '#ffffff', '#374151', '#1e3a5f'].map((hex, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setPreviewColor(hex)}
+                            className={`w-8 h-8 rounded-full border-2 transition-colors ${
+                              previewColor === hex ? 'border-purple-500' : 'border-white/20'
+                            }`}
+                            style={{ backgroundColor: hex }}
+                          />
+                        ))
+                      )}
+                    </div>
+                    {productDetails?.colors?.length > 12 && (
+                      <p className="text-gray-500 text-xs text-center mt-2">
+                        +{productDetails.colors.length - 12} more colors
+                      </p>
                     )}
                   </div>
 
-                  <p className="text-center text-gray-400 text-sm">
-                    Preview on {selectedProduct.name}
-                  </p>
+                  {/* Product Info */}
+                  <div className="text-center mt-4">
+                    <p className="text-white font-medium">{selectedProduct.name}</p>
+                    <p className="text-gray-400 text-sm">{selectedProduct.brand}</p>
+                    {productDetails?.sizes && (
+                      <p className="text-gray-500 text-xs mt-1">
+                        Sizes: {productDetails.sizes.join(', ')}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
-                {/* Product Selection */}
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-4">Select Product Type</h3>
-                  <div className="space-y-3">
-                    {productTemplates.map((product) => (
-                      <button
-                        key={product.id}
-                        onClick={() => setSelectedProduct(product)}
-                        className={`w-full flex items-center gap-4 p-4 rounded-xl border transition-colors ${
-                          selectedProduct.id === product.id
-                            ? 'bg-purple-500/10 border-purple-500'
-                            : 'bg-white/5 border-white/10 hover:border-white/20'
-                        }`}
-                      >
-                        <div className="w-16 h-16 bg-gray-800 rounded-lg flex items-center justify-center">
-                          <span className="text-2xl">
-                            {product.id === 'tshirt' ? '👕' : product.id === 'hoodie' ? '🧥' : '👔'}
-                          </span>
-                        </div>
-                        <div className="flex-1 text-left">
-                          <p className="font-medium text-white">{product.name}</p>
-                          <p className="text-gray-400 text-sm">Starting at ${product.basePrice}</p>
-                        </div>
-                        {selectedProduct.id === product.id && (
-                          <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        )}
-                      </button>
-                    ))}
+                {/* Design Controls & Product Selection */}
+                <div className="space-y-6">
+                  {/* Design Adjustment Controls */}
+                  <div className="bg-white/5 rounded-xl p-5 border border-white/10">
+                    <h3 className="text-base font-semibold text-white mb-4">Adjust Design</h3>
+
+                    {/* Scale */}
+                    <div className="mb-5">
+                      <div className="flex justify-between items-center mb-2">
+                        <label className="text-sm text-gray-400">Size</label>
+                        <span className="text-sm text-purple-400">{designScale}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="30"
+                        max="100"
+                        value={designScale}
+                        onChange={(e) => setDesignScale(Number(e.target.value))}
+                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
+                      />
+                    </div>
+
+                    {/* Position */}
+                    <div className="mb-5">
+                      <label className="block text-sm text-gray-400 mb-2">Position</label>
+                      <div className="flex gap-2">
+                        {[
+                          { id: 'top', label: 'Top' },
+                          { id: 'center', label: 'Center' },
+                          { id: 'bottom', label: 'Bottom' },
+                        ].map(pos => (
+                          <button
+                            key={pos.id}
+                            onClick={() => setDesignPosition(pos.id)}
+                            className={`flex-1 py-2 rounded-lg text-sm font-medium transition-colors ${
+                              designPosition === pos.id
+                                ? 'bg-purple-500 text-white'
+                                : 'bg-white/5 text-gray-400 hover:bg-white/10'
+                            }`}
+                          >
+                            {pos.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Rotation */}
+                    <div>
+                      <div className="flex justify-between items-center mb-2">
+                        <label className="text-sm text-gray-400">Rotation</label>
+                        <span className="text-sm text-purple-400">{designRotation}°</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="-45"
+                        max="45"
+                        value={designRotation}
+                        onChange={(e) => setDesignRotation(Number(e.target.value))}
+                        className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
+                      />
+                    </div>
                   </div>
 
-                  <div className="flex gap-4 mt-8">
+                  {/* Product Selection - Printify Catalog */}
+                  <div>
+                    <h3 className="text-base font-semibold text-white mb-3">Select Product</h3>
+                    <div className="space-y-2 max-h-64 overflow-y-auto pr-2">
+                      {curatedProducts.map((product) => (
+                        <button
+                          key={product.id}
+                          onClick={() => setSelectedProduct(product)}
+                          className={`w-full flex items-center gap-3 p-3 rounded-xl border transition-colors ${
+                            selectedProduct.id === product.id
+                              ? 'bg-purple-500/10 border-purple-500'
+                              : 'bg-white/5 border-white/10 hover:border-white/20'
+                          }`}
+                        >
+                          <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
+                            <span className="text-xl">
+                              {product.category === 'tshirt' ? '👕' :
+                               product.category === 'hoodie' ? '🧥' :
+                               product.category === 'sweatshirt' ? '🧤' :
+                               product.category === 'longsleeve' ? '👔' : '👕'}
+                            </span>
+                          </div>
+                          <div className="flex-1 text-left">
+                            <p className="font-medium text-white text-sm">{product.name}</p>
+                            <p className="text-gray-400 text-xs">{product.brand} • {product.style}</p>
+                          </div>
+                          {selectedProduct.id === product.id && (
+                            <svg className="w-4 h-4 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Navigation Buttons */}
+                  <div className="flex gap-4">
                     <button
                       onClick={() => setStep(1)}
                       className="flex-1 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl transition-colors"

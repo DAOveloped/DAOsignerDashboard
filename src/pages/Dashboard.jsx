@@ -20,6 +20,8 @@ export default function Dashboard() {
   const [stats, setStats] = useState({ totalEarnings: 0, pendingEarnings: 0, monthlyEarnings: 0 })
   const [loading, setLoading] = useState(true)
   const [showSuccess, setShowSuccess] = useState(location.state?.submitted)
+  const [submissionStatus, setSubmissionStatus] = useState(location.state?.status)
+  const [rejectionReason, setRejectionReason] = useState(location.state?.rejectionReason)
 
   const currentLevelInfo = levelInfo[designerLevel] || levelInfo.new
 
@@ -40,11 +42,12 @@ export default function Dashboard() {
 
   const fetchDesigns = async () => {
     try {
+      // Query designers.submissions for all designer's submissions
       const { data, error } = await supabase
-        .schema('products')
-        .from('designs')
+        .schema('designers')
+        .from('submissions')
         .select('*')
-        .eq('designer_id', user.id)
+        .eq('designer_id', designerProfile.id)
         .order('created_at', { ascending: false })
 
       if (error) throw error
@@ -58,12 +61,12 @@ export default function Dashboard() {
 
   const fetchStats = async () => {
     try {
-      // Fetch royalty stats
+      // Fetch royalty stats from royalties.ledger
       const { data, error } = await supabase
         .schema('royalties')
-        .from('payments')
+        .from('ledger')
         .select('amount, status, created_at')
-        .eq('designer_id', user.id)
+        .eq('designer_id', designerProfile.id)
 
       if (error) throw error
 
@@ -71,7 +74,7 @@ export default function Dashboard() {
       const monthStart = new Date(now.getFullYear(), now.getMonth(), 1)
 
       const totalEarnings = data?.reduce((sum, p) => sum + (p.status === 'paid' ? Number(p.amount) : 0), 0) || 0
-      const pendingEarnings = data?.reduce((sum, p) => sum + (p.status === 'pending' ? Number(p.amount) : 0), 0) || 0
+      const pendingEarnings = data?.reduce((sum, p) => sum + (['pending', 'held', 'eligible'].includes(p.status) ? Number(p.amount) : 0), 0) || 0
       const monthlyEarnings = data?.filter(p => new Date(p.created_at) >= monthStart)
         .reduce((sum, p) => sum + Number(p.amount), 0) || 0
 
@@ -82,20 +85,23 @@ export default function Dashboard() {
   }
 
   const getStatusBadge = (status) => {
+    // Status values per schema: pending, approved, rejected, live, archived
     const styles = {
-      pending_review: 'bg-amber-500/20 text-amber-400',
+      pending: 'bg-amber-500/20 text-amber-400',
       approved: 'bg-green-500/20 text-green-400',
       rejected: 'bg-red-500/20 text-red-400',
       live: 'bg-purple-500/20 text-purple-400',
+      archived: 'bg-gray-500/20 text-gray-400',
     }
     const labels = {
-      pending_review: 'Under Review',
+      pending: 'Under Review',
       approved: 'Approved',
       rejected: 'Rejected',
       live: 'Live',
+      archived: 'Archived',
     }
     return (
-      <span className={`px-2 py-1 rounded-full text-xs font-medium ${styles[status] || styles.pending_review}`}>
+      <span className={`px-2 py-1 rounded-full text-xs font-medium ${styles[status] || styles.pending}`}>
         {labels[status] || status}
       </span>
     )
@@ -159,19 +165,46 @@ export default function Dashboard() {
       <main className="pt-24 pb-12 px-4">
         <div className="container mx-auto max-w-6xl">
 
-          {/* Success Toast */}
+          {/* Submission Result Toast */}
           <AnimatePresence>
             {showSuccess && (
               <motion.div
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-green-500/20 border border-green-500/30 rounded-xl px-6 py-4 flex items-center gap-3"
+                className={`fixed top-20 left-1/2 -translate-x-1/2 z-50 rounded-xl px-6 py-4 flex items-center gap-3 ${
+                  submissionStatus === 'live'
+                    ? 'bg-green-500/20 border border-green-500/30'
+                    : submissionStatus === 'rejected'
+                    ? 'bg-red-500/20 border border-red-500/30'
+                    : 'bg-amber-500/20 border border-amber-500/30'
+                }`}
               >
-                <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-                <span className="text-green-300">Design submitted successfully! We'll review it within 24-48 hours.</span>
+                {submissionStatus === 'live' ? (
+                  <>
+                    <svg className="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-green-300">Design approved and live! It's now available for purchase.</span>
+                  </>
+                ) : submissionStatus === 'rejected' ? (
+                  <>
+                    <svg className="w-5 h-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <div>
+                      <span className="text-red-300">Design was not approved.</span>
+                      {rejectionReason && <p className="text-red-400 text-sm mt-1">{rejectionReason}</p>}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-amber-300">Design submitted! Under review - usually approved within minutes.</span>
+                  </>
+                )}
               </motion.div>
             )}
           </AnimatePresence>

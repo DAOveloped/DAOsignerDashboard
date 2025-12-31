@@ -231,6 +231,37 @@ export const AuthProvider = ({ children }) => {
     setDesignerProfile(designer)
   }
 
+  // Map level_id to level name (matches designers.levels table)
+  const levelNames = {
+    1: 'new',
+    2: 'proven',
+    3: 'established',
+    4: 'pro',
+    5: 'verified',
+  }
+
+  // Get available slots based on level (matches designers.levels.max_designs)
+  const levelSlots = {
+    1: 1,    // New
+    2: 2,    // Proven
+    3: 5,    // Established
+    4: 15,   // Pro
+    5: -1,   // Verified (unlimited)
+  }
+
+  const currentLevelId = designerProfile?.level_id || 1
+  const totalDesigns = designerProfile?.progress?.total_designs || 0
+
+  // Check if user is platform owner (unlimited access)
+  const isOwner = profile?.is_owner === true
+
+  // Owners get unlimited slots, otherwise use level-based or progress-based slots
+  const availableSlots = isOwner
+    ? Infinity
+    : (designerProfile?.progress?.available_slots === -1
+        ? Infinity
+        : designerProfile?.progress?.available_slots ?? levelSlots[currentLevelId] ?? 1)
+
   const value = {
     user,
     profile,
@@ -245,11 +276,13 @@ export const AuthProvider = ({ children }) => {
     isAuthenticated: !!user,
     isDesigner: !!designerProfile,
     isAdmin: profile?.is_admin || false,
-    // Designer-specific computed values
-    designerLevel: designerProfile?.progress?.current_level || 'new',
-    designSlots: designerProfile?.progress?.design_slots || 0,
+    isOwner: isOwner, // Platform owner flag
+    // Designer-specific computed values (matching schema columns)
+    designerLevel: isOwner ? 'verified' : (levelNames[currentLevelId] || 'new'),
+    designSlots: availableSlots,
     totalSales: designerProfile?.progress?.total_sales || 0,
-    canSubmitDesign: designerProfile?.progress?.designs_submitted < (designerProfile?.progress?.design_slots || 0),
+    totalDesigns: totalDesigns,
+    canSubmitDesign: isOwner || availableSlots === Infinity || totalDesigns < availableSlots,
   }
 
   return (

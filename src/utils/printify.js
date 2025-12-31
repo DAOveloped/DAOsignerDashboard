@@ -2,50 +2,28 @@
  * Printify API Service
  * Handles all communication with the Printify API for product management and orders
  *
- * In development: Uses Vite proxy (/api/printify) to bypass CORS
- * In production: Uses Vercel serverless function (/api/printify)
+ * Uses /api/printify?endpoint= format which works with both:
+ * - Vite dev middleware (vite.config.js)
+ * - Vercel serverless function (api/printify.js)
  */
 
-const isDev = import.meta.env.DEV;
-
-// Get API credentials from environment variables
-const getApiToken = () => import.meta.env.VITE_PRINTIFY_API_TOKEN;
+// Get shop ID from environment variables
 const getShopId = () => import.meta.env.VITE_PRINTIFY_SHOP_ID;
 
 /**
  * Make an authenticated request to the Printify API
+ * Both dev and prod use the same query parameter format for consistency
  */
 const printifyFetch = async (endpoint, options = {}) => {
-  let url;
-  let fetchOptions;
-
-  if (isDev) {
-    // Development: Use Vite proxy
-    const token = getApiToken();
-    if (!token) {
-      throw new Error('Printify API token not configured. Please set VITE_PRINTIFY_API_TOKEN in your .env file.');
-    }
-
-    url = `/api/printify${endpoint}`;
-    fetchOptions = {
-      ...options,
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
-    };
-  } else {
-    // Production: Use Vercel serverless function
-    url = `/api/printify?endpoint=${encodeURIComponent(endpoint)}`;
-    fetchOptions = {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-      },
-    };
-  }
+  // Use query parameter format for both dev (Vite middleware) and prod (Vercel function)
+  const url = `/api/printify?endpoint=${encodeURIComponent(endpoint)}`;
+  const fetchOptions = {
+    ...options,
+    headers: {
+      'Content-Type': 'application/json',
+      ...options.headers,
+    },
+  };
 
   try {
     const response = await fetch(url, fetchOptions);
